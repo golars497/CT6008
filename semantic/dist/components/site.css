@@ -202,6 +202,18 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 
-.test {
-  background-color: #016936;
+.ui.label.vw_black {
+  background-color: #170922;
+}
+.ui.label.vw_pink {
+  background-color: #D509D5;
+}
+.ui.label.vw_blue {
+  background-color: #2139DA;
+}
+.ui.label.vw_light_blue {
+  background-color: #01EDDC;
+}
+.ui.label.vw_yellow {
+  background-color: #F4E640;
 }

@@ -1,6 +1,22 @@
 /*******************************
          Site Overrides
 *******************************/
-.test {
-	background-color: @green;
+.ui.label.vw_black {
+	background-color: @vw_black;
+}
+
+.ui.label.vw_pink {
+	background-color: @vw_pink;
+}
+
+.ui.label.vw_blue {
+	background-color: @vw_blue;
+}
+
+.ui.label.vw_light_blue {
+	background-color: @vw_light_blue;
+}
+
+.ui.label.vw_yellow {
+	background-color: @vw_yellow;
 }
