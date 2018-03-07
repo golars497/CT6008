@@ -202,18 +202,58 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 
-.ui.label.vw_black {
+.ui.vw_black {
   background-color: #170922;
 }
-.ui.label.vw_pink {
+.ui.vw_pink {
   background-color: #D509D5;
 }
-.ui.label.vw_blue {
+.ui.vw_blue {
   background-color: #2139DA;
 }
-.ui.label.vw_light_blue {
+.ui.vw_light_blue {
   background-color: #01EDDC;
 }
-.ui.label.vw_yellow {
+.ui.vw_yellow {
   background-color: #F4E640;
+}
+.ui.masthead.segment {
+  min-height: 700px;
+  padding: 1em 0em;
+  background-color: #170922 !important;
+}
+.masthead .logo.item img {
+  margin-right: 1em;
+}
+.masthead .ui.menu .ui.button {
+  margin-left: 0.5em;
+}
+.masthead h1.ui.header {
+  margin-top: 3em;
+  margin-bottom: 0em;
+  font-size: 4em;
+  font-weight: normal;
+}
+.masthead h2 {
+  font-size: 1.7em;
+  font-weight: normal;
+}
+.ui.vertical.stripe {
+  padding: 8em 0em;
+}
+.ui.vertical.stripe h3 {
+  font-size: 2em;
+}
+.ui.vertical.stripe .button + h3,
+.ui.vertical.stripe p + h3 {
+  margin-top: 3em;
+}
+.ui.vertical.stripe .floated.image {
+  clear: both;
+}
+.ui.vertical.stripe p {
+  font-size: 1.33em;
+}
+.ui.vertical.stripe .horizontal.divider {
+  margin: 3em 0em;
 }
