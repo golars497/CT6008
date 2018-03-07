@@ -43,8 +43,12 @@
   font-weight: normal;
 }
 
-.ui.vertical.stripe {
+.ui.vertical.stripe#segment {
   padding: 8em 0em;
+}
+.ui.vertical.stripe#segment.row {
+  padding-top: 3em !important;
+  padding-bottom: 3em !important;
 }
 .ui.vertical.stripe h3 {
   font-size: 2em;
