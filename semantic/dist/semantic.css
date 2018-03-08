@@ -780,10 +780,18 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   background-color: #F4E640;
 }
 
+.ui.hidden.menu {
+  display: none !important;
+}
+
 .ui.masthead.segment {
   min-height: 700px;
   padding: 1em 0em;
   background-color: #170922 !important;
+}
+
+.ui.segment {
+  min-height: 700px !important;
 }
 
 .masthead .logo.item img {
@@ -791,7 +799,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .masthead .ui.menu .ui.button {
-  margin-left: 0.5em;
+  margin-left: 0.5em !important;
 }
 
 .masthead h1.ui.header {
@@ -829,6 +837,35 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.vertical.stripe .horizontal.divider {
   margin: 3em 0em;
+}
+
+.secondary.pointing.menu .toc.item {
+  display: none;
+}
+
+@media only screen and (max-width: 700px) {
+  .ui.fixed.menu {
+    display: none !important;
+  }
+
+  .secondary.pointing.menu .item,
+  .secondary.pointing.menu .menu {
+    display: none !important;
+  }
+
+  .masthead.segment {
+    min-height: 350px;
+  }
+
+  .masthead h1.ui.header {
+    font-size: 2em;
+    margin-top: 1.5em;
+  }
+
+  .masthead h2 {
+    margin-top: 0.5em;
+    font-size: 1.5em;
+  }
 }
 /*!
  * # Semantic UI 2.3.0 - Button
