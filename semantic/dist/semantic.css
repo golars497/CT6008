@@ -850,10 +850,6 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   margin: 3em 0em;
 }
 
-.secondary.pointing.menu .toc.item {
-  display: none;
-}
-
 @media only screen and (max-width: 700px) {
   .ui.fixed.menu {
     display: none !important;
@@ -909,25 +905,30 @@ body {
 
 .layer-1 {
   top: 0px;
-  background-image: url('../../img/layer5.png');
+  background-image: url('../../img/layer6.png');
 }
 
 .layer-2 {
   top: 0px;
-  background-image: url('../../img/layer4.png');
+  background-image: url('../../img/layer5.png');
 }
 
 .layer-3 {
   top: 0px;
-  background-image: url('../../img/layer3.png');
+  background-image: url('../../img/layer4.png');
 }
 
 .layer-4 {
   top: 0px;
-  background-image: url('../../img/layer2.png');
+  background-image: url('../../img/layer3.png');
 }
 
 .layer-5 {
+  top: 0px;
+  background-image: url('../../img/layer2.png');
+}
+
+.layer-6 {
   top: 0px;
   background-image: url('../../img/layer1.png');
 }
