@@ -21,6 +21,10 @@
 	background-color: @vw_yellow;
 }
 
+.ui.vw_grey {
+  background-color: @vw_grey;
+}
+
 .ui.hidden.menu {
   display: none !important;
 }
@@ -28,6 +32,10 @@
   min-height: 700px;
   padding: 1em 0em;
   background-color: @vw_black !important;
+}
+
+.ui.vertical.stripe.segment#headsetAndGun {
+  background-color: @vw_grey !important; 
 }
 
 #first-panel {
@@ -84,13 +92,13 @@
 
 @media only screen and (max-width: 700px) {
 
-  .ui.fixed.menu {
-    display: none !important;
-  }
-  .secondary.pointing.menu .item,
-  .secondary.pointing.menu .menu {
-    display: none !important;
-  }
+  // .ui.fixed.menu {
+  //   display: none !important;
+  // }
+  // .secondary.pointing.menu .item,
+  // .secondary.pointing.menu .menu {
+  //   display: none !important;
+  // }
   
   .masthead.segment {
     min-height: 350px;

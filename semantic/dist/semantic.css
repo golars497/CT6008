@@ -851,15 +851,6 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 @media only screen and (max-width: 700px) {
-  .ui.fixed.menu {
-    display: none !important;
-  }
-
-  .secondary.pointing.menu .item,
-  .secondary.pointing.menu .menu {
-    display: none !important;
-  }
-
   .masthead.segment {
     min-height: 350px;
   }

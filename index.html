@@ -3,7 +3,7 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 		<script
-		  src="https://code.jquery.com/jquery-3.1.1.min.js"
+		  src="js/jquery-3.1.1.min.js"
 		  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
 		  crossorigin="anonymous"></script>
 		<script src="semantic/dist/semantic.min.js"></script>	
@@ -24,25 +24,19 @@
 			  $('.ui.sidebar').sidebar('attach events', '.toc.item');
 			});	
 		</script>
-		<style type="text/css">
-			body { margin: 0; }
-			canvas { width: 100%; height: 100% }	
-		</style>
+
 	</head>
 	<body>
-
-	<!-- load three.js for 3d models -->
-	<script src="js/three.js"></script>
 
 	<!-- Following Menu -->
 	<div class="ui large top fixed hidden menu">
 	  <div class="ui container">
-	    <a class="active item">Home</a>
+	    <a class="active item" href="index.html">Home</a>
 	    <a class="item">Mechanics</a>
 	    <a class="item">Contact</a>
 	    <div class="right menu">
 	      <div class="item">
-	        <a class="ui button">Leaderboards</a>
+	        <a class="ui button" href="leaderboard.html">Leaderboards</a>
 	      </div>
 	    </div>
 	  </div>
@@ -50,11 +44,11 @@
 
 	<div class="pusher">	
 		<div id="top-menu" class="ui large secondary inverted pointing menu">
-		    <a class="active item">Home</a>
+		    <a class="active item" href="index.html">Home</a>
 		    <a class="item">Mechanics</a>
 		    <a class="item">Contact</a>
 		    <div class="right item">
-		    	<a class="ui inverted button">Leaderboards</a>
+		    	<a class="ui inverted button" href="leaderboard.html">Leaderboards</a>
 		    </div>
 		</div>	
 		<div class="parallax-container">
@@ -77,9 +71,9 @@
 		      <h2>Some game story shizzles</h2>
 		      <div class="ui huge primary button">Download now<i class="right arrow icon"></i></div>		
 			</div>
-			<div class="sketchfab-embed-wrapper"><iframe width="480" height="320" src="https://sketchfab.com/models/0eae43ef20b14f27ab703c1ad7174c26/embed?autospin=0.2&amp;camera=0" frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe></div>
+			
 		</div>
-		<div class="ui vertical stripe segment">
+		<div class="ui vertical stripe segment" id="headsetAndGun">
 		    <div class="ui middle aligned stackable grid container">
 		    	<div class="row">
 		    		<div class="ui text container">
@@ -98,7 +92,8 @@
 				      <h1 class="ui header">
 				        VR Headset and Gun
 				      </h1>
-				      <h2>Explain the shizzle</h2>		
+				      <h2>Explain the shizzle</h2>
+						<div class="sketchfab-embed-wrapper"><iframe width="640" height="480" src="https://sketchfab.com/models/910be433ccf447dcb54afee54d32f8b3/embed?autostart=1&amp;camera=0" frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
 					</div>
 		    	</div>
 			</div>
