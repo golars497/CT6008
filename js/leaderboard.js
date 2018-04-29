@@ -1,3 +1,7 @@
+// TODO
+// 1. add sort funciton to each column. ALso make it so that columns are highlighter based on which table is sorted
+
+
 console.log("leaderboard.js script loaded")
 // Initialize Firebase
 var config = {
@@ -19,8 +23,8 @@ console.log("firebase db initialised");
  */
 
 var tableProperties =  {
-	"headerText" : ["Player", "Score"],
-	"valuePaths" : ["name", "score"]
+	"headerText" : ["Rank", "Player", "Waves Cleared", "Max Gold"],
+	"valuePaths" : ["rank", "name", "waves", "gold"]
 }
 
 window.onload = function () {
@@ -32,8 +36,16 @@ window.onload = function () {
 		//scores get stored and table gets created once data is retrieved
 		//TODO: Add Time-out
 		scores = scoreData.val();
+		
+		//because this function runs everytime there is a chnage in the database
+		//we need to delete old table everytime we create a new one 
+		if (document.getElementById("leaderboard_tbl") != null) {
+			document.getElementById("leaderboard_tbl").remove();
+		}
+
 		var table = createTable(scores, tableProperties);
 		document.getElementById("leaderboardTable").appendChild(table);
+		$('table').tablesort();
 	});
 }
 
@@ -57,7 +69,10 @@ var getObjectProperty = function (object, propertyPath) {
 
 
 //Function for sorting table elements
+//data = object data from firebase
+// property = properties of data object that you want to sort e.g. socre, name
 function sortData (data, property, type) {
+	temp = data; //temporary buffer
 	function compare_ASC(a,b) {
 	  if (a[property] < b[property])
 	    return -1;
@@ -74,10 +89,16 @@ function sortData (data, property, type) {
 	  return 0;
 	}
 
-	if (type == "asc") {
-		return data.sort(compare_ASC);
-	} else if (type == "desc") {
-		return data.sort(compare_DESC);
+	try {
+		if (type == "asc") {
+			return data.sort(compare_ASC);
+		} else if (type == "desc") {
+			return data.sort(compare_DESC);
+		}
+	} catch (err) {
+		//TODO: make this a pop-up error
+		console.log("ERROR, sort function: " + err)
+		return temp;
 	}
 
 }
@@ -87,25 +108,50 @@ var createTable = function (data, tableProperties) {
 	//by default sort data in score
 	data = sortData(data, "score", "desc");
 
+	//add ranks to dataset
+	for (var z = 0; z < data.length -1; z++) {
+		data[z].rank = z + 1;
+	}
+
 	console.log("Create table function called");
 	
 	//create table object
 	var _table = document.createElement('table');
+
+	//add id to table element
+	_table.setAttribute("id", "leaderboard_tbl");
+	//add classes to table for styling
+	_table.className += "ui sortable celled padded table";
+
 	//determines number of columns in table
 	var tableWidth = tableProperties.headerText.length;
 	//add headers
-	var header = _table.createTHead();
-	var headerRow = header.insertRow(0);
+	var header = _table.appendChild(document.createElement('thead'));
+	var headerRow = header.appendChild(document.createElement('tr'));
 	for (var c = 0; c < tableWidth; c++) {
-		var headerCell = headerRow.insertCell(-1);
+		var headerCell = document.createElement('th');
 		headerCell.innerHTML = tableProperties.headerText[c];
+
+
+		//hard coded to disable sort for Rank column
+		if (headerCell.innerHTML == "Rank") {
+			headerCell.className += "no-sort"
+		}
+
+		headerRow.appendChild(headerCell);
 	}
 
+	//add tbody to table ofr adding content
+	_table.appendChild(document.createElement('tbody'));
+
 	console.log(_table);
+
 	if (data.length > 1) {
 		console.log("adding rows");
 		for (var row_cnt = 0; row_cnt < data.length - 1; row_cnt++) {
-			var row = _table.insertRow(-1);
+
+			//create row inside tbody tag
+			var row = _table.getElementsByTagName('tbody')[0].insertRow(-1);
 
 
 			for  (var col_cnt = 0; col_cnt < tableWidth; col_cnt++) {
@@ -121,5 +167,3 @@ var createTable = function (data, tableProperties) {
 	}
 	return _table;
 } 
-
-
