@@ -11,6 +11,18 @@ messagingSenderId: "647593248716"
 firebase.initializeApp(config);
 console.log("firebase db initialised");
 
+
+/*
+ * tableProperties (Object)
+ * headerText = The text that appears in the table headers
+ * valuePaths = Since firebase returns an object. We need the "path" to the object porperties
+ */
+
+var tableProperties =  {
+	"headerText" : ["Player", "Score"],
+	"valuePaths" : ["name", "score"]
+}
+
 window.onload = function () {
 	console.log("page has loaded");
 	var db = firebase.database();
@@ -20,7 +32,7 @@ window.onload = function () {
 		//scores get stored and table gets created once data is retrieved
 		//TODO: Add Time-out
 		scores = scoreData.val();
-		var table = createTable(scores);
+		var table = createTable(scores, tableProperties);
 		document.getElementById("leaderboardTable").appendChild(table);
 	});
 }
@@ -43,34 +55,68 @@ var getObjectProperty = function (object, propertyPath) {
 	return propertyFunc(object,propertyPathArray[0]);
 }
 
-var createTable = function (data) {
-	console.log("Create table function called");
 
-	var headerValues = ["Player", "Score"];
+//Function for sorting table elements
+function sortData (data, property, type) {
+	function compare_ASC(a,b) {
+	  if (a[property] < b[property])
+	    return -1;
+	  if (a[property] > b[property])
+	    return 1;
+	  return 0;
+	}
+
+	function compare_DESC(a,b) {
+	  if (a[property] > b[property])
+	    return -1;
+	  if (a[property] < b[property])
+	    return 1;
+	  return 0;
+	}
+
+	if (type == "asc") {
+		return data.sort(compare_ASC);
+	} else if (type == "desc") {
+		return data.sort(compare_DESC);
+	}
+
+}
+
+var createTable = function (data, tableProperties) {
+
+	//by default sort data in score
+	data = sortData(data, "score", "desc");
+
+	console.log("Create table function called");
 	
 	//create table object
 	var _table = document.createElement('table');
+	//determines number of columns in table
+	var tableWidth = tableProperties.headerText.length;
 	//add headers
 	var header = _table.createTHead();
 	var headerRow = header.insertRow(0);
-	for (var c = 0; c < headerValues.length; c++) {
+	for (var c = 0; c < tableWidth; c++) {
 		var headerCell = headerRow.insertCell(-1);
-		console.log(headerValues[c])
-		headerCell.innerHTML = headerValues[c];
+		headerCell.innerHTML = tableProperties.headerText[c];
 	}
 
 	console.log(_table);
 	if (data.length > 1) {
 		console.log("adding rows");
-		for (var i = 1; i < data.length; i++) {
+		for (var row_cnt = 0; row_cnt < data.length - 1; row_cnt++) {
 			var row = _table.insertRow(-1);
 
-			//insert player name
-			var cell = row.insertCell(-1);
-			var rowData = data[i].name;
 
-			//console.log(rowData);
-			cell.innerHTML = rowData;
+			for  (var col_cnt = 0; col_cnt < tableWidth; col_cnt++) {
+				//insert player name
+				var cell = row.insertCell(-1);
+				var cellData = getObjectProperty(data[row_cnt], tableProperties.valuePaths[col_cnt]);
+
+				//console.log(rowData);
+				cell.innerHTML = cellData;
+			}
+
 		}
 	}
 	return _table;
