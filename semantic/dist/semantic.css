@@ -878,6 +878,10 @@ div.ui.large.top.fixed.menu {
   color: #FFF !important;
 }
 
+.ui.vertical.stripe div {
+  z-index: 110 !important;
+}
+
 .ui.vertical.stripe h3 {
   font-size: 2em;
 }

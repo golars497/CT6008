@@ -110,6 +110,10 @@ div.ui.large.top.fixed.menu {
   padding: 8em 0em;
   background-color: @vw_blue2 !important;
   color: @vw_white !important;
+
+  div {
+    z-index: 110 !important;
+  }
 }
 .ui.vertical.stripe h3 {
   font-size: 2em;
