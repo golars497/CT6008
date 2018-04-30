@@ -19,11 +19,15 @@ console.log("firebase db initialised");
 /*
  * tableProperties (Object)
  * headerText = The text that appears in the table headers
+ * headerID = id of the table headers . NOTE: keep column id exactly same as valuePaths
+ * headerClass = The class for each header column in table
  * valuePaths = Since firebase returns an object. We need the "path" to the object porperties
  */
 
 var tableProperties =  {
 	"headerText" : ["Rank", "Player", "Waves Cleared", "Max Gold"],
+	"headerID" : ["rank", "name", "waves", "gold"],
+	"headerClass" : ["no-sort", "no-sort", "", ""],
 	"valuePaths" : ["rank", "name", "waves", "gold"]
 }
 
@@ -39,13 +43,10 @@ window.onload = function () {
 		
 		//because this function runs everytime there is a chnage in the database
 		//we need to delete old table everytime we create a new one 
-		if (document.getElementById("leaderboard_tbl") != null) {
-			document.getElementById("leaderboard_tbl").remove();
-		}
 
-		var table = createTable(scores, tableProperties);
-		document.getElementById("leaderboardTable").appendChild(table);
-		$('table').tablesort();
+		addTableToDOM(scores, "gold", "desc");
+
+
 	});
 }
 
@@ -103,17 +104,17 @@ function sortData (data, property, type) {
 
 }
 
-var createTable = function (data, tableProperties) {
+var createTable = function (data, tableProperties, sortKey, sortType) {
 
 	//by default sort data in score
-	data = sortData(data, "score", "desc");
+	data = sortData(data, sortKey, sortType);
 
 	//add ranks to dataset
 	for (var z = 0; z < data.length -1; z++) {
 		data[z].rank = z + 1;
 	}
 
-	console.log("Create table function called");
+	//console.log("Create table function called");
 	
 	//create table object
 	var _table = document.createElement('table');
@@ -121,7 +122,7 @@ var createTable = function (data, tableProperties) {
 	//add id to table element
 	_table.setAttribute("id", "leaderboard_tbl");
 	//add classes to table for styling
-	_table.className += "ui sortable celled padded table";
+	_table.className += "ui celled padded table";
 
 	//determines number of columns in table
 	var tableWidth = tableProperties.headerText.length;
@@ -131,23 +132,18 @@ var createTable = function (data, tableProperties) {
 	for (var c = 0; c < tableWidth; c++) {
 		var headerCell = document.createElement('th');
 		headerCell.innerHTML = tableProperties.headerText[c];
-
-
-		//hard coded to disable sort for Rank column
-		if (headerCell.innerHTML == "Rank") {
-			headerCell.className += "no-sort"
-		}
-
+		headerCell.className += tableProperties.headerClass[c];
+		headerCell.setAttribute("id", tableProperties.headerID[c]);
 		headerRow.appendChild(headerCell);
 	}
 
 	//add tbody to table ofr adding content
 	_table.appendChild(document.createElement('tbody'));
 
-	console.log(_table);
+	//console.log(_table);
 
 	if (data.length > 1) {
-		console.log("adding rows");
+		//console.log("adding rows");
 		for (var row_cnt = 0; row_cnt < data.length - 1; row_cnt++) {
 
 			//create row inside tbody tag
@@ -167,3 +163,50 @@ var createTable = function (data, tableProperties) {
 	}
 	return _table;
 } 
+
+
+var sortTable = function (scores) {
+
+	this.$table = $('table');
+	this.$thead = this.$table.find('thead');
+	//this.settings = $.extend({}, $.tablesort.defaults, settings);
+
+	//the click event function will only trigger for the headers that DO NOT have "no-sort" class
+	this.$sortCells = this.$thead.length > 0 ? this.$thead.find('th:not(.no-sort)') : this.$table.find('th:not(.no-sort)');
+	this.$sortCells.on('click', function(e) {
+		var selectedElement = e.currentTarget;
+
+		//get the text in the clicked header. use that to find the header key value
+		for (x = 0; x <= tableProperties.headerText.length; x++) {
+			if (selectedElement.innerHTML == tableProperties.headerText[x]) {
+				columnKey = tableProperties.valuePaths[x];
+			}
+		}
+
+		sortType = "desc";
+
+		addTableToDOM(scores, columnKey, sortType);
+		return; //exit once sorted                                                            
+	});
+	this.index = null;
+	this.$th = null;
+	this.direction = null;
+
+}
+
+
+
+var addTableToDOM =  function (scores, columnKey, sortType) {
+	$('.loading-overlay').dimmer('show');
+	if (document.getElementById("leaderboard_tbl") != null) {
+		document.getElementById("leaderboard_tbl").remove();
+	}
+	var table = createTable(scores, tableProperties, columnKey, sortType);
+	document.getElementById("leaderboardTable").appendChild(table);
+
+	document.getElementById(columnKey).className += " ui active-header";
+
+	$('.loading-overlay').dimmer('hide');
+	sortTable(scores);		
+
+}

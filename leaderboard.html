@@ -10,7 +10,6 @@
 	<script src="js/firebase.js"></script>
 	<script type="text/javascript" src="js/leaderboard.js"></script>
 	<script type="text/javascript" src="js/table.js"></script>
-	<script type="text/javascript" src="js/sort-semantic.js"></script>
 </head>
 
 <body>
@@ -20,9 +19,14 @@
 		    <a class="item">Mechanics</a>
 		    <a class="item">Contact</a>
 		</div>	
+		<div class="ui loading-overlay">
+		  <div class="ui inverted dimmer">
+		    <div class="ui text loader">Loading</div>
+		  </div>
 
-		<div class="ui one column padded grid" id="leaderboardTable"></div>
-		
+			<div class="ui one column padded grid"><h2>Online Leaderboards</h2></div>
+			<div class="ui one column grid" id="leaderboardTable"></div>
+		</div>
 	</div>	
 </body>
 

@@ -22,3 +22,4 @@
 @vw_light_blue	: #01EDDC;
 @vw_yellow		: #F4E640;
 @vw_grey		: #D5D5D5;
+@vw_white		: #F1F1F1;

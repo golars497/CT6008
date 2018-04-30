@@ -203,19 +203,26 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 *******************************/
 
 .ui.vw_black {
-  background-color: #170922;
+  background-color: #170922 !important;
 }
 .ui.vw_pink {
-  background-color: #D509D5;
+  background-color: #D509D5 !important;
 }
 .ui.vw_blue {
-  background-color: #2139DA;
+  background-color: #2139DA !important;
 }
 .ui.vw_light_blue {
-  background-color: #01EDDC;
+  background-color: #01EDDC !important;
 }
 .ui.vw_yellow {
-  background-color: #F4E640;
+  background-color: #F4E640 !important;
+}
+.ui.vw_grey {
+  background-color: #D5D5D5 !important;
+}
+.ui.active-header {
+  background-color: #170922 !important;
+  color: #F1F1F1 !important;
 }
 .ui.hidden.menu {
   display: none !important;
@@ -224,6 +231,9 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   min-height: 700px;
   padding: 1em 0em;
   background-color: #170922 !important;
+}
+.ui.vertical.stripe.segment#headsetAndGun {
+  background-color: #D5D5D5 !important;
 }
 #first-panel {
   margin-top: 850px !important;

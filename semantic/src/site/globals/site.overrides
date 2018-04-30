@@ -2,27 +2,33 @@
          Site Overrides
 *******************************/
 .ui.vw_black {
-	background-color: @vw_black;
+	background-color: @vw_black !important;
 }
 
 .ui.vw_pink {
-	background-color: @vw_pink;
+	background-color: @vw_pink !important;
 }
 
 .ui.vw_blue {
-	background-color: @vw_blue;
+	background-color: @vw_blue !important;
 }
 
 .ui.vw_light_blue {
-	background-color: @vw_light_blue;
+	background-color: @vw_light_blue !important;
 }
 
 .ui.vw_yellow {
-	background-color: @vw_yellow;
+	background-color: @vw_yellow !important;
 }
 
 .ui.vw_grey {
-  background-color: @vw_grey;
+  background-color: @vw_grey !important;
+}
+
+.ui.active-header {
+  background-color: @vw_black !important;
+  color: @vw_white !important; 
+  
 }
 
 .ui.hidden.menu {
