@@ -194,8 +194,6 @@ var sortTable = function (scores) {
 
 }
 
-
-
 var addTableToDOM =  function (scores, columnKey, sortType) {
 	$('.loading-overlay').dimmer('show');
 	if (document.getElementById("leaderboard_tbl") != null) {
