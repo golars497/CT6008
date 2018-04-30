@@ -765,11 +765,11 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.vw_pink {
-  background-color: #FF1493 !important;
+  background-color: #F70068 !important;
 }
 
 .ui.vw_blue {
-  background-color: #2139DA !important;
+  background-color: #0E0723 !important;
 }
 
 .ui.vw_light_blue {
@@ -777,16 +777,20 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.vw_yellow {
-  background-color: #F4E640 !important;
+  background-color: #FAC751 !important;
 }
 
 .ui.vw_grey {
   background-color: #D5D5D5 !important;
 }
 
+.ui.vw_white {
+  background-color: #FFF !important;
+}
+
 .ui.active-header {
-  background-color: #170922 !important;
-  color: #F1F1F1 !important;
+  border-bottom: 3px solid #FAC751 !important;
+  color: #FAC751 !important;
 }
 
 .ui.hidden.menu {
@@ -795,12 +799,16 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.masthead.segment {
   min-height: 700px;
-  padding: 1em 0em;
-  background-color: #170922 !important;
+  padding-top: 1em !important;
+  background-color: #09041A !important;
 }
 
 #first-panel {
   margin-top: 850px !important;
+}
+
+#first-panel .button {
+  color: #FFF !important;
 }
 
 .ui.segment {
@@ -808,13 +816,40 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   z-index: 100 !important;
 }
 
-#top-menu .item {
-  top: 0px !important;
-}
-
 div #top-menu {
   z-index: 99999 !important;
-  background-color: #FF1493 !important;
+  background-color: #F70068 !important;
+  border: 1px solid #F70041;
+  -webkit-box-shadow: 0px 0px 100px #F70041;
+  box-shadow: 0px 0px 100px #F70041;
+}
+
+div #top-menu a:nth-child(1),
+div #top-menu a:nth-child(2),
+div #top-menu a:nth-child(3) {
+  top: 0em !important;
+  color: #FFF !important;
+  font-weight: 600 !important;
+}
+
+div #top-menu a:nth-child(1):hover,
+div #top-menu a:nth-child(2):hover,
+div #top-menu a:nth-child(3):hover {
+  color: #D5D5D5 !important;
+}
+
+div #top-menu a:nth-child(1):active,
+div #top-menu a:nth-child(2):active,
+div #top-menu a:nth-child(3):active {
+  color: #09041A !important;
+}
+
+div.ui.large.top.fixed.menu {
+  z-index: 99999 !important;
+  background-color: #FAC751 !important;
+  border: 1px solid #FAC751;
+  -webkit-box-shadow: 0px 0px 100px #FAC751;
+  box-shadow: 0px 0px 100px #FAC751;
 }
 
 .masthead .logo.item img {
@@ -839,8 +874,8 @@ div #top-menu {
 
 .ui.vertical.stripe {
   padding: 8em 0em;
-  background-color: #170922 !important;
-  color: #F1F1F1 !important;
+  background-color: #09041A !important;
+  color: #FFF !important;
 }
 
 .ui.vertical.stripe h3 {
@@ -958,9 +993,52 @@ body {
 .ui.vertical.segment h3,
 .ui.vertical.segment h4,
 .ui.vertical.segment h5,
-.ui.vertical.segment p,
-#top-menu a {
-  color: #F1F1F1 !important;
+.ui.vertical.segment p {
+  color: #FFF;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+th,
+td {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.ui.header.leaderboard {
+  padding: 1em 0.7em !important;
+  margin-top: 3em !important;
+  margin-bottom: 0em !important;
+  background-color: #F70068 !important;
+  color: #FFF !important;
+}
+
+#leaderboardTable table {
+  border-radius: 0px !important;
+}
+
+#leaderboardTable table th {
+  background-color: #F70068 !important;
+  border-radius: 0px !important;
+  border-left: 0px !important;
+  border-right: 0px !important;
+  border-bottom: 3px solid #72358D;
+  color: #FFF;
+  font-size: 1.2em !important;
+  padding-left: 1em !important;
+}
+
+#leaderboardTable table td {
+  font-size: 1.2em !important;
+  font-weight: 500 !important;
+}
+
+body {
+  background-color: #09041A !important;
 }
 /*!
  * # Semantic UI 2.3.0 - Button

@@ -25,10 +25,13 @@
   background-color: @vw_grey !important;
 }
 
-.ui.active-header {
-  background-color: @vw_black !important;
-  color: @vw_white !important; 
+.ui.vw_white {
+  background-color: @vw_white !important;
+}
 
+.ui.active-header { 
+  border-bottom: 3px solid @vw_yellow !important; 
+  color: @vw_yellow !important;
 }
 
 .ui.hidden.menu {
@@ -36,12 +39,16 @@
 }
 .ui.masthead.segment {
   min-height: 700px;
-  padding: 1em 0em;
-  background-color: @vw_black !important;
+  padding-top: 1em !important;
+  background-color: @vw_blue2 !important;
 }
 
 #first-panel {
 	margin-top: 850px !important;
+
+  .button {
+    color: @vw_white !important;
+  }
 }
 
 .ui.segment {
@@ -49,13 +56,38 @@
 	z-index: 100 !important;
 }
 
-#top-menu .item {
-	top: 0px !important;
-}
-
 div #top-menu {
   z-index: 99999 !important;
   background-color: @vw_pink !important;
+  border: 1px solid @vw_pink2;
+  -webkit-box-shadow: 0px 0px 100px @vw_pink2;
+  -moz-box-shadow: 0px 0px 100px @vw_pink2;
+  box-shadow: 0px 0px 100px @vw_pink2;
+
+  a:nth-child(1),
+  a:nth-child(2),
+  a:nth-child(3) {
+    top: 0em !important;
+    color: @vw_white !important; 
+    font-weight: 600 !important; 
+
+    &:hover {
+      color: @vw_grey !important;
+    }
+
+    &:active {
+      color: @vw_blue2 !important;
+    }
+  }
+}
+
+div.ui.large.top.fixed.menu {
+  z-index: 99999 !important;
+  background-color: @vw_yellow !important;
+  border: 1px solid @vw_yellow;
+  -webkit-box-shadow: 0px 0px 100px @vw_yellow;
+  -moz-box-shadow: 0px 0px 100px @vw_yellow;
+  box-shadow: 0px 0px 100px @vw_yellow;
 }
 
 .masthead .logo.item img {
@@ -76,7 +108,7 @@ div #top-menu {
 }
 .ui.vertical.stripe {
   padding: 8em 0em;
-  background-color: @vw_black !important;
+  background-color: @vw_blue2 !important;
   color: @vw_white !important;
 }
 .ui.vertical.stripe h3 {
@@ -197,7 +229,48 @@ body {
 .ui.vertical.segment h3,
 .ui.vertical.segment h4,
 .ui.vertical.segment h5,
-.ui.vertical.segment p ,
-#top-menu a {
+.ui.vertical.segment p{
+  color: @vw_white;
+}
+
+h1, h2, h3, h4, h5, p, a, th, td {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.ui.header.leaderboard {
+  padding: 1em 0.7em !important;
+  margin-top: 3em !important;
+  margin-bottom: 0em !important;
+  background-color: @vw_pink !important;
   color: @vw_white !important;
+}
+
+#leaderboardTable {
+    table {
+      -webkit-border-radius: 0px !important;
+         -moz-border-radius: 0px !important;
+              border-radius: 0px !important;
+      th {
+          background-color: @vw_pink !important;
+          -webkit-border-radius: 0px !important;
+             -moz-border-radius: 0px !important;
+                  border-radius: 0px !important; 
+          border-left: 0px !important;
+          border-right: 0px !important;
+          border-bottom: 3px solid @vw_purple; 
+          color: @vw_white;
+          font-size: 1.2em !important;
+          padding-left: 1em !important;
+        }
+
+      td {
+        font-size: 1.2em !important;
+        font-weight: 500 !important;
+        }
+    }
+}
+
+
+body {
+  background-color: @vw_blue2 !important;
 }

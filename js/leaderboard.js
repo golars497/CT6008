@@ -21,14 +21,34 @@ console.log("firebase db initialised");
  * headerText = The text that appears in the table headers
  * headerID = id of the table headers . NOTE: keep column id exactly same as valuePaths
  * headerClass = The class for each header column in table
+ * columnClass = The class for each cell data column in table
  * valuePaths = Since firebase returns an object. We need the "path" to the object porperties
+ * custom = used to specify any custom html string to wrap around cell value
+ * func = custom function to be done raw cell data  
  */
 
 var tableProperties =  {
 	"headerText" : ["Rank", "Player", "Waves Cleared", "Max Gold"],
 	"headerID" : ["rank", "name", "waves", "gold"],
-	"headerClass" : ["no-sort", "no-sort", "", ""],
-	"valuePaths" : ["rank", "name", "waves", "gold"]
+	"headerClass" : ["no-sort two wide center aligned", "no-sort", "", ""],
+	"columnClass" : ["center algined", "", "", ""],
+	"valuePaths" : ["rank", "name", "waves", "gold"],
+	"custom" : [ 
+				[
+				 ['<h3 class="ui center aligned">'],
+				 ['</h3>']
+				], 
+				 "",
+				 "",
+				 ""],
+	"func": [
+			 null,
+			 null, 
+			 null, 
+			 function (num){
+			 	return num.toLocaleString('en');
+			 }
+			]
 }
 
 window.onload = function () {
@@ -122,10 +142,11 @@ var createTable = function (data, tableProperties, sortKey, sortType) {
 	//add id to table element
 	_table.setAttribute("id", "leaderboard_tbl");
 	//add classes to table for styling
-	_table.className += "ui celled padded table";
+	_table.className += "ui very padded celled table";
 
 	//determines number of columns in table
 	var tableWidth = tableProperties.headerText.length;
+	
 	//add headers
 	var header = _table.appendChild(document.createElement('thead'));
 	var headerRow = header.appendChild(document.createElement('tr'));
@@ -134,6 +155,10 @@ var createTable = function (data, tableProperties, sortKey, sortType) {
 		headerCell.innerHTML = tableProperties.headerText[c];
 		headerCell.className += tableProperties.headerClass[c];
 		headerCell.setAttribute("id", tableProperties.headerID[c]);
+		if (tableProperties.headerClass[c].indexOf("no-sort") == -1){
+			var header_html = '<i class="sort icon"></i>';
+			headerCell.insertAdjacentHTML('beforeend', header_html);
+		}
 		headerRow.appendChild(headerCell);
 	}
 
@@ -149,14 +174,23 @@ var createTable = function (data, tableProperties, sortKey, sortType) {
 			//create row inside tbody tag
 			var row = _table.getElementsByTagName('tbody')[0].insertRow(-1);
 
-
 			for  (var col_cnt = 0; col_cnt < tableWidth; col_cnt++) {
-				//insert player name
 				var cell = row.insertCell(-1);
 				var cellData = getObjectProperty(data[row_cnt], tableProperties.valuePaths[col_cnt]);
+				if (tableProperties.func[col_cnt] != null) {
+					cellData = tableProperties.func[col_cnt](cellData);
+				} 
 
-				//console.log(rowData);
+				//wraps the cell data based on whatever is set in custom property
+				if (tableProperties.custom[col_cnt] != "") {
+					var str = tableProperties.custom[col_cnt][0] + cellData + tableProperties.custom[col_cnt][1];
+					cellData = str;
+				} 
+
+				//add data to cell
+				cell.className += tableProperties.columnClass[col_cnt];
 				cell.innerHTML = cellData;
+
 			}
 
 		}
@@ -176,9 +210,15 @@ var sortTable = function (scores) {
 	this.$sortCells.on('click', function(e) {
 		var selectedElement = e.currentTarget;
 
+		//Because we add sort icon to some of the headers, the selected element
+		//will contain the html string for the icon, not just raw header text
+		//so we need to split the string
+		var temp = selectedElement.innerHTML.split('<');
+		selectedElement = temp[0];
+
 		//get the text in the clicked header. use that to find the header key value
 		for (x = 0; x <= tableProperties.headerText.length; x++) {
-			if (selectedElement.innerHTML == tableProperties.headerText[x]) {
+			if (selectedElement == tableProperties.headerText[x]) {
 				columnKey = tableProperties.valuePaths[x];
 			}
 		}

@@ -17,9 +17,13 @@
 @grey           : #A0A0A0;
 @black          : #000000;
 @vw_black		: #170922;
-@vw_pink		: #FF1493;
-@vw_blue		: #2139DA;
+@vw_pink		: #F70068;
+@vw_pink2		: #F70041;
+@vw_purple		: #72358D;
+@vw_purple2		: #2F205A;
+@vw_blue		: #0E0723;
+@vw_blue2		: #09041A;
 @vw_light_blue	: #01EDDC;
-@vw_yellow		: #F4E640;
+@vw_yellow		: #FAC751;
 @vw_grey		: #D5D5D5;
-@vw_white		: #F1F1F1;
+@vw_white		: #FFF;
