@@ -241,6 +241,11 @@ h1, h2, h3, h4, h5, p, a, th, td {
   font-family: 'Montserrat', sans-serif !important;
 }
 
+body {
+  background-color: @vw_blue2 !important;
+}
+
+
 .ui.header.leaderboard {
   padding: 1em 0.7em !important;
   margin-top: 3em !important;
@@ -270,11 +275,59 @@ h1, h2, h3, h4, h5, p, a, th, td {
       td {
         font-size: 1.2em !important;
         font-weight: 500 !important;
+        background-color: @vw_grey2;
+        color: @vw_white;
+
+        text-decoration: none;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        transition: all 0.5s;
+
         }
+      
+      tr:nth-child(1) td,
+      tr:nth-child(2) td,
+      tr:nth-child(3) td {
+      
+        -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+        -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+        animation: neon1 1.5s ease-in-out infinite alternate;   
+
+        &:hover {
+          color: @vw_yellow;
+          -webkit-animation: none;
+          -moz-animation: none;
+          animation: none;          
+        }
+
+      } 
     }
 }
 
 
-body {
-  background-color: @vw_blue2 !important;
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px @vw_yellow, 0 0 70px @vw_yellow, 0 0 80px @vw_yellow, 0 0 100px @vw_yellow, 0 0 150px @vw_yellow;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px @vw_yellow, 0 0 35px @vw_yellow, 0 0 40px @vw_yellow, 0 0 50px @vw_yellow, 0 0 75px @vw_yellow;
+  }
+}
+
+@-moz-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px @vw_yellow, 0 0 70px @vw_yellow, 0 0 80px @vw_yellow, 0 0 100px @vw_yellow, 0 0 150px @vw_yellow;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px @vw_yellow, 0 0 35px @vw_yellow, 0 0 40px @vw_yellow, 0 0 50px @vw_yellow, 0 0 75px @vw_yellow;
+  }
+}
+
+@keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px @vw_yellow, 0 0 70px @vw_yellow, 0 0 80px @vw_yellow, 0 0 100px @vw_yellow, 0 0 150px @vw_yellow;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px @vw_yellow, 0 0 35px @vw_yellow, 0 0 40px @vw_yellow, 0 0 50px @vw_yellow, 0 0 75px @vw_yellow;
+  }
 }

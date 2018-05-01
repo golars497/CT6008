@@ -1,6 +1,6 @@
 // TODO
 // 1. add sort funciton to each column. ALso make it so that columns are highlighter based on which table is sorted
-
+// https://codepen.io/FelixRilling/pen/qzfoc
 
 console.log("leaderboard.js script loaded")
 // Initialize Firebase
