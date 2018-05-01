@@ -254,19 +254,22 @@ div #top-menu {
 }
 div #top-menu a:nth-child(1),
 div #top-menu a:nth-child(2),
-div #top-menu a:nth-child(3) {
+div #top-menu a:nth-child(3),
+div #top-menu a:nth-child(4) {
   top: 0em !important;
   color: #FFF !important;
   font-weight: 600 !important;
 }
 div #top-menu a:nth-child(1):hover,
 div #top-menu a:nth-child(2):hover,
-div #top-menu a:nth-child(3):hover {
+div #top-menu a:nth-child(3):hover,
+div #top-menu a:nth-child(4):hover {
   color: #D5D5D5 !important;
 }
 div #top-menu a:nth-child(1):active,
 div #top-menu a:nth-child(2):active,
-div #top-menu a:nth-child(3):active {
+div #top-menu a:nth-child(3):active,
+div #top-menu a:nth-child(4):active {
   color: #09041A !important;
 }
 div.ui.large.top.fixed.menu {
