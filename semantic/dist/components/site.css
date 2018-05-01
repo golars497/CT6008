@@ -441,32 +441,78 @@ body {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
-#leaderboardTable table tr:nth-child(1) td,
-#leaderboardTable table tr:nth-child(2) td,
-#leaderboardTable table tr:nth-child(3) td {
+#leaderboardTable table tr:nth-child(1) td {
   -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
   animation: neon1 1.5s ease-in-out infinite alternate;
 }
-#leaderboardTable table tr:nth-child(1) td:hover,
-#leaderboardTable table tr:nth-child(2) td:hover,
-#leaderboardTable table tr:nth-child(3) td:hover {
-  color: #FAC751;
-  -webkit-animation: none;
-  animation: none;
-}
 @-webkit-keyframes neon1 {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FAC751, 0 0 70px #FAC751, 0 0 80px #FAC751, 0 0 100px #FAC751, 0 0 150px #FAC751;
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #D4AF37, 0 0 70px #D4AF37, 0 0 80px #D4AF37, 0 0 100px #D4AF37, 0 0 150px #D4AF37;
   }
-  to {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FAC751, 0 0 35px #FAC751, 0 0 40px #FAC751, 0 0 50px #FAC751, 0 0 75px #FAC751;
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #D4AF37, 0 0 35px #D4AF37, 0 0 40px #D4AF37, 0 0 50px #D4AF37, 0 0 75px #D4AF37;
   }
 }
 @keyframes neon1 {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FAC751, 0 0 70px #FAC751, 0 0 80px #FAC751, 0 0 100px #FAC751, 0 0 150px #FAC751;
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #D4AF37, 0 0 70px #D4AF37, 0 0 80px #D4AF37, 0 0 100px #D4AF37, 0 0 150px #D4AF37;
   }
-  to {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FAC751, 0 0 35px #FAC751, 0 0 40px #FAC751, 0 0 50px #FAC751, 0 0 75px #FAC751;
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #D4AF37, 0 0 35px #D4AF37, 0 0 40px #D4AF37, 0 0 50px #D4AF37, 0 0 75px #D4AF37;
   }
+}
+#leaderboardTable table tr:nth-child(1) td:hover {
+  color: #D4AF37;
+  -webkit-animation: none;
+  animation: none;
+}
+#leaderboardTable table tr:nth-child(2) td {
+  -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
+  animation: neon2 1.5s ease-in-out infinite alternate;
+}
+@-webkit-keyframes neon2 {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #C0C0C0, 0 0 70px #C0C0C0, 0 0 80px #C0C0C0, 0 0 100px #C0C0C0, 0 0 150px #C0C0C0;
+  }
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #C0C0C0, 0 0 35px #C0C0C0, 0 0 40px #C0C0C0, 0 0 50px #C0C0C0, 0 0 75px #C0C0C0;
+  }
+}
+@keyframes neon2 {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #C0C0C0, 0 0 70px #C0C0C0, 0 0 80px #C0C0C0, 0 0 100px #C0C0C0, 0 0 150px #C0C0C0;
+  }
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #C0C0C0, 0 0 35px #C0C0C0, 0 0 40px #C0C0C0, 0 0 50px #C0C0C0, 0 0 75px #C0C0C0;
+  }
+}
+#leaderboardTable table tr:nth-child(2) td:hover {
+  color: #C0C0C0;
+  -webkit-animation: none;
+  animation: none;
+}
+#leaderboardTable table tr:nth-child(3) td {
+  -webkit-animation: neon3 1.5s ease-in-out infinite alternate;
+  animation: neon3 1.5s ease-in-out infinite alternate;
+}
+@-webkit-keyframes neon3 {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #CD7F32, 0 0 70px #CD7F32, 0 0 80px #CD7F32, 0 0 100px #CD7F32, 0 0 150px #CD7F32;
+  }
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #CD7F32, 0 0 35px #CD7F32, 0 0 40px #CD7F32, 0 0 50px #CD7F32, 0 0 75px #CD7F32;
+  }
+}
+@keyframes neon3 {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #CD7F32, 0 0 70px #CD7F32, 0 0 80px #CD7F32, 0 0 100px #CD7F32, 0 0 150px #CD7F32;
+  }
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #CD7F32, 0 0 35px #CD7F32, 0 0 40px #CD7F32, 0 0 50px #CD7F32, 0 0 75px #CD7F32;
+  }
+}
+#leaderboardTable table tr:nth-child(3) td:hover {
+  color: #CD7F32;
+  -webkit-animation: none;
+  animation: none;
 }

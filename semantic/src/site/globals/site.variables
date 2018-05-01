@@ -27,4 +27,7 @@
 @vw_yellow		: #FAC751;
 @vw_grey		: #D5D5D5;
 @vw_grey2		: #333333;
+@vw_bronze		: #CD7F32;
+@vw_gold		: #D4AF37;
+@vw_silver		: #C0C0C0;
 @vw_white		: #FFF;

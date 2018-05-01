@@ -285,49 +285,52 @@ body {
 
         }
       
-      tr:nth-child(1) td,
-      tr:nth-child(2) td,
-      tr:nth-child(3) td {
-      
-        -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
-        -moz-animation: neon1 1.5s ease-in-out infinite alternate;
-        animation: neon1 1.5s ease-in-out infinite alternate;   
-
+      tr:nth-child(1) td {
+        .glow-keyframes(neon1; @vw_gold);
+        .animation(neon1 1.5s ease-in-out infinite alternate);
         &:hover {
-          color: @vw_yellow;
-          -webkit-animation: none;
-          -moz-animation: none;
-          animation: none;          
+          color: @vw_gold;
+          .animation(none);         
         }
-
+      }
+      tr:nth-child(2) td {
+        .glow-keyframes(neon2; @vw_silver);
+        .animation(neon2 1.5s ease-in-out infinite alternate);
+        &:hover {
+          color: @vw_silver;
+          .animation(none);         
+        }
       } 
+      tr:nth-child(3) td {
+        .glow-keyframes(neon3; @vw_bronze);
+        .animation(neon3 1.5s ease-in-out infinite alternate);
+        &:hover {
+          color: @vw_bronze;
+          .animation(none);         
+        }
+      }              
     }
 }
 
-
-@-webkit-keyframes neon1 {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px @vw_yellow, 0 0 70px @vw_yellow, 0 0 80px @vw_yellow, 0 0 100px @vw_yellow, 0 0 150px @vw_yellow;
-  }
-  to {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px @vw_yellow, 0 0 35px @vw_yellow, 0 0 40px @vw_yellow, 0 0 50px @vw_yellow, 0 0 75px @vw_yellow;
-  }
+.glow-keyframes(@name, @neon_color) {
+  .keyframes (@name; {
+    0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px @neon_color, 0 0 70px @neon_color, 0 0 80px @neon_color, 0 0 100px @neon_color, 0 0 150px @neon_color;
+    }
+    100% {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px @neon_color, 0 0 35px @neon_color, 0 0 40px @neon_color, 0 0 50px @neon_color, 0 0 75px @neon_color;
+    }    
+  });
 }
 
-@-moz-keyframes neon1 {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px @vw_yellow, 0 0 70px @vw_yellow, 0 0 80px @vw_yellow, 0 0 100px @vw_yellow, 0 0 150px @vw_yellow;
-  }
-  to {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px @vw_yellow, 0 0 35px @vw_yellow, 0 0 40px @vw_yellow, 0 0 50px @vw_yellow, 0 0 75px @vw_yellow;
-  }
+.keyframes(@name; @arguments) {
+  @-moz-keyframes @name { @arguments(); }
+  @-webkit-keyframes @name { @arguments(); }
+  @keyframes @name { @arguments(); }
 }
 
-@keyframes neon1 {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px @vw_yellow, 0 0 70px @vw_yellow, 0 0 80px @vw_yellow, 0 0 100px @vw_yellow, 0 0 150px @vw_yellow;
-  }
-  to {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px @vw_yellow, 0 0 35px @vw_yellow, 0 0 40px @vw_yellow, 0 0 50px @vw_yellow, 0 0 75px @vw_yellow;
-  }
+.animation(@arguments) {
+  -webkit-animation: @arguments;
+  -moz-animation: @arguments;
+  animation: @arguments;
 }
