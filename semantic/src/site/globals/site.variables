@@ -23,8 +23,11 @@
 @vw_purple2		: #2F205A;
 @vw_blue		: #0E0723;
 @vw_blue2		: #09041A;
-@vw_light_blue	: #01EDDC;
+@vw_light_blue	: #228DFF;
 @vw_yellow		: #FAC751;
+@vw_green		: #B6FF00;
+@vw_orange		: #FF9900;
+@vw_violet		: #BA01FF;
 @vw_grey		: #D5D5D5;
 @vw_grey2		: #333333;
 @vw_bronze		: #CD7F32;

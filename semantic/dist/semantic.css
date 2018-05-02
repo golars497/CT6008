@@ -773,7 +773,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.vw_light_blue {
-  background-color: #01EDDC !important;
+  background-color: #228DFF !important;
 }
 
 .ui.vw_yellow {
@@ -863,7 +863,7 @@ div.ui.large.top.fixed.menu {
   margin-left: 0.5em !important;
 }
 
-.masthead h1.ui.header {
+.masthead h1.ui {
   margin-top: 3em;
   margin-bottom: 0em;
   font-size: 4em;
@@ -980,21 +980,6 @@ body {
   background-image: url('../../img/layer1.png');
 }
 
-.content {
-  position: absolute;
-  top: 600px;
-  background: #415a6c;
-  width: 100%;
-  min-height: 1500px;
-}
-
-.content h1 {
-  color: #fff;
-  font-size: 2em;
-  text-transform: uppercase;
-  text-align: center;
-}
-
 .ui.vertical.segment h1,
 .ui.vertical.segment h2,
 .ui.vertical.segment h3,
@@ -1012,20 +997,252 @@ h5,
 p,
 a,
 th,
-td {
+td,
+span {
   font-family: 'Montserrat', sans-serif !important;
+  color: #FFF !important;
 }
 
 body {
   background-color: #09041A !important;
 }
 
-.ui.header.leaderboard {
+.ui.header {
   padding: 1em 0.7em !important;
   margin-top: 3em !important;
   margin-bottom: 0em !important;
+}
+
+.ui.header:nth-child(1) {
+  background-color: #F70068;
+  color: #FFF;
+}
+
+.ui.header.leaderboard {
   background-color: #F70068 !important;
   color: #FFF !important;
+}
+
+.team-page .row .ui .item .content .header {
+  padding-top: 0.6em !important;
+  font-size: 4.5em !important;
+  font-weight: 500 !important;
+  text-decoration: none;
+}
+
+.team-page .row .ui .item:nth-child(1) .content .header {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  color: #F70068 !important;
+  font-family: Monoton !important;
+  -webkit-animation: none;
+  animation: none;
+}
+
+.team-page .row .ui .item:nth-child(1) .content .header:hover {
+  color: #FFF !important;
+  -webkit-animation: neon11 1.5s ease-in-out infinite alternate;
+  animation: neon11 1.5s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes neon11 {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #F70068, 0 0 70px #F70068, 0 0 80px #F70068, 0 0 100px #F70068, 0 0 150px #F70068;
+  }
+
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #F70068, 0 0 35px #F70068, 0 0 40px #F70068, 0 0 50px #F70068, 0 0 75px #F70068;
+  }
+}
+
+@keyframes neon11 {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #F70068, 0 0 70px #F70068, 0 0 80px #F70068, 0 0 100px #F70068, 0 0 150px #F70068;
+  }
+
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #F70068, 0 0 35px #F70068, 0 0 40px #F70068, 0 0 50px #F70068, 0 0 75px #F70068;
+  }
+}
+
+.team-page .row .ui .item:nth-child(2) .content .header {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  padding-top: 0.4em !important;
+  font-size: 6.5em !important;
+  color: #228DFF !important;
+  font-family: Iceland !important;
+  -webkit-animation: none;
+  animation: none;
+}
+
+.team-page .row .ui .item:nth-child(2) .content .header:hover {
+  color: #FFF !important;
+  -webkit-animation: neon12 1.5s ease-in-out infinite alternate;
+  animation: neon12 1.5s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes neon12 {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+  }
+
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+  }
+}
+
+@keyframes neon12 {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+  }
+
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+  }
+}
+
+.team-page .row .ui .item:nth-child(3) .content .header {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  color: #FAC751 !important;
+  font-family: Pacifico !important;
+  -webkit-animation: none;
+  animation: none;
+}
+
+.team-page .row .ui .item:nth-child(3) .content .header:hover {
+  color: #FFF !important;
+  -webkit-animation: neon13 1.5s ease-in-out infinite alternate;
+  animation: neon13 1.5s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes neon13 {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FAC751, 0 0 70px #FAC751, 0 0 80px #FAC751, 0 0 100px #FAC751, 0 0 150px #FAC751;
+  }
+
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FAC751, 0 0 35px #FAC751, 0 0 40px #FAC751, 0 0 50px #FAC751, 0 0 75px #FAC751;
+  }
+}
+
+@keyframes neon13 {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FAC751, 0 0 70px #FAC751, 0 0 80px #FAC751, 0 0 100px #FAC751, 0 0 150px #FAC751;
+  }
+
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FAC751, 0 0 35px #FAC751, 0 0 40px #FAC751, 0 0 50px #FAC751, 0 0 75px #FAC751;
+  }
+}
+
+.team-page .row .ui .item:nth-child(4) .content .header {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  font-size: 3.5em !important;
+  color: #B6FF00 !important;
+  font-family: "Press Start 2P" !important;
+  -webkit-animation: none;
+  animation: none;
+}
+
+.team-page .row .ui .item:nth-child(4) .content .header:hover {
+  color: #FFF !important;
+  -webkit-animation: neon14 1.5s ease-in-out infinite alternate;
+  animation: neon14 1.5s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes neon14 {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #B6FF00, 0 0 70px #B6FF00, 0 0 80px #B6FF00, 0 0 100px #B6FF00, 0 0 150px #B6FF00;
+  }
+
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #B6FF00, 0 0 35px #B6FF00, 0 0 40px #B6FF00, 0 0 50px #B6FF00, 0 0 75px #B6FF00;
+  }
+}
+
+@keyframes neon14 {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #B6FF00, 0 0 70px #B6FF00, 0 0 80px #B6FF00, 0 0 100px #B6FF00, 0 0 150px #B6FF00;
+  }
+
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #B6FF00, 0 0 35px #B6FF00, 0 0 40px #B6FF00, 0 0 50px #B6FF00, 0 0 75px #B6FF00;
+  }
+}
+
+.team-page .row .ui .item:nth-child(5) .content .header {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  padding-top: 0.5em !important;
+  color: #FF9900 !important;
+  font-family: Audiowide !important;
+  -webkit-animation: none;
+  animation: none;
+}
+
+.team-page .row .ui .item:nth-child(5) .content .header:hover {
+  color: #FFF !important;
+  -webkit-animation: neon15 1.5s ease-in-out infinite alternate;
+  animation: neon15 1.5s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes neon15 {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF9900, 0 0 70px #FF9900, 0 0 80px #FF9900, 0 0 100px #FF9900, 0 0 150px #FF9900;
+  }
+
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF9900, 0 0 35px #FF9900, 0 0 40px #FF9900, 0 0 50px #FF9900, 0 0 75px #FF9900;
+  }
+}
+
+@keyframes neon15 {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF9900, 0 0 70px #FF9900, 0 0 80px #FF9900, 0 0 100px #FF9900, 0 0 150px #FF9900;
+  }
+
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF9900, 0 0 35px #FF9900, 0 0 40px #FF9900, 0 0 50px #FF9900, 0 0 75px #FF9900;
+  }
+}
+
+.team-page .row .ui .item:nth-child(6) .content .header {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  padding-top: 0.5em !important;
+  color: #BA01FF !important;
+  font-family: Vampiro One !important;
+  -webkit-animation: none;
+  animation: none;
+}
+
+.team-page .row .ui .item:nth-child(6) .content .header:hover {
+  color: #FFF !important;
+  -webkit-animation: neon16 1.5s ease-in-out infinite alternate;
+  animation: neon16 1.5s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes neon16 {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #BA01FF, 0 0 70px #BA01FF, 0 0 80px #BA01FF, 0 0 100px #BA01FF, 0 0 150px #BA01FF;
+  }
+
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #BA01FF, 0 0 35px #BA01FF, 0 0 40px #BA01FF, 0 0 50px #BA01FF, 0 0 75px #BA01FF;
+  }
+}
+
+@keyframes neon16 {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #BA01FF, 0 0 70px #BA01FF, 0 0 80px #BA01FF, 0 0 100px #BA01FF, 0 0 150px #BA01FF;
+  }
+
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #BA01FF, 0 0 35px #BA01FF, 0 0 40px #BA01FF, 0 0 50px #BA01FF, 0 0 75px #BA01FF;
+  }
 }
 
 #leaderboardTable table {

@@ -97,7 +97,7 @@ div.ui.large.top.fixed.menu {
 .masthead .ui.menu .ui.button {
   margin-left: 0.5em !important;
 }
-.masthead h1.ui.header {
+.masthead h1.ui {
   margin-top: 3em;
   margin-bottom: 0em;
   font-size: 4em;
@@ -214,21 +214,6 @@ body {
     background-image: url('../../img/layer1.png');
   }
 
-  
-.content {
-  position: absolute;
-  top: 600px;
-  background: #415a6c;
-  width: 100%;
-  min-height: 1500px;
-}
-.content h1 {
-  color: #fff;
-  font-size: 2em;
-  text-transform: uppercase;
-  text-align: center;
-}
-
 .ui.vertical.segment h1,
 .ui.vertical.segment h2,
 .ui.vertical.segment h3,
@@ -238,8 +223,9 @@ body {
   color: @vw_white;
 }
 
-h1, h2, h3, h4, h5, p, a, th, td {
+h1, h2, h3, h4, h5, p, a, th, td, span {
   font-family: 'Montserrat', sans-serif !important;
+  color: @vw_white !important;
 }
 
 body {
@@ -247,12 +233,144 @@ body {
 }
 
 
-.ui.header.leaderboard {
+.ui.header {
   padding: 1em 0.7em !important;
   margin-top: 3em !important;
   margin-bottom: 0em !important;
-  background-color: @vw_pink !important;
-  color: @vw_white !important;
+  
+  &:nth-child(1) { 
+    background-color: @vw_pink;
+    color: @vw_white;
+  }
+
+  &.leaderboard {
+    background-color: @vw_pink !important;
+    color: @vw_white !important;
+  }
+}
+
+.team-page {
+  .row {
+    .ui {
+      .item {
+        .content {
+          .header { 
+            padding-top: 0.6em !important;
+            font-size: 4.5em !important;
+            font-weight: 500 !important;
+            text-decoration: none;
+          }
+        }
+        &:nth-child(1) {
+          .content {
+            .header {
+              .transition(all 0.5s);
+
+              color: @vw_pink !important;
+              font-family: Monoton !important;
+              .animation(none);         
+              
+              &:hover {
+                color: @vw_white !important;
+                .glow-keyframes(neon11; @vw_pink);
+                .animation(neon11 1.5s ease-in-out infinite alternate);
+              }
+            }
+          }
+        } 
+        &:nth-child(2) {
+          .content {
+            .header {
+              .transition(all 0.5s);
+              padding-top: 0.4em !important;
+              font-size: 6.5em !important;
+              color: @vw_light_blue !important;
+              font-family: Iceland !important;
+              .animation(none);         
+              
+              &:hover {
+                color: @vw_white !important; 
+                .glow-keyframes(neon12; @vw_light_blue);
+                .animation(neon12 1.5s ease-in-out infinite alternate);
+              }
+            }
+          }
+        }
+        &:nth-child(3) {
+          .content {
+            .header {
+              .transition(all 0.5s);
+
+              color: @vw_yellow !important;
+              font-family: Pacifico !important;
+              .animation(none);         
+              
+              &:hover {
+                color: @vw_white !important;
+                .glow-keyframes(neon13; @vw_yellow);
+                .animation(neon13 1.5s ease-in-out infinite alternate);
+              }
+            }
+          }
+        }
+        &:nth-child(4) {
+          .content {
+            .header {
+              .transition(all 0.5s);
+
+              font-size: 3.5em !important;
+              color: @vw_green !important;
+              font-family: "Press Start 2P" !important;
+              .animation(none);         
+              
+              &:hover {
+                color: @vw_white !important;
+
+                .glow-keyframes(neon14; @vw_green);
+                .animation(neon14 1.5s ease-in-out infinite alternate);
+              }
+            }
+          }
+        }
+        &:nth-child(5) {
+          .content {
+            .header {
+              .transition(all 0.5s);
+
+              padding-top: 0.5em !important;
+              color: @vw_orange !important;
+              font-family: Audiowide !important;
+              .animation(none);         
+              
+              &:hover {
+                color: @vw_white !important;              
+                .glow-keyframes(neon15; @vw_orange);
+                .animation(neon15 1.5s ease-in-out infinite alternate);
+              }
+            }
+          }
+        }
+        &:nth-child(6) {
+          .content {
+            .header {
+              .transition(all 0.5s);
+
+              padding-top: 0.5em !important;
+              color: @vw_violet !important;
+              font-family: Vampiro One !important;
+              .animation(none);         
+              
+              &:hover {
+                color: @vw_white !important;              
+                .glow-keyframes(neon16; @vw_violet);
+                .animation(neon16 1.5s ease-in-out infinite alternate);
+              }
+            }
+          }
+        }                                              
+      }
+    }
+  }
 }
 
 #leaderboardTable {
@@ -324,6 +442,17 @@ body {
   });
 }
 
+.glow-keyframe2(@name, @neon_color) {
+  .keyframes (@name; {
+    0% {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px @neon_color, 0 0 70px @neon_color, 0 0 80px @neon_color, 0 0 100px @neon_color, 0 0 150px @neon_color;
+    }
+    100% {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px @neon_color, 0 0 35px @neon_color, 0 0 40px @neon_color, 0 0 50px @neon_color, 0 0 75px @neon_color;
+    }  
+  });
+}
+
 .keyframes(@name; @arguments) {
   @-moz-keyframes @name { @arguments(); }
   @-webkit-keyframes @name { @arguments(); }
@@ -334,4 +463,10 @@ body {
   -webkit-animation: @arguments;
   -moz-animation: @arguments;
   animation: @arguments;
+}
+
+.transition(@arguments) {
+    -webkit-transition: @arguments;
+    -moz-transition: @arguments;
+    transition: @arguments;  
 }
