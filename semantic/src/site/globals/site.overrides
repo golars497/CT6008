@@ -38,7 +38,7 @@
   display: none !important;
 }
 .ui.masthead.segment {
-  min-height: 700px;
+  min-height: 500px;
   padding-top: 1em !important;
   background-color: @vw_blue2 !important;
 }
@@ -55,7 +55,7 @@
 }
 
 .ui.segment {
-	min-height: 700px !important;
+	min-height: 500px !important;
 	z-index: 100 !important;
 }
 
@@ -101,7 +101,7 @@ div.ui.large.top.fixed.menu {
   margin-left: 0.5em !important;
 }
 .masthead h1.ui {
-  margin-top: 3em;
+  margin-top: 2em;
   margin-bottom: 0em;
   font-size: 4em;
   font-weight: normal;
@@ -273,116 +273,139 @@ body {
     .ui {
       .item {
         .content {
-          .header { 
-            padding-top: 0.6em !important;
-            font-size: 4.5em !important;
-            font-weight: 500 !important;
-            text-decoration: none;
+          .custom {
+            &.header { 
+              padding-top: 0.6em !important;
+              font-size: 4.5em !important;
+              font-weight: 500 !important;
+              text-decoration: none;
+            }
+          }
+
+          .sub {
+            &.header {
+              color : @vw_white !important;
+              margin-top: 1em !important;
+              padding: 0 !important;
+              font-weight: 600;
+            }
           }
         }
         &:nth-child(1) {
           .content {
-            .header {
-              .transition(all 0.5s);
+            .custom {
+              &.header {
+                .transition(all 0.5s);
 
-              color: @vw_pink !important;
-              font-family: Monoton !important;
-              .animation(none);         
-              
-              &:hover {
-                color: @vw_white !important;
-                .glow-keyframes(neon11; @vw_pink);
-                .animation(neon11 1.5s ease-in-out infinite alternate);
+                color: @vw_pink !important;
+                font-family: Monoton !important;
+                .animation(none);         
+                
+                &:hover {
+                  color: @vw_white !important;
+                  .glow-keyframes(neon11; @vw_pink);
+                  .animation(neon11 1.5s ease-in-out infinite alternate);
+                }
               }
             }
           }
         } 
         &:nth-child(2) {
           .content {
-            .header {
-              .transition(all 0.5s);
-              padding-top: 0.4em !important;
-              font-size: 6.5em !important;
-              color: @vw_light_blue !important;
-              font-family: Iceland !important;
-              .animation(none);         
-              
-              &:hover {
-                color: @vw_white !important; 
-                .glow-keyframes(neon12; @vw_light_blue);
-                .animation(neon12 1.5s ease-in-out infinite alternate);
+            .custom {
+              &.header {
+                .transition(all 0.5s);
+                padding-top: 0.4em !important;
+                font-size: 6.5em !important;
+                color: @vw_light_blue !important;
+                font-family: Iceland !important;
+                .animation(none);         
+                
+                &:hover {
+                  color: @vw_white !important; 
+                  .glow-keyframes(neon12; @vw_light_blue);
+                  .animation(neon12 1.5s ease-in-out infinite alternate);
+                }
               }
             }
           }
         }
         &:nth-child(3) {
           .content {
-            .header {
-              .transition(all 0.5s);
+            .custom {
+              &.header {
+                .transition(all 0.5s);
 
-              color: @vw_yellow !important;
-              font-family: Pacifico !important;
-              .animation(none);         
-              
-              &:hover {
-                color: @vw_white !important;
-                .glow-keyframes(neon13; @vw_yellow);
-                .animation(neon13 1.5s ease-in-out infinite alternate);
+                color: @vw_yellow !important;
+                font-family: Pacifico !important;
+                .animation(none);         
+                
+                &:hover {
+                  color: @vw_white !important;
+                  .glow-keyframes(neon13; @vw_yellow);
+                  .animation(neon13 1.5s ease-in-out infinite alternate);
+                }
               }
-            }
+            }  
           }
         }
         &:nth-child(4) {
           .content {
-            .header {
-              .transition(all 0.5s);
+            .custom {
+              &.header {
+                .transition(all 0.5s);
 
-              font-size: 3.5em !important;
-              color: @vw_green !important;
-              font-family: "Press Start 2P" !important;
-              .animation(none);         
-              
-              &:hover {
-                color: @vw_white !important;
+                font-size: 3.5em !important;
+                color: @vw_green !important;
+                font-family: "Press Start 2P" !important;
+                .animation(none);         
+                
+                &:hover {
+                  color: @vw_white !important;
 
-                .glow-keyframes(neon14; @vw_green);
-                .animation(neon14 1.5s ease-in-out infinite alternate);
+                  .glow-keyframes(neon14; @vw_green);
+                  .animation(neon14 1.5s ease-in-out infinite alternate);
+                }
               }
             }
           }
         }
         &:nth-child(5) {
           .content {
-            .header {
-              .transition(all 0.5s);
+            .custom {
+              &.header {
+                .transition(all 0.5s);
 
-              padding-top: 0.5em !important;
-              color: @vw_orange !important;
-              font-family: Audiowide !important;
-              .animation(none);         
-              
-              &:hover {
-                color: @vw_white !important;              
-                .glow-keyframes(neon15; @vw_orange);
-                .animation(neon15 1.5s ease-in-out infinite alternate);
+                padding-top: 0.5em !important;
+                color: @vw_orange !important;
+                font-family: Audiowide !important;
+                .animation(none);         
+                
+                &:hover {
+                  color: @vw_white !important;              
+                  .glow-keyframes(neon15; @vw_orange);
+                  .animation(neon15 1.5s ease-in-out infinite alternate);
+                }
               }
             }
           }
         }
         &:nth-child(6) {
           .content {
-            .header {
-              .transition(all 0.5s);
+            .custom {
+              &.header {
+                .transition(all 0.5s);
 
-              padding-top: 0.5em !important;
-              color: @vw_violet !important;
-              font-family: Vampiro One !important;
-              .animation(none);         
-              
-              &:hover {
-                color: @vw_white !important;              
-                .glow-keyframes(neon16; @vw_violet);
-                .animation(neon16 1.5s ease-in-out infinite alternate);
+                padding-top: 0.5em !important;
+                color: @vw_violet !important;
+                font-family: Vampiro One !important;
+                .animation(none);         
+                
+                &:hover {
+                  color: @vw_white !important;              
+                  .glow-keyframes(neon16; @vw_violet);
+                  .animation(neon16 1.5s ease-in-out infinite alternate);
+                }
               }
             }
           }

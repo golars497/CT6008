@@ -73,35 +73,33 @@
 		</div>
 
 		<div id="first-panel" class="ui inverted vertical masthead center aligned segment">
-		    <div class="ui container">
-		    </div>	
+
 			<div class="ui text container">
 		    	<h1 class="ui inverted">
-		    		Available now on Steam for <span style="color:#FF1493">FREE</span>
+		    		Available now on Steam for <span style="color:#FF1493 !important">FREE</span>
 		    	</h1>
 		    	<br>
-		    	<div class="ui huge vw_pink button">Download now   <i class="download icon"></i></div>		
+	    		<div class="row">
+	    			<div class="ui huge vw_pink button">Download now   <i class="download icon"></i></div>
+	    		</div>
+	    		<br>
+    			<div class="ui embed" data-url="https://www.youtube.com/embed/vU26YipjcUU" data-placeholder=""></div>
 			</div>
 			
 		</div>
 		<div class="ui vertical stripe segment" id="headsetAndGun">
 		    <div class="ui middle aligned stackable grid container">
 		    	<div class="row">
-		    		<div class="ui text container">
-				      <h1 class="ui header">
-				        Co-op VR Tower Defence 
-				      </h1>
-						<div class="ui two column centered stackable grid">
-							<div class="row">
-							  <div class="column"><img src="img/game-1.png"></div>
-							  <div class="column"><img src="img/game-2.png"></div>
-							</div>	
-							<div class="two row">
-							  <div class="column"><img src="img/game-3.png"></div>
-							  <div class="column"><img src="img/game-4.png"></div>
-							</div>	
-						</div>				      
-					</div>
+					<div class="ui two column centered stackable grid">
+						<div class="row">
+						  <div class="column"><img src="img/game-1.png"></div>
+						  <div class="column"><img src="img/game-2.png"></div>
+						</div>	
+						<div class="two row">
+						  <div class="column"><img src="img/game-3.png"></div>
+						  <div class="column"><img src="img/game-4.png"></div>
+						</div>	
+					</div>				      
 		    	</div>
 			</div>
 		</div>
@@ -118,34 +116,11 @@
 		    	</div>
 			</div>
 		</div>
-		<div class="ui vertical stripe segment">
-		    <div class="ui middle aligned stackable grid container">
-		    	<div class="row">
-		    		<div class="ui text container">
-				      <h1 class="ui header">
-				        Trailer
-				      </h1>
-				      <h2>Explain the shizzle</h2>			
-					</div>
-		    	</div>
-			</div>
-		</div>
-		<div class="ui vertical stripe segment">
-		    <div class="ui middle aligned stackable grid container">
-		    	<div class="row">
-		    		<div class="ui text container">
-				      <h1 class="ui header">
-				        Online leaderboard
-				      </h1>
-				      <h2>Compete with your peers and other top global players</h2>		
-					</div>
-		    	</div>
-			</div>
-		</div>
 	</div>
 	</body>
 	<script src="js/parallax.js"></script>
 	<script type="text/javascript">
+	$('.ui.embed').embed();
 	$('.dimmer').dimmer('show');
 		window.onload = function () {
 			$('.dimmer').dimmer('hide');
