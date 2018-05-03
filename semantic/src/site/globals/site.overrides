@@ -44,9 +44,13 @@
 }
 
 #first-panel {
-	margin-top: 850px !important;
+	margin-top: 60% !important;
   .button {
     color: @vw_white !important;
+  }
+
+  &.team {
+    margin-top: 100% !important;
   }
 }
 
@@ -265,6 +269,7 @@ body {
   border-top: 3px solid @vw_pink;
   .shadow(0px -5px 20px 0px @vw_pink2);
   .row {
+    margin-top: 1em !important;
     .ui {
       .item {
         .content {
@@ -392,6 +397,7 @@ body {
       -webkit-border-radius: 0px !important;
          -moz-border-radius: 0px !important;
               border-radius: 0px !important;
+              border: 0px !important;
       th {
           background-color: @vw_pink !important;
           -webkit-border-radius: 0px !important;
@@ -422,7 +428,7 @@ body {
         .glow-keyframes(neon1; @vw_gold);
         .animation(neon1 1.5s ease-in-out infinite alternate);
         &:hover {
-          color: @vw_gold;
+          color: @vw_gold !important;
           .animation(none);         
         }
       }
@@ -430,7 +436,7 @@ body {
         .glow-keyframes(neon2; @vw_silver);
         .animation(neon2 1.5s ease-in-out infinite alternate);
         &:hover {
-          color: @vw_silver;
+          color: @vw_silver !important;
           .animation(none);         
         }
       } 
@@ -438,7 +444,7 @@ body {
         .glow-keyframes(neon3; @vw_bronze);
         .animation(neon3 1.5s ease-in-out infinite alternate);
         &:hover {
-          color: @vw_bronze;
+          color: @vw_bronze !important;
           .animation(none);         
         }
       }              

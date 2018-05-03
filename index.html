@@ -29,6 +29,9 @@
 
 	</head>
 	<body>
+	  <div class="ui page overlay dimmer">
+	    <div class="ui large text loader">Loading</div>
+	  </div>
 
 	<!-- Following Menu -->
 	<div class="ui large top fixed hidden inverted menu">
@@ -142,5 +145,10 @@
 	</div>
 	</body>
 	<script src="js/parallax.js"></script>
-
+	<script type="text/javascript">
+	$('.dimmer').dimmer('show');
+		window.onload = function () {
+			$('.dimmer').dimmer('hide');
+		}
+	</script>
 </html>

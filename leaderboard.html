@@ -13,6 +13,9 @@
 </head>
 
 <body>
+  <div class="ui overlay page active dimmer">
+    <div class="ui large text loader">Loading</div>
+  </div>		
 	<div class="pusher">
 		<div id="top-menu" class="ui large secondary inverted pointing menu">
 		  <div class="ui container">
@@ -38,5 +41,7 @@
 		</div>
 	</div>	
 </body>
-
+<script type="text/javascript">
+	$('.dimmer').dimmer('show');
+</script>
 </html>

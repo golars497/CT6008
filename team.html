@@ -13,6 +13,9 @@
 </head>
 
 <body>
+  <div class="ui overlay active dimmer">
+    <div class="ui large text loader">Loading</div>
+  </div>	
 	<div class="pusher">
 		<div id="top-menu" class="ui large secondary inverted pointing menu">
 		  <div class="ui container">
@@ -33,7 +36,7 @@
 		    <div class="parallax-layer team-layer-1" data-parallax-speed="0.3" data-max-scroll="565"></div>	    
 		</div>
 
-		<div id="first-panel" class="ui inverted vertical masthead center aligned">
+		<div id="first-panel" class="ui inverted vertical masthead center aligned team">
 		</div>			
 		<div class="ui loading-overlay">
 			<div class="ui inverted dimmer">
@@ -135,5 +138,11 @@
 	</div>	
 </body>
 <script src="js/parallax.js"></script>
+<script type="text/javascript">
+$('.dimmer').dimmer('show');
+	window.onload = function () {
+		$('.dimmer').dimmer('hide');
+	}
+</script>
 
 </html>

@@ -52,11 +52,14 @@ var tableProperties =  {
 }
 
 window.onload = function () {
+
+	$('.dimmer').dimmer('hide');
 	console.log("page has loaded");
 	var db = firebase.database();
 	var scoresDB = db.ref('score');
 	var scores;
 	scoresDB.on('value', function (scoreData){
+		$('.loading-overlay .dimmer').dimmer('show');		
 		//scores get stored and table gets created once data is retrieved
 		//TODO: Add Time-out
 		scores = scoreData.val();
@@ -65,6 +68,7 @@ window.onload = function () {
 		//we need to delete old table everytime we create a new one 
 
 		addTableToDOM(scores, "gold", "desc");
+		$('.loading-overlay.dimmer').dimmer('hide');
 
 
 	});

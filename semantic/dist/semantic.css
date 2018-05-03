@@ -804,11 +804,15 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 #first-panel {
-  margin-top: 850px !important;
+  margin-top: 60% !important;
 }
 
 #first-panel .button {
   color: #FFF !important;
+}
+
+#first-panel.team {
+  margin-top: 100% !important;
 }
 
 .ui.segment {
@@ -1042,6 +1046,10 @@ body {
   box-shadow: 0px -5px 20px 0px #F70041;
 }
 
+.team-page .row {
+  margin-top: 1em !important;
+}
+
 .team-page .row .ui .item .content .header {
   padding-top: 0.6em !important;
   font-size: 4.5em !important;
@@ -1266,6 +1274,7 @@ body {
 
 #leaderboardTable table {
   border-radius: 0px !important;
+  border: 0px !important;
 }
 
 #leaderboardTable table th {
@@ -1315,7 +1324,7 @@ body {
 }
 
 #leaderboardTable table tr:nth-child(1) td:hover {
-  color: #D4AF37;
+  color: #D4AF37 !important;
   -webkit-animation: none;
   animation: none;
 }
@@ -1346,7 +1355,7 @@ body {
 }
 
 #leaderboardTable table tr:nth-child(2) td:hover {
-  color: #C0C0C0;
+  color: #C0C0C0 !important;
   -webkit-animation: none;
   animation: none;
 }
@@ -1377,7 +1386,7 @@ body {
 }
 
 #leaderboardTable table tr:nth-child(3) td:hover {
-  color: #CD7F32;
+  color: #CD7F32 !important;
   -webkit-animation: none;
   animation: none;
 }
