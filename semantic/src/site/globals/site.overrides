@@ -45,7 +45,6 @@
 
 #first-panel {
 	margin-top: 850px !important;
-
   .button {
     color: @vw_white !important;
   }
@@ -214,6 +213,18 @@ body {
     background-image: url('../../img/layer1.png');
   }
 
+  .team-layer-0 {
+      top: 0px;
+      background-image: url('../../img/team.jpg');
+      opacity : 0.3 !important;
+  }
+
+  .team-layer-1 {
+      top: 8em;
+      background-size: 10% !important;
+      background-image: url('../../img/logo.png');  
+  }
+
 .ui.vertical.segment h1,
 .ui.vertical.segment h2,
 .ui.vertical.segment h3,
@@ -250,6 +261,9 @@ body {
 }
 
 .team-page {
+  background-color: @vw_blue2 !important;
+  border-top: 3px solid @vw_pink;
+  .shadow(0px -5px 20px 0px @vw_pink2);
   .row {
     .ui {
       .item {
@@ -469,4 +483,10 @@ body {
     -webkit-transition: @arguments;
     -moz-transition: @arguments;
     transition: @arguments;  
+}
+
+.shadow (@arguments) {
+  -webkit-box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  box-shadow: @arguments;  
 }
