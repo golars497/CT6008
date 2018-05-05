@@ -804,7 +804,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 #first-panel {
-  margin-top: 60% !important;
+  margin-top: 1100px;
 }
 
 #first-panel .button {
@@ -932,16 +932,17 @@ body {
 
 .parallax-container {
   position: absolute;
-  overflow: visible;
+  top: 0px;
+  overflow: hidden;
   width: 100%;
-  height: 900px;
+  min-height: 1000px;
   z-index: -999 !important;
 }
 
 .parallax-layer {
-  width: 70px;
-  height: 51px;
-  position: fixed;
+  width: 68px;
+  height: 48px;
+  position: absolute;
   left: 0;
   top: 0;
 }
