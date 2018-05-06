@@ -946,6 +946,13 @@ body {
   top: 0;
 }
 
+.parallax-layer-building {
+  width: 68px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 /*  .layer-0 {
     top: 0;
     //z-index: 5;
