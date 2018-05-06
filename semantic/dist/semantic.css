@@ -933,7 +933,6 @@ body {
 .parallax-container {
   position: absolute;
   top: 0px;
-  overflow: hidden;
   width: 100%;
   min-height: 1000px;
   z-index: -999 !important;

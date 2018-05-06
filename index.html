@@ -125,22 +125,41 @@
 	<script type="text/javascript">		
 		window.onload = function () {
 
-			add_tiles("blank");
-	        var left = add_tiles("padding"); 
+			//get available window width
+			var window_width = window.screen.width
+				|| document.documentElement.clientWidth
+				|| document.body.clientWidth;			
+
+			var size;
+
+			if (window_width > 1920) {
+				size = "m";
+			} else {
+				size = "s";
+			}
+			add_tiles("blank", size);
+	        var left = add_tiles("padding",size); 
+
+	        //Add background image
 	        var img = new Image();
-	        img.src = "img/bckgnd_tiles_s.png";
+	        img.src = (size == "m") ? "img/bckgnd_tiles_m.png" : "img/bckgnd_tiles_s.png";
 	        img.style.left = left.toString() + "px";
 	        img.style.position = "fixed";
 	        img.style.zIndex = "0";
+			img.className += "rellax";
+			img.setAttribute("data-rellax-speed", 5);	        
 			var node = document.getElementById('intro');
 			node.insertBefore(img,node.firstChild);
 
 			img.onload = function () {
-					try {
-	        			var rellax = new Rellax('.rellax');
-					} catch (e) {
-						console.log(e);
-					}
+				//add buildings
+				add_tiles("building", size);
+			
+				try {
+        			var rellax = new Rellax('.rellax');
+				} catch (e) {
+					console.log(e);
+				}
 		        //this adijust the maring top of the next div base on the height of the background tile image
 	        	var bckgnd_tiles_height = $('#intro img')[0].height;
 		        //console.log(bckgnd_tiles_height);

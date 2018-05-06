@@ -2,7 +2,7 @@
 //Make it so that the tile_formation gets chopped if the max screen size wont fit the entire formations_list
 //maybe make the tiles smaller as well
 
-function add_tiles (blankOrColor) {
+function add_tiles (blankOrColor, size) {
 
 	var tiles_formation =  [
 		[3,1,1,2,2,0,0,1,2,2,3,3,3,2,2,1,0,0,3,3,1,2,3,1,2,3,1,2],
@@ -47,6 +47,89 @@ function add_tiles (blankOrColor) {
 		[ 3,3,3,3,3,3,3,3,3,2,1,1,0,0,1,3,2,3,1,0,0,2,1,1,2,1,2,1]						
 	];
 
+var items  = [
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],		
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],		
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],		
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],	
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],		
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],		
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],		
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],		
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],		
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],		
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],		
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],		
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],		
+		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]																				
+	];
+
+
+//for each item an array of settings is set
+//first array element is the height multiplier (height of tile e.g. 48px x multiplier)
+//second array elelment is filename
+//third array element is if image is to be horizontally flipped
+var itemSettings {
+	b1 : [2, "b1.png", 0],
+	b2 : [2, "b2.png", 0],
+	b2f : [2, "b2.png", 1],
+	b3 : [2, "b3.png", 0],
+	b4 : [2, "b4.png", 0],
+	b5 : [2, "b5.png", 0],
+	b5f : [2, "b5.png", 1],
+	b6 : [2, "b6.png", 0],
+	b6f : [2, "b6.png", 1],
+	b7: [2, "b7.png", 0],
+	b7f : [2, "b7.png", 1],
+	b8 : [2, "b8.png", 0],
+	b8f : [2, "b8.png", 1],
+	fb1 : [2, "fb1.png", 0],
+	h1 : [2, "h1.png", 0],
+	h1f : [2, "h1.png", 1],
+	h2 : [2, "h2.png", 0],
+	h2f : [2, "h2.png", 1],
+	h3 : [2, "h3.png", 0],
+	h3f : [2, "h3.png", 1],	
+	r : [1, "r.png", 0],
+	sub : [1, "sub.png", 0],
+	subf : [1, "sub.png", 1],
+	t1 : [2, "t1.png", 0],
+	t1f : [2, "t1.png", 1],
+	t2 : [2, "t2.png", 0],
+	t2f : [2, "t2.png", 1],
+	tree1 : [1, "tree1.png", 0],
+	tree1f : [1, "tree1.png", 1],
+	tree2 : [1, "tree2.png", 0],
+	tree2f : [1, "tree2.png", 1],	
+}
+
+
 	var num_to_color =  {
 		0 : "blank",
 		1 : "blue",
@@ -57,6 +140,14 @@ function add_tiles (blankOrColor) {
 	var _noRellax = false;
 	var height = 50;
 	var width = 70;
+
+
+	//changes default height of tiles if medium size - See add_tile function
+	if (size == "m") {
+		height = height * 1.4;
+		width = width * 1.4;
+	}
+
 	var start_top = -(height/2);
 	var start_left = -(width/2);
 	var window_width = window.screen.width
@@ -73,7 +164,7 @@ function add_tiles (blankOrColor) {
 		if (tiles_formation_width - maxTilePerRow > 1) {
 			var offset = parseInt(((tiles_formation_width - maxTilePerRow)/2) * width);
 			if ( offset > 0 ) {
-				return -offset;
+				return -offset -(width/2);
 			} else {
 				return 0;
 			}
@@ -111,6 +202,8 @@ function add_tiles (blankOrColor) {
 		leftest_tile_pointer = 0;
 	}
 
+
+	//goes through each row and column onf grid and determine tile color etc.
 	for (var r = 0; r < numberOfRows; r++) {
 		if (r == 0) {
 			_top = start_top;
@@ -145,13 +238,13 @@ function add_tiles (blankOrColor) {
 
 			_top = Math.floor(_top).toString();
 			_left = Math.floor(_left).toString();
-			add_tile(_color, _top, _left, blankOrColor, _noRellax);
+			add_tile(_color, _top, _left, blankOrColor, _noRellax, size);
 		}
 	}
 
 }
 
-function add_tile (color, top, left, blankOrColor, noRellax) {
+function add_tile (color, top, left, blankOrColor, noRellax, size) {
 	var _color = {
 		blue : "b_tile",
 		pink : "p_tile",
@@ -175,9 +268,16 @@ function add_tile (color, top, left, blankOrColor, noRellax) {
 	img.style.top = top + "px";
 	img.style.left = left + "px";
 
-	var randomParallaxSpeed = Math.floor(Math.random()*3) + 1; // this will get a number between 1 and 3;
+
+	//changes size of img object if size if different
+	if (size == "m") {
+		img.style.width = parseInt(68 * 1.4) + "px";
+		img.style.height = parseInt(48 * 1.4) + "px";
+	}
+
+	var randomParallaxSpeed = Math.floor(Math.random()*5) + 1; // this will get a number between 1 and 3;
 	//img.style.zIndex = (randomParallaxSpeed*10).toString();
-	randomParallaxSpeed *= Math.floor(Math.random()*3) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
+	randomParallaxSpeed *= Math.floor(Math.random()*5) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
 
 	var rellax = (noRellax != true) ? "rellax " : "";
 	img.className += (color == "blank") ? rellax + " parallax-layer" : "parallax-layer";
