@@ -144,10 +144,10 @@
 	        var img = new Image();
 	        img.src = (size == "m") ? "img/bckgnd_tiles_m.png" : "img/bckgnd_tiles_s.png";
 	        img.style.left = left.toString() + "px";
-	        img.style.position = "fixed";
-	        img.style.zIndex = "0";
-			img.className += "rellax";
-			img.setAttribute("data-rellax-speed", 5);	        
+	        img.style.position = "absolute";
+	        img.style.zIndex = "10";
+			//img.className += "rellax";
+			//img.setAttribute("data-rellax-speed", 5);	        
 			var node = document.getElementById('intro');
 			node.insertBefore(img,node.firstChild);
 
