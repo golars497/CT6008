@@ -50,14 +50,14 @@ function add_tiles (blankOrColor, size) {
 var buildings  = [
 		[3      ,1      ,1      ,2      ,2      ,0      ,0      ,1      ,2      ,2      ,3      ,3      ,3      ,2      ,2      ,1      ,0      ,0      ,3      ,3      ,1      ,2      ,3      ,1      ,2      ,3      ,1      ,2      ],
 		[   3      ,1      ,1      ,2      ,2      ,0      ,0      ,3      ,2      ,2      ,3      ,3      ,3      ,2      ,2      ,3      ,0      ,0      ,3      ,3      ,2      ,3      ,1      ,2      ,3      ,1      ,2      ,3      ],
-		[3      ,3      ,1      ,1      ,2      ,2      ,0      ,0      ,1      ,2      ,2      ,3      ,3      ,3      ,2      ,2      ,1      ,0      ,0      ,3      ,3      ,3      ,1      ,2      ,3      ,1      ,2      ,3      ],
+		[3      ,3      ,1      ,"b1"   ,2      ,2      ,0      ,0      ,1      ,2      ,2      ,3      ,3      ,3      ,2      ,2      ,1      ,0      ,0      ,3      ,3      ,3      ,1      ,2      ,3      ,1      ,2      ,3      ],
 		[    3      ,3      ,1      ,1      ,2      ,2      ,0      ,0      ,3      ,2      ,2      ,3      ,3      ,3      ,2      ,2      ,3      ,0      ,0      ,3      ,3      ,1      ,2      ,3      ,1      ,2      ,3      ,1      ],
-		[1      ,3      ,3      ,1      ,1      ,2       ,2      ,0      ,0      ,1      ,2      ,2      ,3      ,3      ,3      ,2      ,2      ,1      ,0      ,0      ,3      ,3      ,2      ,3      ,1      ,2      ,3      ,1      ],
+		[1      ,3      ,"b1"   ,1      ,1      ,2       ,2      ,0      ,0      ,1      ,2      ,2      ,3      ,3      ,3      ,2      ,2      ,1      ,0      ,0      ,3      ,3      ,2      ,3      ,1      ,2      ,3      ,1      ],
 		[    1      ,3      ,3      ,1      ,"tree1",2      ,2      ,0      ,0      ,3      ,2      ,2      ,3      ,3      ,3      ,2      ,3      ,0      ,0      ,3      ,3      ,2      ,3      ,1      ,2      ,3      ,1      ,2      ],
 		[1      ,1      ,3      ,3      ,1      ,1      ,2      ,2      ,0      ,0      ,1      ,2      ,2      ,3      ,3      ,3      ,1      ,0      ,0      ,3      ,3      ,2      ,3      ,1      ,2      ,3      ,1      ,2      ],
 		[    1      ,1      ,3      ,3      ,1      ,"tree2",2      ,2      ,0      ,0      ,3      ,2      ,2      ,3      ,3      ,3      ,0      ,0      ,3      ,3      ,2      ,3      ,1      ,2      ,3      ,1      ,2      ,3      ],
 		[2      ,1      ,1      ,3      ,3      ,1      ,1      ,2      ,2      ,0      ,0      ,1      ,2      ,2      ,3      ,1      ,0      ,0      ,0      ,3      ,3      ,3      ,1      ,2      ,3      ,1      ,2      ,3      ],
-		[   2      ,1      ,1      ,3      ,3      ,1      ,1      ,2      ,2      ,0      ,0      ,3      ,2      ,2      ,3      ,0      ,0      ,0      ,0      ,3      ,3      ,1      ,2      ,3      ,1      ,2      ,3      ,1      ],
+		[   2      ,1      ,1      ,3      ,3      ,1      ,"tree1",2      ,2      ,0      ,0      ,3      ,2      ,2      ,3      ,0      ,0      ,0      ,0      ,3      ,3      ,1      ,2      ,3      ,1      ,2      ,3      ,1      ],
 		[2      ,2      ,1      ,1      ,3      ,3      ,1      ,1      ,2      ,2      ,0      ,0      ,1      ,2      ,1      ,0      ,0      ,1      ,0      ,0      ,3      ,3      ,2      ,3      ,1      ,2      ,3      ,1      ],
 		[   2      ,1      ,1      ,3      ,3      ,1      ,1      ,2      ,2      ,0      ,0      ,0      ,3      ,3      ,0      ,0      ,3      ,3      ,0      ,0      ,3      ,3      ,3      ,1      ,2      ,3      ,1      ,2      ],
 		[2      ,1      ,1      ,3      ,3      ,1      ,1      ,2      ,2      ,0      ,0      ,0      ,0      ,1      ,0      ,0      ,1      ,3      ,1      ,0      ,0      ,3      ,3      ,1      ,2      ,3      ,1      ,2      ],
@@ -218,38 +218,39 @@ function add_building(building_type, top, left, size) {
 	//second array elelment is filename
 	//third array element is if image is to be horizontally flipped
 	//fourth array element determines the bottom point of the object form left. Used to align with tile
+	//fift array element determines if a cusotm amount of bottom padding is required
 	var buildingSettings = {
-		b1 : [1.5, "b1.png", 0, 0.5],
-		b2 : [2, "b2.png", 0, 0.35],
-		b2f : [2, "b2.png", 1, 0.65],
-		b3 : [2, "b3.png", 0.5],
-		b4 : [2, "b4.png", 0.5],
-		b5 : [2, "b5.png", 0, 0.6],
-		b5f : [2, "b5.png", 1, 0.4],
-		b6 : [2, "b6.png", 0, 0.33],
-		b6f : [2, "b6.png", 1, 0.67],
-		b7: [2, "b7.png", 0, 0.33],
-		b7f : [2, "b7.png", 1, 0.67],
-		b8 : [2, "b8.png", 0, 0.33],
-		b8f : [2, "b8.png", 1, 0.67],
-		fb1 : [2, "fb1.png", 0, 0.5],
-		h1 : [2, "h1.png", 0, 0.61],
-		h1f : [2, "h1.png", 1, 0.39],
-		h2 : [2, "h2.png", 0, 0.4],
-		h2f : [2, "h2.png", 1, 0.6],
-		h3 : [2, "h3.png", 0, 0.67],
-		h3f : [2, "h3.png", 1, 0.33],	
-		r : [1, "r.png", 0, 0.5],
-		sub : [1, "sub.png", 0, 0.22],
-		subf : [1, "sub.png", 1, 0.78],
-		t1 : [2, "t1.png", 0.25],
-		t1f : [2, "t1.png", 1, 0.75],
-		t2 : [2, "t2.png", 0, 0.76],
-		t2f : [2, "t2.png", 1, 0.24],
-		tree1 : [1.5, "tree1.png", 0, 0.5],
-		tree1f : [1.5, "tree1.png", 1, 0.5],
-		tree2 : [1.5, "tree2.png", 0, 0.33],
-		tree2f : [1.5, "tree2.png", 1, 0.67],	
+		b1 : [1.5, "b1.png", 0, 0.5, 0],
+		b2 : [2, "b2.png", 0, 0.35, 0],
+		b2f : [2, "b2.png", 1, 0.65, 0],
+		b3 : [2, "b3.png", 0.5, 0],
+		b4 : [2, "b4.png", 0.5, 0],
+		b5 : [2, "b5.png", 0, 0.6, 0],
+		b5f : [2, "b5.png", 1, 0.4, 0],
+		b6 : [2, "b6.png", 0, 0.33, 0],
+		b6f : [2, "b6.png", 1, 0.67, 0],
+		b7: [2, "b7.png", 0, 0.33, 0],
+		b7f : [2, "b7.png", 1, 0.67, 0],
+		b8 : [2, "b8.png", 0, 0.33, 0],
+		b8f : [2, "b8.png", 1, 0.67, 0],
+		fb1 : [2, "fb1.png", 0, 0.5, 0],
+		h1 : [2, "h1.png", 0, 0.61, 0],
+		h1f : [2, "h1.png", 1, 0.39, 0],
+		h2 : [2, "h2.png", 0, 0.4, 0],
+		h2f : [2, "h2.png", 1, 0.6, 0],
+		h3 : [2, "h3.png", 0, 0.67, 0],
+		h3f : [2, "h3.png", 1, 0.33, 0],	
+		r : [1, "r.png", 0, 0.5, 0],
+		sub : [1, "sub.png", 0, 0.22, 0],
+		subf : [1, "sub.png", 1, 0.78, 0],
+		t1 : [2, "t1.png", 0.25, 0],
+		t1f : [2, "t1.png", 1, 0.75, 0],
+		t2 : [2, "t2.png", 0, 0.76, 0],
+		t2f : [2, "t2.png", 1, 0.24, 0],
+		tree1 : [1.5, "tree1.png", 0, 0.5, 0],
+		tree1f : [1.5, "tree1.png", 1, 0.5, 0],
+		tree2 : [1.5, "tree2.png", 0, 0.5, 25],
+		tree2f : [1.5, "tree2.png", 1, 0.5, 0],	
 
 	}
 
@@ -281,7 +282,8 @@ function add_building(building_type, top, left, size) {
 			//get image width and height so we can adjust it
 			var img_w = this.width;
 			var img_h = this.height;
-			var paddingBot = buildingSettings[building_type][0] * 15;
+			var paddingBotVal = (buildingSettings[building_type][4] > 0) ? buildingSettings[building_type][4] : 15 ; //15 is just default padding bot value
+			var paddingBot = buildingSettings[building_type][0] * paddingBotVal;
 			var paddingLeft = buildingSettings[building_type][0] * 5;
 			var newTop =  parseInt(this.offsetTop - img_h + tile_height - paddingBot);
 			var newLeft = parseInt(this.offsetLeft - (img_w - tile_width)/2);
