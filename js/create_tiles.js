@@ -54,6 +54,7 @@ function add_tiles (blankOrColor) {
 		3 : "yellow"
 	}
 
+	var _noRellax = false;
 	var height = 50;
 	var width = 70;
 	var start_top = -(height/2);
@@ -76,6 +77,13 @@ function add_tiles (blankOrColor) {
 			} else {
 				return 0;
 			}
+		} else if (maxTilePerRow - tiles_formation_width > 1) {
+			var offset = parseInt(((maxTilePerRow -  tiles_formation_width)/2) * width);
+			if ( offset > 0 ) {
+				return offset - (width/2);
+			} else {
+				return 0;
+			}			
 		} else {
 			return 0;
 		}
@@ -113,11 +121,14 @@ function add_tiles (blankOrColor) {
 			var _left =  0;
 			var _color = "blank";
 
+			//if outside range of tiles formation set set NoRellax
 			if (c < parseInt(leftest_tile_pointer) || c > parseInt(rightest_tile_pointer)) {
-				_color = "blank"
+				_color = "blank";
+				_noRellax = true;
 			} else {
 				_color = tiles_formation[r][c-custom_tile_padding];
 				_color = (_color != null) ? num_to_color[_color] : "blank";
+				_noRellax = false;
 			}
 
 			//this is to offset rows 
@@ -134,12 +145,46 @@ function add_tiles (blankOrColor) {
 
 			_top = Math.floor(_top).toString();
 			_left = Math.floor(_left).toString();
-			add_tile(_color, _top, _left, blankOrColor);
+			add_tile(_color, _top, _left, blankOrColor, _noRellax);
 		}
 	}
 
 }
 
+function add_tile (color, top, left, blankOrColor, noRellax) {
+	var _color = {
+		blue : "b_tile",
+		pink : "p_tile",
+		yellow : "y_tile",
+		blank : "tile"
+	}
+
+	if (blankOrColor == "blank") {
+		if (color != "blank") {
+			return;
+		}
+	} else if (blankOrColor =="color") {
+		if (color == "blank") {
+			return;
+		}
+	}
+
+	var img = document.createElement("img");
+	img.src =  "img/" + _color[color] +".png";
+	//div.style.backgroundImage =  "url('../../img/" + _color[color] +".png')";
+	img.style.top = top + "px";
+	img.style.left = left + "px";
+
+	var randomParallaxSpeed = Math.floor(Math.random()*3) + 1; // this will get a number between 1 and 3;
+	//img.style.zIndex = (randomParallaxSpeed*10).toString();
+	randomParallaxSpeed *= Math.floor(Math.random()*3) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
+
+	var rellax = (noRellax != true) ? "rellax " : "";
+	img.className += (color == "blank") ? rellax + " parallax-layer" : "parallax-layer";
+	img.setAttribute("data-rellax-speed", randomParallaxSpeed.toString());
+	//img.setAttribute("data-rellax-zindex", (randomParallaxSpeed*10).toString());
+	document.getElementById("intro").appendChild(img);	
+}
 
 //removes the left side and the right side of a 2D array by a specified ammount
 function padOut (twoD_array, padAmount) {
@@ -170,41 +215,6 @@ function padOut (twoD_array, padAmount) {
 		return twoD_array;
 	}
 }
-
-function add_tile (color, top, left, blankOrColor) {
-	var _color = {
-		blue : "b_tile",
-		pink : "p_tile",
-		yellow : "y_tile",
-		blank : "tile"
-	}
-
-	if (blankOrColor == "blank") {
-		if (color != "blank") {
-			return;
-		}
-	} else if (blankOrColor =="color") {
-		if (color == "blank") {
-			return;
-		}
-	}
-
-	var img = document.createElement("img");
-	img.src =  "img/" + _color[color] +".png";
-	//div.style.backgroundImage =  "url('../../img/" + _color[color] +".png')";
-	img.style.top = top + "px";
-	img.style.left = left + "px";
-
-	var randomParallaxSpeed = Math.floor(Math.random()*3) + 1; // this will get a number between 1 and 3;
-	img.style.zIndex = (randomParallaxSpeed*10).toString();
-	randomParallaxSpeed *= Math.floor(Math.random()*3) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
-
-	img.className += (color == "blank") ? "rellax parallax-layer" : "parallax-layer";
-	img.setAttribute("data-rellax-speed", randomParallaxSpeed.toString());
-	//img.setAttribute("data-rellax-zindex", (randomParallaxSpeed*10).toString());
-	document.getElementById("intro").appendChild(img);	
-}
-
 
 window.onresize = function () {
 	//console.log("window resized");
