@@ -235,6 +235,9 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   padding-top: 1em !important;
   background-color: #09041A !important;
 }
+#first-panel {
+  margin-top: 900px;
+}
 #first-panel .button {
   color: #FFF !important;
 }

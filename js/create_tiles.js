@@ -45,7 +45,7 @@ function add_tiles (blankOrColor) {
 		[ 2,3,3,3,3,3,3,3,2,1,1,0,0,1,3,2,3,1,0,0,2,3,2,2,3,2,1,2],
 		[2,3,3,3,3,3,3,3,3,2,1,1,0,0,1,3,2,3,1,0,0,2,2,1,2,2,2,1],
 		[ 3,3,3,3,3,3,3,3,3,2,1,1,0,0,1,3,2,3,1,0,0,2,1,1,2,1,2,1]						
-	]
+	];
 
 	var num_to_color =  {
 		0 : "blank",
@@ -62,15 +62,46 @@ function add_tiles (blankOrColor) {
 	|| document.documentElement.clientWidth
 	|| document.body.clientWidth;	
 	var maxTilePerRow = parseInt(window_width / width);
+	maxTilePerRow  = (isOdd(maxTilePerRow)) ? maxTilePerRow + 1 : maxTilePerRow;
 	numberOfRows = tiles_formation.length;
 
 	//we need to use tile formation to add custom tile colors to middle of tiles grid
 	var tiles_formation_width = tiles_formation[0].length;
+
+	if (blankOrColor == "padding") {
+		if (tiles_formation_width - maxTilePerRow > 1) {
+			var offset = parseInt(((tiles_formation_width - maxTilePerRow)/2) * width);
+			if ( offset > 0 ) {
+				return -offset;
+			} else {
+				return 0;
+			}
+		} else {
+			return 0;
+		}
+	}
+
+	//if the amount of tiles the screen can accomodate is less then the tiles_formation variable
+	if (tiles_formation_width - maxTilePerRow > 1) {
+		//this is a special case so that when tiles_formation is larger than what can fit on screen 
+		//the backgorund tiles image will get shifted 
+		tiles_formation = padOut(tiles_formation, (tiles_formation_width - maxTilePerRow)/2);
+	}	
+
 	//if the defined tile formation is smaller than the window size
 	//if the defined tile formation is bigger than window size
-	var custom_tile_padding = parseInt((maxTilePerRow - tiles_formation_width)/2);
-	var rightest_tile_pointer = parseInt(maxTilePerRow - custom_tile_padding);
-	var leftest_tile_pointer = custom_tile_padding;
+	var custom_tile_padding ;
+	var rightest_tile_pointer;
+	var leftest_tile_pointer;
+	if (maxTilePerRow > tiles_formation_width) {
+		custom_tile_padding = parseInt((maxTilePerRow - tiles_formation_width)/2);
+		rightest_tile_pointer = parseInt(maxTilePerRow - custom_tile_padding);
+		leftest_tile_pointer = custom_tile_padding;
+	} else {
+		custom_tile_padding = 0;
+		rightest_tile_pointer = tiles_formation[0].length - 1;
+		leftest_tile_pointer = 0;
+	}
 
 	for (var r = 0; r < numberOfRows; r++) {
 		if (r == 0) {
@@ -109,6 +140,37 @@ function add_tiles (blankOrColor) {
 
 }
 
+
+//removes the left side and the right side of a 2D array by a specified ammount
+function padOut (twoD_array, padAmount) {
+	var twoD_array_length = twoD_array[0].length;
+	//this is to ensure that the padding operations only occurs if there isnt too much padding
+	if ((twoD_array_length - (padAmount*2)) > 1 && padAmount >= 1) {
+		for (var r = 0; r < twoD_array.length; r++) {
+
+			//RIGHT SPLICE NOT WORKING CORERCTLY FOR SOME REASON
+			// //left splice
+			// twoD_array[r].splice(0,padAmount);
+			// //right splice
+			// var rightIndex = (twoD_array[r].length - 1) - padAmount;
+			// twoD_array[r].splice(rightIndex, padAmount);
+
+			//remove left and right sides of array based on specified amount (padAmount)
+			for (var c = 0; c < (padAmount); c++) {
+				twoD_array[r].splice(0,1);
+			}
+
+			for (var d = 0; d < (padAmount); d++) {
+				twoD_array[r].splice(-1,1);
+			}
+		}
+		return twoD_array;
+	} else {
+		console.log("Error: amount to pad is greater than the length of the array!")
+		return twoD_array;
+	}
+}
+
 function add_tile (color, top, left, blankOrColor) {
 	var _color = {
 		blue : "b_tile",
@@ -134,10 +196,12 @@ function add_tile (color, top, left, blankOrColor) {
 	img.style.left = left + "px";
 
 	var randomParallaxSpeed = Math.floor(Math.random()*3) + 1; // this will get a number between 1 and 3;
+	img.style.zIndex = (randomParallaxSpeed*10).toString();
 	randomParallaxSpeed *= Math.floor(Math.random()*3) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
 
 	img.className += (color == "blank") ? "rellax parallax-layer" : "parallax-layer";
 	img.setAttribute("data-rellax-speed", randomParallaxSpeed.toString());
+	//img.setAttribute("data-rellax-zindex", (randomParallaxSpeed*10).toString());
 	document.getElementById("intro").appendChild(img);	
 }
 

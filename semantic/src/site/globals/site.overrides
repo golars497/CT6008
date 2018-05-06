@@ -44,6 +44,7 @@
 }
 
 #first-panel {
+  margin-top: 900px;
   .button {
     color: @vw_white !important;
   }
