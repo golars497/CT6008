@@ -31,12 +31,15 @@
 
 	</head>
 	<body>
+	  <div id="error" class="ui basic modal">
+	    <div class="header">Error</div>
+	  </div>	  
 	  <div class="ui page overlay dimmer">
 	    <div class="ui large text loader">Loading</div>
 	  </div>
 	<script src="js/create_tiles.js"></script>
 	<script type="text/javascript">
-		$('.dimmer').dimmer('show');
+		$('.dimmer').dimmer('show');		
 	</script>	  
 
 	<!-- Following Menu -->
@@ -125,6 +128,13 @@
 	<script type="text/javascript">		
 		window.onload = function () {
 
+
+			var errorScreen = function () {
+				$('.dimmer').dimmer('hide');
+				$('#error').modal('show');
+			}
+
+
 			//get available window width
 			var window_width = window.screen.width
 				|| document.documentElement.clientWidth
@@ -137,37 +147,47 @@
 			} else {
 				size = "s";
 			}
-			add_tiles("blank", size);
-	        var left = add_tiles("padding",size); 
 
-	        //Add background image
-	        var img = new Image();
-	        img.src = (size == "m") ? "img/bckgnd_tiles_m.png" : "img/bckgnd_tiles_s.png";
-	        img.style.left = left.toString() + "px";
-	        img.style.position = "absolute";
-	        img.style.zIndex = "10";
-			//img.className += "rellax";
-			//img.setAttribute("data-rellax-speed", 5);	        
-			var node = document.getElementById('intro');
-			node.insertBefore(img,node.firstChild);
+			try {
+				add_tiles("blank", size);
+		        var left = add_tiles("padding",size); 
 
+		        //Add background image
+		        var img = new Image();
+		        img.src = (size == "m") ? "img/bckgnd_tiles_m.png" : "img/bckgnd_tiles_s.png";
+		        img.style.left = left.toString() + "px";
+		        img.style.position = "absolute";
+		        img.style.zIndex = "10";
+				//img.className += "rellax";
+				//img.setAttribute("data-rellax-speed", 5);	        
+				var node = document.getElementById('intro');
+				node.insertBefore(img,node.firstChild);
+				throw new Error("Something bad happened.");
+			} catch (e) {
+				//CODE TO REMOVE LOADER
+				//CODE TO SHOW ERROR
+				errorScreen();
+			}
+ 
 			img.onload = function () {
-				//add buildings
-				add_tiles("building", size);
 			
 				try {
+					//add buildings	
+					add_tiles("building", size);
         			var rellax = new Rellax('.rellax');
+			        //this adijust the maring top of the next div base on the height of the background tile image
+		        	var bckgnd_tiles_height = $('#intro img')[0].height;
+			        //console.log(bckgnd_tiles_height);
+			        bckgnd_tiles_height = (bckgnd_tiles_height-100).toString();
+			        document.getElementById("first-panel").style.marginTop = bckgnd_tiles_height + "px";
+			        $('.dimmer').dimmer('hide');
 				} catch (e) {
 					console.log(e);
+					errorScreen();
+					//CODE TO REMOVE LOADER
+					//CODE TO SHOW ERROR
 				}
-		        //this adijust the maring top of the next div base on the height of the background tile image
-	        	var bckgnd_tiles_height = $('#intro img')[0].height;
-		        //console.log(bckgnd_tiles_height);
-		        bckgnd_tiles_height = (bckgnd_tiles_height-100).toString();
-		        document.getElementById("first-panel").style.marginTop = bckgnd_tiles_height + "px";
-		        $('.dimmer').dimmer('hide');
 			}
-
 			//STEPS:
 			//1. generate background tiles
 			//2. convert backgorund tiles into an png image
