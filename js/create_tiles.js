@@ -69,7 +69,7 @@ var buildings  = [
 		[3      ,3      ,1      ,1      ,2      ,2      ,0      ,0      ,1      ,1      ,2      ,2      ,1      ,1      ,0      ,"tree2",1      ,"fb1"  ,2      ,1      ,3      ,1      ,0      ,0      ,3      ,3      ,1      ,2      ],
 		[   3      ,"h1"   ,1      ,"r"    ,2      ,0      ,0      ,"fb1"  ,1      ,2      ,"t1b"  ,2      ,1      ,1      ,0      ,0      ,3      ,3      ,1      ,"tree2",3      ,3      ,0      ,0      ,"t2"   ,3      ,2      ,3      ],
 		[3      ,1      ,1      ,2      ,2      ,0      ,0      ,1      ,1      ,2      ,"b5"   ,3      ,2      ,1      ,1      ,0      ,"tree1",1      ,"fb1"  ,2      ,1      ,3      ,1      ,0      ,0      ,3      ,3      ,3      ],
-		[   "h1"   ,1      ,"r"    ,2      ,0      ,0      ,"fb1"  ,1      ,2      ,3      ,3      ,2      ,"tree2",1      ,0      ,0      ,3      ,3      ,1      ,2      ,"tree1",3      ,0      ,0      ,0      ,3      ,3      ,1      ],
+		[   "h1"   ,1      ,"r"    ,2      ,0      ,0      ,"fb1"  ,1      ,2      ,3      ,3      ,2      ,"tree2",1      ,0      ,0      ,3      ,3      ,1      ,2      ,3      ,3      ,0      ,0      ,0      ,3      ,3      ,1      ],
 		[1      ,1      ,2      ,2      ,0      ,0      ,1      ,1      ,2      ,"b5"   ,3      ,2      ,1      ,1      ,0      ,0      ,1      ,"fb1"  ,2      ,1      ,3      ,1      ,0      ,0      ,0      ,0      ,3      ,3      ],
 		[   1      ,"r"    ,2      ,0      ,0      ,1      ,1      ,2      ,       ,3      ,2      ,"b2sf" ,1      ,0      ,0      ,"fb1"  ,3      ,1      ,2      ,3      ,1      ,0      ,0      ,2      ,0      ,"b7"   ,3      ,3      ],
 		[1      ,2      ,2      ,0      ,0      ,1      ,1      ,2      ,"b5"   ,3      ,2      ,1      ,1      ,0      ,0      ,1      ,3      ,2      ,1      ,"b1"   ,1      ,0      ,0      ,2      ,2      ,0      ,0      ,3      ],
@@ -117,10 +117,10 @@ var buildings  = [
 	|| document.body.clientWidth;	
 	var maxTilePerRow = parseInt(window_width / width);
 	maxTilePerRow  = (isOdd(maxTilePerRow)) ? maxTilePerRow + 1 : maxTilePerRow;
-	numberOfRows = tiles_formation.length;
+	numberOfRows = (blankOrColor == "biulding") ? buildings.length : tiles_formation.length;
 
 	//we need to use tile formation to add custom tile colors to middle of tiles grid
-	var tiles_formation_width = tiles_formation[0].length;
+	var tiles_formation_width = (blankOrColor == "biulding") ? buildings[0].length : tiles_formation[0].length;
 
 	if (blankOrColor == "padding") {
 		if (tiles_formation_width - maxTilePerRow > 1) {
@@ -147,6 +147,9 @@ var buildings  = [
 		//this is a special case so that when tiles_formation is larger than what can fit on screen 
 		//the backgorund tiles image will get shifted 
 		tiles_formation = padOut(tiles_formation, (tiles_formation_width - maxTilePerRow)/2);
+		if (blankOrColor == "building") {
+			buildings = padOut(buildings, (tiles_formation_width - maxTilePerRow)/2);
+		}
 	}	
 
 	//if the defined tile formation is smaller than the window size
