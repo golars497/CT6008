@@ -237,6 +237,9 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 #first-panel {
   margin-top: 900px;
+  border-top: 3px solid #F70068;
+  -webkit-box-shadow: 0px -5px 20px 0px #F70041;
+  box-shadow: 0px -5px 20px 0px #F70041;
 }
 #first-panel .button {
   color: #FFF !important;
@@ -716,6 +719,9 @@ body {
 #contact_panel .ui.text.container {
   background-color: #F70068;
   padding-bottom: 1em;
+  border: 1px solid #F70041;
+  -webkit-box-shadow: 0px 0px 100px #F70041;
+  box-shadow: 0px 0px 100px #F70041;
 }
 #contact_form_input {
   padding-right: 2em;
