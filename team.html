@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <div class="ui overlay active dimmer">
+  <div class="ui overlay active dimmer vw_black">
     <div class="ui large text loader">Loading</div>
   </div>	
 	<div class="pusher">
@@ -22,7 +22,7 @@
 		    <a class="item" href="index.html">Home</a>
 		    <a class="item">Mechanics</a>
 		    <a class="active item" href="team.html">Team</a>
-		    <a class="item">Contact</a>
+		    <a class="item" href="contact.html">Contact</a>
 		    <div class="right menu">
 		    	<div class="item">
 		    		<div class="ui inverted button"><a href="leaderboard.html">Leaderboards</a></div>
@@ -32,7 +32,7 @@
 		</div>
 
 		<div class="parallax-container">
-		    <div class="parallax-layer team-layer-0" data-parallax-speed="0.1" data-max-scroll="565"></div>
+		    <div class="rellax_team parallax-layer team-layer-0" data-rellax-speed="-7"></div>
 		    <!-- <div class="parallax-layer team-layer-1" data-parallax-speed="0.3" data-max-scroll="565"></div>	     -->
 		</div>
 
@@ -149,10 +149,11 @@
 		</div>
 	</div>	
 </body>
-<script src="js/parallax.js"></script>
+<script src="js/rellax.min.js"></script>
 <script type="text/javascript">
 $('.dimmer').dimmer('show');
 	window.onload = function () {
+        var rellax = new Rellax('.rellax_team');		
 		$('.dimmer').dimmer('hide');
 	}
 </script>

@@ -34,7 +34,7 @@
 	  <div id="error" class="ui basic modal">
 	    <div class="header">Error</div>
 	  </div>	  
-	  <div class="ui page overlay dimmer">
+	  <div class="ui page overlay dimmer vw_black">
 	    <div class="ui large text loader">Loading</div>
 	  </div>
 	<script src="js/create_tiles.js"></script>
@@ -48,7 +48,7 @@
 	    <a class="active item" href="index.html">Home</a>
 	    <a class="item">Mechanics</a>
 	    <a class="item" href="team.html">Team</a>
-	    <a class="item">Contact</a>
+	    <a class="item" href="contact.html">Contact</a>
 	    <div class="right menu">
 	      <div class="item">
 	        <a class="ui inverted button" href="leaderboard.html">Leaderboards</a>
@@ -63,7 +63,7 @@
 		    <a class="active item" href="index.html">Home</a>
 		    <a class="item">Mechanics</a>
 		    <a class="item" href="team.html">Team</a>
-		    <a class="item">Contact</a>
+		    <a class="item" href="contact.html">Contact</a>
 		    <div class="right menu">
 		    	<div class="item">
 		    		<div class="ui inverted button"><a href="leaderboard.html">Leaderboards</a></div>
@@ -162,7 +162,7 @@
 				//img.setAttribute("data-rellax-speed", 5);	        
 				var node = document.getElementById('intro');
 				node.insertBefore(img,node.firstChild);
-				throw new Error("Something bad happened.");
+				//throw new Error("Something bad happened.");
 			} catch (e) {
 				//CODE TO REMOVE LOADER
 				//CODE TO SHOW ERROR
@@ -180,7 +180,12 @@
 			        //console.log(bckgnd_tiles_height);
 			        bckgnd_tiles_height = (bckgnd_tiles_height-100).toString();
 			        document.getElementById("first-panel").style.marginTop = bckgnd_tiles_height + "px";
-			        $('.dimmer').dimmer('hide');
+
+					var delay_time = 2000; // 2 seconds
+					var loaded = function() {
+			        	$('.dimmer').dimmer('hide');
+					}
+					setTimeout( loaded, delay_time );			        
 				} catch (e) {
 					console.log(e);
 					errorScreen();

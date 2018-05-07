@@ -242,7 +242,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   color: #FFF !important;
 }
 #first-panel.team {
-  margin-top: 100% !important;
+  margin-top: 50% !important;
 }
 .ui.segment {
   min-height: 500px !important;
@@ -363,6 +363,12 @@ body {
   top: 0px;
   background-image: url('../../img/team.jpg');
   opacity: 0.3 !important;
+  background-position: top center;
+  background-size: 100%;
+  min-height: 1000px;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100% !important;
 }
 .team-layer-1 {
   top: 8em;
@@ -703,4 +709,19 @@ body {
   color: #CD7F32 !important;
   -webkit-animation: none;
   animation: none;
+}
+#contact_panel {
+  margin-top: 11em;
+}
+#contact_panel .ui.text.container {
+  background-color: #F70068;
+  padding-bottom: 1em;
+}
+#contact_form_input {
+  padding-right: 2em;
+  padding-left: 2em;
+}
+#contact_form_input .textarea {
+  -webkit-box-shadow: 0 0 0 2px #fff inset!important;
+  box-shadow: 0 0 0 2px #fff inset!important;
 }
