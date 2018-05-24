@@ -31,9 +31,31 @@
 
 	</head>
 	<body>
-	  <div id="error" class="ui basic modal">
+		<div class="ui small basic modal">
+		  <div class="ui icon header">
+		    <i class="envelope icon"></i>
+		    Thank you for your message
+		  </div>
+		  <div class="content">
+		  	<div class="ui center aligned grid">
+		  		<div class="center aligned row">
+				    <p>We'll get back to you as soon as possible!</p>
+		  		</div>
+		  	</div>
+		  </div>
+		  <div class="actions">
+		  	<div class="ui center aligned grid">
+		  		<div class="center aligned row">
+				    <div class="ui green ok inverted button">
+				      <i class="checkmark icon"></i>Ok
+				    </div>
+		  		</div>		  		
+		  	</div>
+		  </div>
+		</div>		
+<!-- 	  <div id="error" class="ui basic modal">
 	    <div class="header">Error</div>
-	  </div>	  
+	  </div>	 -->  
 	  <div class="ui page overlay dimmer vw_black">
 	    <div class="ui large text loader">Loading</div>
 	  </div>
@@ -69,16 +91,17 @@
 		    	<br>
 					<form id="contact_form_input" class="ui form">
 					  <div class="field">
-					    <textarea type="text" name="message" rows="5" placeholder="Send us a message"></textarea>
+					    <textarea type="text" rows="5" placeholder="Send us a message"></textarea>
 					  </div>
 						<div class="ui left aligned grid">
 							<div class="row">
 							  <div class="left aligned seven wide column">
-			    				<a>Twitter: @op4</a>
-			    				<a>Email: admin@opfor.com</a>
+			    				<div><i class="twitter icon"></i><a>Twitter: @op4</a></div>
+			    				<br>
+			    				<div><i class="envelope icon"></i><a>Email: admin@opfor.com</a></div>
 							  </div>
 							  <div class="right aligned nine wide column">
-					  			<button style="width: 70%;" class="ui inverted button" type="submit">Send</button>
+					  			<div id="msg_submit" style="width: 70%;" class="ui inverted button">Send</div>
 							  </div>					  
 							</div>
 						</div>					  
@@ -96,6 +119,10 @@
 		window.onload = function () {
 	        //var rellax = new Rellax('.rellax_team');		
 			$('.dimmer').dimmer('hide');
+
+			$('#msg_submit').click(function(){
+				$('.ui.basic.modal').modal('show');
+			});
 		}			
 	</script>
 </html>
