@@ -1,6 +1,9 @@
-//STILL TO DO
-//Make it so that the tile_formation gets chopped if the max screen size wont fit the entire formations_list
-//maybe make the tiles smaller as well
+var loggingOn = false;
+function msg_log(input) {
+	if (loggingOn) {
+		console.log(input);
+	}
+}
 
 function add_tiles (blankOrColor, size) {
 
@@ -113,7 +116,7 @@ var buildings = [
 [0, 3, 3, 1, 1, 2, 2, 0, 0, 1, 1, 2, 2, 1, 1, 0, "tree2", 1, "fb1", 2, 1, 3, 1, 0, 0, 3, 3, 1],
 [0, 3, "h1", 1, "r", 2, 0, 0, "fb1", 1, 2, "t1b", 2, 1, 1, 0, 0, 3, 3, 1, "tree2", 3, 3, 0, 0, "t2", 3, 2],
 [0, 3, 1, 1, 2, 2, 0, 0, 1, 1, 2, "b5", 3, 2, 1, 1, 0, "tree1", 1, "fb1", 2, 1, 3, 1, 0, 0, 3, 3],
-[0, "h1", 1, "r", 2, 0, 0, "fb1", 1, 2, 3, 3, 2, "tree2", 1, 0, 0, 3, 3, 1, "b5", 3, 3, 0, 0, 0, 3, 3],
+[0, "h1", 1, "r", 2, 0, 0, "fb1", 1, 2, 3, 3, 2, "tree2", 1, 0, 0, 3, 3, 1, 2, "tree1", 3, 0, 0, 0, 3, 3],
 [0, 1, 1, 2, 2, 0, 0, 1, 1, 2, "b5", 3, 2, 1, 1, 0, 0, 1, "fb1", 2, 1, 3, 1, 0, 0, 0, 0, 3],
 [0, 1, "r", 2, 0, 0, 1, 1, 2, 1, 3, 2, "b2sf", 1, 0, 0, "fb1", 3, 1, 2, 3, 1, 0, 0, 2, 0, "b7", 3],
 [0, 1, 2, 2, 0, 0, 1, 1, 2, "b5", 3, 2, 1, 1, 0, 0, 1, 3, 2, 1, "b1", 1, 0, 0, 2, 2, 0, 0],
@@ -317,7 +320,7 @@ function add_building(building_type, top, left, size) {
 		try {
 			img.src =  "img/parallax/" + buildingSettings[building_type][1];
 		} catch (e) {
-			console.log(building_type + " is not a valid building type");
+			msg_log(building_type + " is not a valid building type");
 			return;
 		}
 		img.style.top = top + "px";
@@ -387,7 +390,7 @@ function add_building(building_type, top, left, size) {
 		}
 
 	} else {
-		console.log("invalid building type");
+		msg_log("invalid building type");
 	}
 }
 
@@ -459,13 +462,13 @@ function padOut (twoD_array, padAmount) {
 		}
 		return twoD_array;
 	} else {
-		console.log("Error: amount to pad is greater than the length of the array!")
+		msg_log("Error: amount to pad is greater than the length of the array!")
 		return twoD_array;
 	}
 }
 
 window.onresize = function () {
-	//console.log("window resized");
+	//msg_log("window resized");
 }
 
 function isEven(n) {
