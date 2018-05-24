@@ -160,11 +160,18 @@
 				|| document.body.clientWidth;			
 
 			var size;
+			var imgSize;
+			var imgSpeed;
 
+			//if the screen's resolution is above 1920px in width then switch to "medium mode"
 			if (window_width > 1920) {
 				size = "m";
+				imgSize = "huge";
+				imgSpeed = -9;
 			} else {
 				size = "s";
+				imgSize = "large";
+				imgSpeed = -7;
 			}
 
 			try {
@@ -193,6 +200,23 @@
 				try {
 					//add buildings	
 					add_tiles("building", size);
+
+					//add logo
+					var g_logo = document.createElement("img");
+					g_logo.src = "img/game_logo.png";
+					g_logo.style.zIndex = "500";
+					g_logo.className += "ui centered " + imgSize + "  image rellax parallax-layer";
+					g_logo.setAttribute("data-rellax-speed", imgSpeed);
+					g_logo.setAttribute("data-rellax-zindex", 10);					
+
+					document.getElementById("intro").appendChild(g_logo);
+
+
+					//imae offset from top is adjusted when images is loaded
+					g_logo.onload = function () {
+						g_logo.style.top = ((window.innerHeight / 2)- this.height - (this.height * 0.15)).toString() +  "px";
+					}
+
         			var rellax = new Rellax('.rellax');
 			        //this adijust the maring top of the next div base on the height of the background tile image
 		        	var bckgnd_tiles_height = $('#intro img')[0].height;
@@ -212,39 +236,7 @@
 					//CODE TO SHOW ERROR
 				}
 			}
-			//STEPS:
-			//1. generate background tiles
-			//2. convert backgorund tiles into an png image
-			//3. delete generated background tiles
-			//4. append converted png image of background tiles to replace generated background tiles (having an image instead of many img tags of each tile requires less resources)
-			//5. generate blank tiles
-
-			//add_tiles("color");
-			// var node = document.getElementById('intro');
-			// domtoimage.toPng(node)
-			//     .then(function (dataUrl) {
-			//         var img = new Image();
-			//         img.src = dataUrl;
-			//         //remove tiles
-			// 		while (node.firstChild) {
-			// 		    node.removeChild(node.firstChild);
-			// 		}			        
-			//         node.appendChild(img);
-
-
-			//         add_tiles("blank");
-			//         var rellax = new Rellax('.rellax');
-			//         //this adijust the maring top of the next div base on the height of the background tile image
-			//         var bckgnd_tiles_height = $('#intro img')[0].height;
-			//         console.log(bckgnd_tiles_height);
-			//         bckgnd_tiles_height = (bckgnd_tiles_height-100).toString();
-			//         document.getElementById("first-panel").style.marginTop = bckgnd_tiles_height + "px";
-			//         $('.dimmer').dimmer('hide');
-			//     })
-			//     .catch(function (error) {
-			//     	$('.dimmer').dimmer('hide');
-			//         console.error('oops, something went wrong!', error);
-			//     });			
+		
 		}		
 	</script>
 </html>
