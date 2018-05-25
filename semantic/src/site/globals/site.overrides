@@ -488,24 +488,24 @@ body {
 .glow-keyframe3(@name, @neon_color, @multiplier) {
   .keyframes (@name; {
     0% {
-      filter: drop-shadow(0 0 2 * @multiplier #fff)
-              drop-shadow(0 0 5 * @multiplier #fff)
-              drop-shadow(0 0 20 * @multiplier @neon_color)
-              drop-shadow(0 0 38 * @multiplier @neon_color);
-      -webkit-filter: drop-shadow(0 0 2 * @multiplier #fff)
-              drop-shadow(0 0 5 * @multiplier #fff)
-              drop-shadow(0 0 20 * @multiplier @neon_color)
-              drop-shadow(0 0 38 * @multiplier @neon_color);             
+      filter: drop-shadow(0 0 2px #fff)
+              drop-shadow(0 0 5px  #fff)
+              drop-shadow(0 0 20px  @neon_color)
+              drop-shadow(0 0 38px  @neon_color);
+      -webkit-filter: drop-shadow(0 0 2px  #fff)
+              drop-shadow(0 0 5px  #fff)
+              drop-shadow(0 0 20px  @neon_color)
+              drop-shadow(0 0 38px  @neon_color);             
     }
     100% {
-      filter: drop-shadow(0 0 1 * @multiplier #fff)
-              drop-shadow(0 0 2 * @multiplier #fff)
-              drop-shadow(0 0 5 * @multiplier @neon_color)
-              drop-shadow(0 0 13 * @multiplier @neon_color);
-      -webkit-filter: drop-shadow(0 0 1 * @multiplier #fff)
-              drop-shadow(0 0 2 * @multiplier #fff)
-              drop-shadow(0 0 5 * @multiplier @neon_color)
-              drop-shadow(0 0 13 * @multiplier @neon_color);         
+      filter: drop-shadow(0 0 1px  #fff)
+              drop-shadow(0 0 2px  #fff)
+              drop-shadow(0 0 5px  @neon_color)
+              drop-shadow(0 0 13px  @neon_color);
+      -webkit-filter: drop-shadow(0 0 1px  #fff)
+              drop-shadow(0 0 2px  #fff)
+              drop-shadow(0 0 5px  @neon_color)
+              drop-shadow(0 0 13px  @neon_color);         
     }  
   });
 }

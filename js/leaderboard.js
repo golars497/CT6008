@@ -28,11 +28,11 @@ console.log("firebase db initialised");
  */
 
 var tableProperties =  {
-	"headerText" : ["Rank", "Player", "Waves Cleared", "Max Gold"],
-	"headerID" : ["rank", "name", "waves", "gold"],
-	"headerClass" : ["no-sort two wide center aligned", "no-sort", "", ""],
+	"headerText" : ["Rank" , "Enemies Defeated", "Waves Cleared", "End Gold"],
+	"headerID" :   ["rank" , "kills"  		   , "waves"        , "gold"],
+	"headerClass" : ["no-sort two wide center aligned", "", "", ""],
 	"columnClass" : ["center algined", "", "", ""],
-	"valuePaths" : ["rank", "name", "waves", "gold"],
+	"valuePaths" : ["rank", "kills", "waves", "gold"],
 	"custom" : [ 
 				[
 				 ['<h3 class="ui center aligned">'],
