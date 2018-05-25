@@ -12,12 +12,16 @@ var animateEnemyShip = function () {
 
 	var target = document.querySelector('#e_ship');
 	var player = target.animate([
-	  {transform: 'translate(0)'},
+	  {transform: 'translate(-500px, -500px)'},
 	  {transform: translateStr }
-	], 5000);
+	], 6000);
 	player.addEventListener('finish', function() {
 	  target.style.transform = translateStr;
 	});	
+}
+
+var animationOfShips = function () {
+
 }
 
 //function to get distance of element to top of window, no matter where scroll position is
@@ -95,7 +99,7 @@ window.onload = function () {
 			var g_logo = document.createElement("img");
 			g_logo.src = "img/game_logo.png";
 			g_logo.style.zIndex = "500";
-			g_logo.className += "ui centered " + imgSize + "  image rellax parallax-layer";
+			g_logo.className += "ui centered " + imgSize + "  image slow_glow rellax parallax-layer";
 
 			//to position logo dynamically
 			g_logo.style.top = ((window.innerHeight / 2) - imgPx).toString() +  "px";

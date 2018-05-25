@@ -1652,6 +1652,35 @@ body {
   -webkit-box-shadow: 0 0 0 2px #fff inset!important;
   box-shadow: 0 0 0 2px #fff inset!important;
 }
+
+.slow_glow {
+  -webkit-animation: neon19 2s ease-in-out infinite alternate;
+  animation: neon19 2s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes neon19 {
+  0% {
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068) drop-shadow(0 0 38px #F70068);
+    -webkit-filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068) drop-shadow(0 0 38px #F70068);
+  }
+
+  100% {
+    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068) drop-shadow(0 0 13px #F70068);
+    -webkit-filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068) drop-shadow(0 0 13px #F70068);
+  }
+}
+
+@keyframes neon19 {
+  0% {
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068) drop-shadow(0 0 38px #F70068);
+    -webkit-filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068) drop-shadow(0 0 38px #F70068);
+  }
+
+  100% {
+    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068) drop-shadow(0 0 13px #F70068);
+    -webkit-filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068) drop-shadow(0 0 13px #F70068);
+  }
+}
 /*!
  * # Semantic UI 2.3.0 - Button
  * http://github.com/semantic-org/semantic-ui/
