@@ -1,4 +1,38 @@
-console.log("INDEX JS");
+var animateEnemyShip = function () {
+
+	//get available window width
+	var window_width = window.screen.width
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+
+	var parallax_height = getPositionFromTop(document.getElementById("first-panel"));
+		parallax_height = parallax_height.y;
+
+	var translateStr = 'translate(' + window_width.toString() + 'px, ' + parallax_height.toString() + 'px)'
+
+	var target = document.querySelector('#e_ship');
+	var player = target.animate([
+	  {transform: 'translate(0)'},
+	  {transform: translateStr }
+	], 5000);
+	player.addEventListener('finish', function() {
+	  target.style.transform = translateStr;
+	});	
+}
+
+//function to get distance of element to top of window, no matter where scroll position is
+function getPositionFromTop(element) {
+    var xPosition = 0;
+    var yPosition = 0;
+
+    while(element) {
+        xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+        yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+        element = element.offsetParent;
+    }
+    return { x: xPosition, y: yPosition };
+}
+
 window.onload = function () {
 
 
@@ -77,6 +111,18 @@ window.onload = function () {
         	var blackDivOverlayHeight = bckgnd_tiles_height;
 	        bckgnd_tiles_height = (bckgnd_tiles_height-100).toString();
 
+	        //Add enemy ship
+	        var enemy_ship = document.createElement('img');
+
+	        enemy_ship.id = "e_ship"
+	        enemy_ship.src = "img/obj/e_ship.png";
+	        enemy_ship.className += "ui large image";
+	        enemy_ship.style.zIndex = "280";
+	        enemy_ship.style.position = "absolute";
+	        enemy_ship.style.top = "0px";
+	        enemy_ship.style.left = "0px";
+	        document.getElementById('intro').appendChild(enemy_ship);
+
 	        //Add black overlay behind logo
 	        document.getElementById("first-panel").style.marginTop = bckgnd_tiles_height + "px";
 
@@ -97,19 +143,7 @@ window.onload = function () {
 			function otherEvents() {
 				window.onscroll = function () {
 
-					//function to get distance of element to top of window, no matter where scroll position is
-					function getPosition(element) {
-					    var xPosition = 0;
-					    var yPosition = 0;
-
-					    while(element) {
-					        xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
-					        yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
-					        element = element.offsetParent;
-					    }
-					    return { x: xPosition, y: yPosition };
-					}	
-					var distanceTop = getPosition(document.getElementById("first-panel"));
+					var distanceTop = getPositionFromTop(document.getElementById("first-panel"));
 
 					var scrollTop = $(window).scrollTop(),
 			        	elementOffset = distanceTop.y,
@@ -129,6 +163,7 @@ window.onload = function () {
 			var loaded = function() {
 	        	$('.dimmer').dimmer('hide');
 	        	otherEvents();
+	        	animateEnemyShip();
 			}
 
 			setTimeout( loaded, delay_time );			        
