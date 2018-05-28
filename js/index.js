@@ -1,51 +1,53 @@
-var animateEnemyShip = function (posX, posY, ship) {
+var animateEnemyShip = function (posX, posY, ship_dom) {
 
+	//posY should be fixed
+
+	msg_log("animating " + ship_dom);
 	//get available window width
 	var window_width = window.screen.width
 		|| document.documentElement.clientWidth
 		|| document.body.clientWidth;
 
+
 	var parallax_height = getPositionFromTop(document.getElementById("first-panel"));
 		parallax_height = parallax_height.y;
 
-		if (posX < 0) {
-			posX = Math.abs(posX);
-		}
-		if (posY < 0) {
-			posY = Math.abs(posY);
-		}
-		parallax_height += posX;
-		window_width += posY;
-
-		posY = posY.toString();
-		posX = posX.toString();
+		parallax_height += posY;
+		window_width += posX;
 
 	var translateStr = 'translate(' + window_width.toString() + 'px, ' + parallax_height.toString() + 'px)'
 
-	var target = document.querySelector(ship);
-	var transformStr = 'translate(' + posX + 'px, ' + posY + 'px)';
-	console.log(transformStr);
+	var target = document.querySelector(ship_dom);
+	var transformStr = 'translate(' + (posX-posY).toString() + 'px, ' + (-posY).toString() + 'px)';
+	msg_log("start: " + transformStr);
+	msg_log("end: " + translateStr);
 	var player = target.animate([
 	  {transform: transformStr },
 	  {transform: translateStr }
-	], 6000);
+	], 7000);
 	player.addEventListener('finish', function() {
 	  target.style.transform = translateStr;
 	});	
 }
 
 var animationOfShips = function () {
-	animateEnemyShip(-500,-500, '#e_ship');
+	animateEnemyShip(500, 500, '#e_ship');
 	setInterval(function(){
-		animateEnemyShip(-500,-500, '#e_ship'); 
+		animateEnemyShip(-500, 500, '#e_ship'); 
 	}, 10000);
 	setInterval(function(){
-		animateEnemyShip(500,500, '#e_ship2'); 
+		animateEnemyShip(0, 500, '#e_ship2'); 
 	}, 13000);	
+	setInterval(function(){
+		animateEnemyShip(700, 500, '#e_ship3'); 
+	}, 12000);	
+	setInterval(function(){
+		animateEnemyShip(1000, 500, '#e_ship4'); 
+	}, 11000);	
 }
 
 //function to get distance of element to top of window, no matter where scroll position is
-function getPositionFromTop(element) {
+var getPositionFromTop = function(element) {
     var xPosition = 0;
     var yPosition = 0;
 
@@ -57,24 +59,59 @@ function getPositionFromTop(element) {
     return { x: xPosition, y: yPosition };
 }
 
-window.onload = function () {
 
+var add_logo = function(imgSize, imgPx, imgSpeed){
+	//add logo
+	var g_logo = document.createElement("img");
+	g_logo.src = "img/game_logo.png";
+	g_logo.style.zIndex = "500";
+	g_logo.className += "ui centered " + imgSize + "  image rellax parallax-layer";
+
+	//to position logo dynamically
+	g_logo.style.top = ((window.innerHeight / 2) - imgPx).toString() +  "px";
+	g_logo.setAttribute("data-rellax-speed", imgSpeed);
+	g_logo.setAttribute("data-rellax-zindex", 10);					
+
+	document.getElementById("intro").appendChild(g_logo);	
+}
+
+
+// id = img element id
+// size = the size class used in semantic ui determines how big img will be
+// file = file path of image file
+var add_enemy_ships = function (id, size, file) {
+    //Add enemy ship
+    var enemy_ship = document.createElement('img');
+
+    enemy_ship.id = id;
+    enemy_ship.src = file;
+    enemy_ship.className += "ui " + size + " image";
+    enemy_ship.style.zIndex = "280";
+    enemy_ship.style.position = "absolute";
+    enemy_ship.style.top = "-500px";
+    enemy_ship.style.left = "-500px";
+    document.getElementById('intro').appendChild(enemy_ship);
+}
+
+window.onload = function () {
 
 	var errorScreen = function () {
 		$('.dimmer').dimmer('hide');
 		$('#error').modal('show');
 	}
 
-
 	//get available window width
 	var window_width = window.screen.width
 		|| document.documentElement.clientWidth
 		|| document.body.clientWidth;			
 
+	msg_log(window_width);
+
 	var size;
 	var imgSize;
 	var imgSpeed;
 	var imgPx;
+	var enemyShipSize;
 
 	//if the screen's resolution is above 1920px in width then switch to "medium mode"
 	if (window_width > 1920) {
@@ -82,11 +119,13 @@ window.onload = function () {
 		imgSize = "huge";
 		imgSpeed = -9;
 		imgPx = 373;
+		enemyShipSize = "large"
 	} else {
 		size = "s";
 		imgSize = "large";
 		imgSpeed = -7;
 		imgPx = 210;
+		enemyShipSize = "medium";
 	}
 
 	try {
@@ -116,19 +155,9 @@ window.onload = function () {
 			add_tiles("building", size);
 
 			//add logo
-			var g_logo = document.createElement("img");
-			g_logo.src = "img/game_logo.png";
-			g_logo.style.zIndex = "500";
-			g_logo.className += "ui centered " + imgSize + "  image rellax parallax-layer";
+			add_logo(imgSize, imgPx, imgSpeed);
 
-			//to position logo dynamically
-			g_logo.style.top = ((window.innerHeight / 2) - imgPx).toString() +  "px";
-			g_logo.setAttribute("data-rellax-speed", imgSpeed);
-			g_logo.setAttribute("data-rellax-zindex", 10);					
-
-			document.getElementById("intro").appendChild(g_logo);
-
-			//Activates parallac effect
+			//Activates parallax effect
 			var rellax = new Rellax('.rellax');
 	        //this adijust the maring top of the next div base on the height of the background tile image
         	var bckgnd_tiles_height = $('#intro img')[0].height;
@@ -136,27 +165,10 @@ window.onload = function () {
 	        bckgnd_tiles_height = (bckgnd_tiles_height-100).toString();
 
 	        //Add enemy ship
-	        var enemy_ship = document.createElement('img');
-
-	        enemy_ship.id = "e_ship"
-	        enemy_ship.src = "img/obj/e_ship.png";
-	        enemy_ship.className += "ui large image";
-	        enemy_ship.style.zIndex = "280";
-	        enemy_ship.style.position = "absolute";
-	        enemy_ship.style.top = "-500px";
-	        enemy_ship.style.left = "-500px";
-	        document.getElementById('intro').appendChild(enemy_ship);
-
-	        var enemy_ship2 = document.createElement('img');
-
-	        enemy_ship2.id = "e_ship2"
-	        enemy_ship2.src = "img/obj/e_ship.png";
-	        enemy_ship2.className += "ui large image";
-	        enemy_ship2.style.zIndex = "280";
-	        enemy_ship2.style.position = "absolute";
-	        enemy_ship2.style.top = "-500px";
-	        enemy_ship2.style.left = "-500px";
-	        document.getElementById('intro').appendChild(enemy_ship2);
+	        add_enemy_ships("e_ship", enemyShipSize ,"img/obj/e_ship.png");
+	        add_enemy_ships("e_ship2", enemyShipSize ,"img/obj/e_ship.png");
+	        add_enemy_ships("e_ship3", enemyShipSize ,"img/obj/e_ship.png");
+	        add_enemy_ships("e_ship4", enemyShipSize ,"img/obj/e_ship.png");
 
 	        //Add black overlay behind logo
 	        document.getElementById("first-panel").style.marginTop = bckgnd_tiles_height + "px";
