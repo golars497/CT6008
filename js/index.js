@@ -60,7 +60,7 @@ var getPositionFromTop = function(element) {
 }
 
 
-var add_logo = function(imgSize, imgPx){
+var add_logo = function(imgSize, imgPx, imgSpeed){
 	//add logo
 	var g_logo = document.createElement("img");
 	g_logo.src = "img/game_logo.png";
@@ -94,8 +94,9 @@ var add_enemy_ships = function (id, size, file) {
 }
 
 
-var errorScreen = function () {
+var errorScreen = function (e) {
 	msg_log("----------------------------------ERROR-----------------------------------------");
+	msg_log(e);
 	$('#loader').dimmer('hide');
 	$('#error').dimmer('setting', {
         closable: false,
@@ -194,6 +195,7 @@ window.onload = function () {
 				function otherEvents() {
 					window.onscroll = function () {
 
+						//add animation for black fading background
 						var distanceTop = getPositionFromTop(document.getElementById("first-panel"));
 
 						var scrollTop = $(window).scrollTop(),
@@ -212,19 +214,18 @@ window.onload = function () {
 				var delay_time = 2000; // 2 seconds
 				//removes loading screen dimmer
 				var loaded = function() {
-		        	$('.dimmer').dimmer('hide');
+		        	$('#loader').dimmer('hide');
 		        	otherEvents();
 		        	animationOfShips();
 				}
 				setTimeout( loaded, delay_time );			        
-				console.log(e);
 			} catch (e) {
-				errorScreen();
+				errorScreen(e);
 			}
 		}
 	} catch (e) {
 		//CODE TO REMOVE LOADER
 		//CODE TO SHOW ERROR
-		errorScreen();
+		errorScreen(e);
 	}
 }	
