@@ -60,7 +60,7 @@ var getPositionFromTop = function(element) {
 }
 
 
-var add_logo = function(imgSize, imgPx, imgSpeed){
+var add_logo = function(imgSize, imgPx){
 	//add logo
 	var g_logo = document.createElement("img");
 	g_logo.src = "img/game_logo.png";
@@ -93,12 +93,22 @@ var add_enemy_ships = function (id, size, file) {
     document.getElementById('intro').appendChild(enemy_ship);
 }
 
+
+var errorScreen = function () {
+	msg_log("----------------------------------ERROR-----------------------------------------");
+	$('#loader').dimmer('hide');
+	$('#error').dimmer('setting', {
+        closable: false,
+        debug: false
+    });
+	$('#error').dimmer('show');
+	$('#error .button').click(function () {
+		msg_log("refresh screen clicked");
+		location.reload();
+	});
+}
 window.onload = function () {
 
-	var errorScreen = function () {
-		$('.dimmer').dimmer('hide');
-		$('#error').modal('show');
-	}
 
 	//get available window width
 	var window_width = window.screen.width
@@ -142,84 +152,79 @@ window.onload = function () {
         img.style.zIndex = "10";      
 		var node = document.getElementById('intro');
 		node.insertBefore(img,node.firstChild);
+
+		img.onload = function () {
+			try {
+				//add buildings	
+				add_tiles("building", size);
+
+				//add logo
+				add_logo(imgSize, imgPx, imgSpeed);
+
+				//Activates parallax effect
+				var rellax = new Rellax('.rellax');
+		        //this adijust the maring top of the next div base on the height of the background tile image
+		    	var bckgnd_tiles_height = $('#intro img')[0].height;
+		    	var blackDivOverlayHeight = bckgnd_tiles_height;
+		        bckgnd_tiles_height = (bckgnd_tiles_height-100).toString();
+
+		        //Add enemy ship
+		        add_enemy_ships("e_ship", enemyShipSize ,"img/obj/e_ship.png");
+		        add_enemy_ships("e_ship2", enemyShipSize ,"img/obj/e_ship.png");
+		        add_enemy_ships("e_ship3", enemyShipSize ,"img/obj/e_ship.png");
+		        add_enemy_ships("e_ship4", enemyShipSize ,"img/obj/e_ship.png");
+
+		        //Add black overlay behind logo
+		        document.getElementById("first-panel").style.marginTop = bckgnd_tiles_height + "px";
+
+		        var blackDiv = document.createElement("div");
+		        blackDiv.style.height = (blackDivOverlayHeight).toString() + "px";
+		        blackDiv.style.width = "100%";
+		        blackDiv.style.position = "absolute";
+		        blackDiv.style.backgroundColor = "#000";
+		        blackDiv.style.top = "0";
+		        blackDiv.style.left = "0";
+		        blackDiv.style.zIndex = "300";
+
+		        blackDiv.style.opacity = "0";
+		        blackDiv.id = "blackDiv";
+
+		        document.getElementById("intro").appendChild(blackDiv);
+
+				function otherEvents() {
+					window.onscroll = function () {
+
+						var distanceTop = getPositionFromTop(document.getElementById("first-panel"));
+
+						var scrollTop = $(window).scrollTop(),
+				        	elementOffset = distanceTop.y,
+				        	distance = (elementOffset - scrollTop);
+
+				        var opacity_multiplier = 0.7;
+				        var opacity_diff = distance / elementOffset;
+				        var output_opacity = opacity_multiplier - (opacity_diff * (opacity_multiplier));
+				        document.getElementById("blackDiv").style.opacity = output_opacity.toString();
+						
+					}
+				}
+
+		        //a delay is used (as a work around). What really needs to happen, is when all the rendering is complete and everything in the DOM is fully loaded, the then the dimmer should turn off.
+				var delay_time = 2000; // 2 seconds
+				//removes loading screen dimmer
+				var loaded = function() {
+		        	$('.dimmer').dimmer('hide');
+		        	otherEvents();
+		        	animationOfShips();
+				}
+				setTimeout( loaded, delay_time );			        
+				console.log(e);
+			} catch (e) {
+				errorScreen();
+			}
+		}
 	} catch (e) {
 		//CODE TO REMOVE LOADER
 		//CODE TO SHOW ERROR
 		errorScreen();
 	}
-
-	img.onload = function () {
-	
-		try {
-			//add buildings	
-			add_tiles("building", size);
-
-			//add logo
-			add_logo(imgSize, imgPx, imgSpeed);
-
-			//Activates parallax effect
-			var rellax = new Rellax('.rellax');
-	        //this adijust the maring top of the next div base on the height of the background tile image
-        	var bckgnd_tiles_height = $('#intro img')[0].height;
-        	var blackDivOverlayHeight = bckgnd_tiles_height;
-	        bckgnd_tiles_height = (bckgnd_tiles_height-100).toString();
-
-	        //Add enemy ship
-	        add_enemy_ships("e_ship", enemyShipSize ,"img/obj/e_ship.png");
-	        add_enemy_ships("e_ship2", enemyShipSize ,"img/obj/e_ship.png");
-	        add_enemy_ships("e_ship3", enemyShipSize ,"img/obj/e_ship.png");
-	        add_enemy_ships("e_ship4", enemyShipSize ,"img/obj/e_ship.png");
-
-	        //Add black overlay behind logo
-	        document.getElementById("first-panel").style.marginTop = bckgnd_tiles_height + "px";
-
-	        var blackDiv = document.createElement("div");
-	        blackDiv.style.height = (blackDivOverlayHeight).toString() + "px";
-	        blackDiv.style.width = "100%";
-	        blackDiv.style.position = "absolute";
-	        blackDiv.style.backgroundColor = "#000";
-	        blackDiv.style.top = "0";
-	        blackDiv.style.left = "0";
-	        blackDiv.style.zIndex = "300";
-
-	        blackDiv.style.opacity = "0";
-	        blackDiv.id = "blackDiv";
-
-	        document.getElementById("intro").appendChild(blackDiv);
-
-			function otherEvents() {
-				window.onscroll = function () {
-
-					var distanceTop = getPositionFromTop(document.getElementById("first-panel"));
-
-					var scrollTop = $(window).scrollTop(),
-			        	elementOffset = distanceTop.y,
-			        	distance = (elementOffset - scrollTop);
-
-			        var opacity_multiplier = 0.7;
-			        var opacity_diff = distance / elementOffset;
-			        var output_opacity = opacity_multiplier - (opacity_diff * (opacity_multiplier));
-			        document.getElementById("blackDiv").style.opacity = output_opacity.toString();
-					
-				}
-			}
-
-	        //a delay is used (as a work around). What really needs to happen, is when all the rendering is complete and everything in the DOM is fully loaded, the then the dimmer should turn off.
-			var delay_time = 2000; // 2 seconds
-			//removes loading screen dimmer
-			var loaded = function() {
-	        	$('.dimmer').dimmer('hide');
-	        	otherEvents();
-	        	animationOfShips();
-			}
-
-			setTimeout( loaded, delay_time );			        
-		} catch (e) {
-			console.log(e);
-			errorScreen();
-			//CODE TO REMOVE LOADER
-			//CODE TO SHOW ERROR
-		}
-	}
-
 }	

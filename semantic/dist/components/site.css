@@ -415,6 +415,9 @@ body {
   background-color: #F70068 !important;
   color: #FFF !important;
 }
+.ui.icon.header {
+  background-color: transparent !important;
+}
 .team-page {
   background-color: #09041A !important;
   border-top: 3px solid #F70068;
@@ -721,12 +724,76 @@ body {
   -webkit-animation: float_f 4s ease-in-out infinite;
           animation: float_f 4s ease-in-out infinite;
 }
+#contact_panel {
+  margin-top: 11em;
+}
+#contact_panel .header {
+  margin-top: 2em !important;
+}
+#contact_panel .ui.text.container {
+  background-color: #F70068;
+  padding-bottom: 1em;
+  border: 1px solid #F70041;
+  -webkit-animation: neon18 2.5s ease-in-out infinite alternate;
+  animation: neon18 2.5s ease-in-out infinite alternate;
+}
+@-webkit-keyframes neon18 {
+  0% {
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068) drop-shadow(0 0 38px #F70068);
+    -webkit-filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068) drop-shadow(0 0 38px #F70068);
+  }
+  100% {
+    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068) drop-shadow(0 0 13px #F70068);
+    -webkit-filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068) drop-shadow(0 0 13px #F70068);
+  }
+}
+@keyframes neon18 {
+  0% {
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068) drop-shadow(0 0 38px #F70068);
+    -webkit-filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068) drop-shadow(0 0 38px #F70068);
+  }
+  100% {
+    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068) drop-shadow(0 0 13px #F70068);
+    -webkit-filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068) drop-shadow(0 0 13px #F70068);
+  }
+}
+#contact_form_input {
+  padding-right: 2em;
+  padding-left: 2em;
+}
+#contact_form_input .textarea {
+  -webkit-box-shadow: 0 0 0 2px #fff inset!important;
+  box-shadow: 0 0 0 2px #fff inset!important;
+}
+.slow_glow {
+  -webkit-animation: neon19 2s ease-in-out infinite alternate;
+  animation: neon19 2s ease-in-out infinite alternate;
+}
+@-webkit-keyframes neon19 {
+  0% {
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068, 1) drop-shadow(0 0 38px #F70068, 1);
+    -webkit-filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068, 1) drop-shadow(0 0 38px #F70068, 1);
+  }
+  100% {
+    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068, 1) drop-shadow(0 0 13px #F70068, 1);
+    -webkit-filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068, 1) drop-shadow(0 0 13px #F70068, 1);
+  }
+}
+@keyframes neon19 {
+  0% {
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068, 1) drop-shadow(0 0 38px #F70068, 1);
+    -webkit-filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068, 1) drop-shadow(0 0 38px #F70068, 1);
+  }
+  100% {
+    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068, 1) drop-shadow(0 0 13px #F70068, 1);
+    -webkit-filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068, 1) drop-shadow(0 0 13px #F70068, 1);
+  }
+}
 @-webkit-keyframes float {
   0% {
     -webkit-filter: drop-shadow(0 0 12px #F70068);
             filter: drop-shadow(0 0 12px #F70068);
-    
-/*    filter: drop-shadow(0 0 2px @vw_pink)
+    /*    filter: drop-shadow(0 0 2px @vw_pink)
             drop-shadow(0 0 5px @vw_pink)
             drop-shadow(0 0 6px @vw_pink)
             drop-shadow(0 0 8px @vw_pink)
@@ -776,8 +843,7 @@ body {
   0% {
     -webkit-filter: drop-shadow(0 0 12px #F70068);
             filter: drop-shadow(0 0 12px #F70068);
-    
-/*    filter: drop-shadow(0 0 2px @vw_pink)
+    /*    filter: drop-shadow(0 0 2px @vw_pink)
             drop-shadow(0 0 5px @vw_pink)
             drop-shadow(0 0 6px @vw_pink)
             drop-shadow(0 0 8px @vw_pink)
@@ -921,74 +987,5 @@ body {
             drop-shadow(0 0 12px @vw_pink);*/
     -webkit-transform: scaleX(-1) translatey(0px);
             transform: scaleX(-1) translatey(0px);
-  }
-}
-#contact_panel {
-  margin-top: 11em;
-}
-#contact_panel .header {
-  margin-top: 2em !important;
-}
-#contact_panel .ui.text.container {
-  background-color: #F70068;
-  padding-bottom: 1em;
-  border: 1px solid #F70041;
-  /*
-        -webkit-box-shadow: 0px 0px 100px @vw_pink2;
-        -moz-box-shadow: 0px 0px 100px @vw_pink2;
-        box-shadow: 0px 0px 100px @vw_pink2; */
-  -webkit-animation: neon18 2.5s ease-in-out infinite alternate;
-  animation: neon18 2.5s ease-in-out infinite alternate;
-}
-@-webkit-keyframes neon18 {
-  0% {
-    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068) drop-shadow(0 0 38px #F70068);
-    -webkit-filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068) drop-shadow(0 0 38px #F70068);
-  }
-  100% {
-    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068) drop-shadow(0 0 13px #F70068);
-    -webkit-filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068) drop-shadow(0 0 13px #F70068);
-  }
-}
-@keyframes neon18 {
-  0% {
-    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068) drop-shadow(0 0 38px #F70068);
-    -webkit-filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068) drop-shadow(0 0 38px #F70068);
-  }
-  100% {
-    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068) drop-shadow(0 0 13px #F70068);
-    -webkit-filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068) drop-shadow(0 0 13px #F70068);
-  }
-}
-#contact_form_input {
-  padding-right: 2em;
-  padding-left: 2em;
-}
-#contact_form_input .textarea {
-  -webkit-box-shadow: 0 0 0 2px #fff inset!important;
-  box-shadow: 0 0 0 2px #fff inset!important;
-}
-.slow_glow {
-  -webkit-animation: neon19 2s ease-in-out infinite alternate;
-  animation: neon19 2s ease-in-out infinite alternate;
-}
-@-webkit-keyframes neon19 {
-  0% {
-    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068) drop-shadow(0 0 38px #F70068);
-    -webkit-filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068) drop-shadow(0 0 38px #F70068);
-  }
-  100% {
-    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068) drop-shadow(0 0 13px #F70068);
-    -webkit-filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068) drop-shadow(0 0 13px #F70068);
-  }
-}
-@keyframes neon19 {
-  0% {
-    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068) drop-shadow(0 0 38px #F70068);
-    -webkit-filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068) drop-shadow(0 0 38px #F70068);
-  }
-  100% {
-    filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068) drop-shadow(0 0 13px #F70068);
-    -webkit-filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #F70068) drop-shadow(0 0 13px #F70068);
   }
 }

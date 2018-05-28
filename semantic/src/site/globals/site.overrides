@@ -224,7 +224,6 @@ body {
   background-color: @vw_blue2 !important;
 }
 
-
 .ui.header {
   padding: 1em 0.7em !important;
   margin-top: 3em !important;
@@ -239,6 +238,9 @@ body {
     background-color: @vw_pink !important;
     color: @vw_white !important;
   }
+}
+.ui.icon.header {
+  background-color: transparent !important;
 }
 
 .team-page {
@@ -460,6 +462,46 @@ body {
   animation: float_f 4s ease-in-out infinite;
 }
 
+
+
+#contact_panel {
+  margin-top: 11em;
+  .header {
+    margin-top: 2em !important;
+  }
+  .ui {
+    &.text {
+      &.container {
+        background-color: @vw_pink;
+        padding-bottom: 1em;
+        border: 1px solid @vw_pink2;    
+        .glow-keyframe3(neon18; @vw_pink);
+        .animation(neon18 2.5s ease-in-out infinite alternate);  
+      }
+    }
+  }
+}
+
+#contact_form_input {
+  padding-right: 2em;
+  padding-left: 2em;
+  .textarea {
+    -webkit-box-shadow: 0 0 0 2px #fff inset!important;
+    box-shadow: 0 0 0 2px #fff inset!important;
+  }
+}
+
+.slow_glow {
+  .glow-keyframe3(neon19; @vw_pink,1);
+  .animation(neon19 2s ease-in-out infinite alternate);    
+}
+
+
+//----------------------------------------------------------------------//
+//-------------------------ANIMATION------------------------------------//
+//----------------------------------------------------------------------//
+
+
 .glow-keyframes(@name, @neon_color) {
   .keyframes (@name; {
     0% {
@@ -483,9 +525,7 @@ body {
 }
 
 
-
-
-.glow-keyframe3(@name, @neon_color, @multiplier) {
+.glow-keyframe3(@name, @neon_color) {
   .keyframes (@name; {
     0% {
       filter: drop-shadow(0 0 2px #fff)
@@ -627,40 +667,4 @@ body {
 
 .filter (@arguments) {
 
-}
-
-
-#contact_panel {
-  margin-top: 11em;
-  .header {
-    margin-top: 2em !important;
-  }
-  .ui {
-    &.text {
-      &.container {
-        background-color: @vw_pink;
-        padding-bottom: 1em;
-        border: 1px solid @vw_pink2;/*
-        -webkit-box-shadow: 0px 0px 100px @vw_pink2;
-        -moz-box-shadow: 0px 0px 100px @vw_pink2;
-        box-shadow: 0px 0px 100px @vw_pink2; */    
-        .glow-keyframe3(neon18; @vw_pink, 1);
-        .animation(neon18 2.5s ease-in-out infinite alternate);  
-      }
-    }
-  }
-}
-
-#contact_form_input {
-  padding-right: 2em;
-  padding-left: 2em;
-  .textarea {
-    -webkit-box-shadow: 0 0 0 2px #fff inset!important;
-    box-shadow: 0 0 0 2px #fff inset!important;
-  }
-}
-
-.slow_glow {
-  .glow-keyframe3(neon19; @vw_pink,0);
-  .animation(neon19 2s ease-in-out infinite alternate);    
 }

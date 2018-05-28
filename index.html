@@ -31,15 +31,36 @@
 
 	</head>
 	<body>
-	  <div id="error" class="ui basic modal">
-	    <div class="header">Error</div>
+	  <div id="error" class="ui page overlay dimmer vw_black">
+		  <div class="ui icon header">
+		    <i class="frown icon"></i>
+		    Error
+		  </div>
+		  <div class="content">
+		  	<div class="ui center aligned grid">
+		  		<div class="center aligned row">
+				    <p class="red">Unexpected Error occured.</p>
+				    <br>
+				    <p>Please  Reload site.</p>
+		  		</div>
+		  	</div>
+		  </div>
+		  <div class="actions">
+		  	<div class="ui center aligned grid">
+		  		<div class="center aligned row">
+				    <div class="ui red inverted button">
+				      <i class="redo icon"></i>Reload
+				    </div>
+		  		</div>		  		
+		  	</div>
+		  </div>
 	  </div>	  
-	  <div class="ui page overlay dimmer vw_black">
+	  <div id="loader" class="ui page overlay dimmer vw_black" style="z-index: 99999;">
 	    <div class="ui large text loader">Loading</div>
 	  </div>
 	<script src="js/create_tiles.js"></script>
 	<script type="text/javascript">
-		$('.dimmer').dimmer('show');		
+		$('#loader').dimmer('show');		
 	</script>	  
 
 	<!-- Following Menu -->
