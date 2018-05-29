@@ -110,7 +110,6 @@ var errorScreen = function (e) {
 }
 window.onload = function () {
 
-
 	//get available window width
 	var window_width = window.screen.width
 		|| document.documentElement.clientWidth
@@ -140,6 +139,13 @@ window.onload = function () {
 	}
 
 	try {
+
+		//if device is mobile
+		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ 			$('#intro').remove();
+ 			$('#first-panel')[0].style.marginTop = 0;
+ 			return;
+		}
 
 		//ADDS black parallax tiles
 		add_tiles("blank", size);

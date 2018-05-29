@@ -1,10 +1,3 @@
-var loggingOn = true;
-function msg_log(input) {
-	if (loggingOn) {
-		console.log(input);
-	}
-}
-
 function add_tiles (blankOrColor, size) {
 
 	var tiles_formation =  [
