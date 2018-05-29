@@ -1,3 +1,20 @@
+//CODE FOR second pop-up fixed menu when scorlling past first section
+$(document).ready(function() {
+  // fix menu when passed
+  $('.parallax-container')
+    .visibility({
+      once: false,
+      onBottomPassed: function() {
+        $('.fixed.menu').transition('fade in');
+      },
+      onBottomPassedReverse: function() {
+        $('.fixed.menu').transition('fade out');
+      }
+    });
+  // create sidebar and attach to menu open
+  $('.ui.sidebar').sidebar('attach events', '.toc.item');
+});	
+
 var animateEnemyShip = function (posX, posY, ship_dom) {
 
 	//posY should be fixed
@@ -31,6 +48,12 @@ var animateEnemyShip = function (posX, posY, ship_dom) {
 }
 
 var animationOfShips = function () {
+
+	//for turning off animations
+	if (animateFlag === false) {
+		return;
+	}
+
 	animateEnemyShip(500, 500, '#e_ship');
 	setInterval(function(){
 		animateEnemyShip(-500, 500, '#e_ship'); 
@@ -65,7 +88,7 @@ var add_logo = function(imgSize, imgPx, imgSpeed){
 	var g_logo = document.createElement("img");
 	g_logo.src = "img/game_logo.png";
 	g_logo.style.zIndex = "500";
-	g_logo.className += "ui centered " + imgSize + "  image rellax parallax-layer";
+	g_logo.className += "ui centered " + imgSize + "  image rellaxLogo parallax-layer";
 
 	//to position logo dynamically
 	g_logo.style.top = ((window.innerHeight / 2) - imgPx).toString() +  "px";
@@ -133,7 +156,7 @@ window.onload = function () {
 	} else {
 		size = "s";
 		imgSize = "large";
-		imgSpeed = -7;
+		imgSpeed = -7.5;
 		imgPx = 210;
 		enemyShipSize = "medium";
 	}
@@ -169,11 +192,18 @@ window.onload = function () {
 				add_logo(imgSize, imgPx, imgSpeed);
 
 				//Activates parallax effect
-				var rellax = new Rellax('.rellax');
+				if (rellaxFlag !== false) {
+					var rellax = new Rellax('.rellax');
+				} 
 		        //this adijust the maring top of the next div base on the height of the background tile image
 		    	var bckgnd_tiles_height = $('#intro img')[0].height;
 		    	var blackDivOverlayHeight = bckgnd_tiles_height;
 		        bckgnd_tiles_height = (bckgnd_tiles_height-100).toString();
+
+		        //adjust height of the parallax div
+		        //this doesnt really change anything visually, but is used by 
+		        //the second menu in hompage to determine when to appear
+		        $('#intro')[0].style.height = (blackDivOverlayHeight*2).toString() + "px";
 
 		        //Add enemy ship
 		        add_enemy_ships("e_ship", enemyShipSize ,"img/obj/e_ship.png");
@@ -181,9 +211,40 @@ window.onload = function () {
 		        add_enemy_ships("e_ship3", enemyShipSize ,"img/obj/e_ship.png");
 		        add_enemy_ships("e_ship4", enemyShipSize ,"img/obj/e_ship.png");
 
-		        //Add black overlay behind logo
-		        document.getElementById("first-panel").style.marginTop = bckgnd_tiles_height + "px";
+		        var secondSection = document.createElement('div');
+		        secondSection.id += "secondSection";
+		        secondSection.style.top = (blackDivOverlayHeight-100).toString() + "px";
+		        secondSection.style.height = blackDivOverlayHeight.toString() + "px";
+		        secondSection.style.minHeight = "900px";
+		        secondSection.style.position = "absolute";
+		        secondSection.style.width = "100%";
 
+		        $('#intro').append(secondSection);
+
+		        var second_section_image = document.createElement('img');
+		        second_section_image.id = "second_section_image";
+		        second_section_image.src =  "img/second_section.png";
+		        second_section_image.style.height = "100%";
+		        second_section_image.className += "rellaxLogo";
+		        second_section_image.setAttribute("data-rellax-speed", "-3");
+
+		        $('#secondSection').append(second_section_image);
+
+		        var second_section_bar = document.createElement("div");
+		        second_section_bar.className += "second_section_bar";
+		        second_section_bar.style.position = "absolute";
+		        second_section_bar.style.top = "70px";
+		        second_section_bar.style.left = "0";
+
+		        $('#secondSection').append(second_section_bar); 
+
+				//TEMPORARY. REMOVE THIS
+				var rellax = new Rellax('.rellaxLogo');		        
+
+		        //offsets first panel
+		        document.getElementById("first-panel").style.marginTop = (blackDivOverlayHeight*2).toString() + "px";
+		        
+		        //Add black overlay behind logo
 		        var blackDiv = document.createElement("div");
 		        blackDiv.style.height = (blackDivOverlayHeight).toString() + "px";
 		        blackDiv.style.width = "100%";
@@ -202,7 +263,7 @@ window.onload = function () {
 					window.onscroll = function () {
 
 						//add animation for black fading background
-						var distanceTop = getPositionFromTop(document.getElementById("first-panel"));
+						var distanceTop = getPositionFromTop(document.getElementById("secondSection"));
 
 						var scrollTop = $(window).scrollTop(),
 				        	elementOffset = distanceTop.y,
@@ -210,9 +271,10 @@ window.onload = function () {
 
 				        var opacity_multiplier = 0.7;
 				        var opacity_diff = distance / elementOffset;
-				        var output_opacity = opacity_multiplier - (opacity_diff * (opacity_multiplier));
+				        var output_opacity = opacity_multiplier - (opacity_diff * opacity_multiplier);
+				        var second_section_opacity = output_opacity - 0.1;
 				        document.getElementById("blackDiv").style.opacity = output_opacity.toString();
-						
+						document.getElementById("second_section_image").style.opacity = second_section_opacity.toString();
 					}
 				}
 

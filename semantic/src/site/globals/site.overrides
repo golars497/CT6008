@@ -87,6 +87,17 @@ div #top-menu {
   }
 }
 
+.second_section_bar {
+  z-index: 99999 !important;
+  background-color: @vw_light_blue !important;
+  border: 1px solid @vw_light_blue;
+  -webkit-box-shadow: 0px 0px 100px @vw_light_blue;
+  -moz-box-shadow: 0px 0px 100px @vw_light_blue;
+  box-shadow: 0px 0px 100px @vw_light_blue;
+  width: 100% !important;
+  min-height: 100px !important; 
+}
+
 div.ui.large.top.fixed.menu {
   z-index: 99999 !important;
   background-color: @vw_yellow !important;

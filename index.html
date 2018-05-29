@@ -11,25 +11,6 @@
 		<script src="js/global-helpers.js"></script>
 		<script src="semantic/dist/semantic.min.js"></script>	
 		<script src="js/dom-to-image.js"></script>
-		<script type="text/javascript">
-			//CODE FOR second pop-up fixed menu when scorlling past first section
-			$(document).ready(function() {
-			  // fix menu when passed
-			  $('.parallax-container')
-			    .visibility({
-			      once: false,
-			      onBottomPassed: function() {
-			        $('.fixed.menu').transition('fade in');
-			      },
-			      onBottomPassedReverse: function() {
-			        $('.fixed.menu').transition('fade out');
-			      }
-			    });
-			  // create sidebar and attach to menu open
-			  $('.ui.sidebar').sidebar('attach events', '.toc.item');
-			});	
-		</script>
-
 	</head>
 	<body>
 	  <div id="error" class="ui page overlay dimmer vw_black">

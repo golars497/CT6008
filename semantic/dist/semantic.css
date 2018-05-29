@@ -854,6 +854,16 @@ div #top-menu a:nth-child(4):active {
   color: #09041A !important;
 }
 
+.second_section_bar {
+  z-index: 99999 !important;
+  background-color: #228DFF !important;
+  border: 1px solid #228DFF;
+  -webkit-box-shadow: 0px 0px 100px #228DFF;
+  box-shadow: 0px 0px 100px #228DFF;
+  width: 100% !important;
+  min-height: 50px !important;
+}
+
 div.ui.large.top.fixed.menu {
   z-index: 99999 !important;
   background-color: #FAC751 !important;
