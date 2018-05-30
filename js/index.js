@@ -83,19 +83,20 @@ var getPositionFromTop = function(element) {
 }
 
 
-var add_logo = function(imgSize, imgPx, imgSpeed){
+var add_logo = function(imgSize, imgPx, imgSpeed, imgFile, zIndex, id, rellaxZindex, parentNode){
 	//add logo
 	var g_logo = document.createElement("img");
-	g_logo.src = "img/game_logo.png";
-	g_logo.style.zIndex = "500";
+	g_logo.id = id;
+	g_logo.src = imgFile;
+	g_logo.style.zIndex = zIndex;
 	g_logo.className += "ui centered " + imgSize + "  image rellaxLogo parallax-layer";
 
 	//to position logo dynamically
 	g_logo.style.top = ((window.innerHeight / 2) - imgPx).toString() +  "px";
 	g_logo.setAttribute("data-rellax-speed", imgSpeed);
-	g_logo.setAttribute("data-rellax-zindex", 10);					
+	g_logo.setAttribute("data-rellax-zindex", rellaxZindex);					
 
-	document.getElementById("intro").appendChild(g_logo);	
+	document.getElementById(parentNode).appendChild(g_logo);	
 }
 
 
@@ -145,6 +146,8 @@ window.onload = function () {
 	var imgSpeed;
 	var imgPx;
 	var enemyShipSize;
+	var logoFile;
+	var logoFile2;
 
 	//if the screen's resolution is above 1920px in width then switch to "medium mode"
 	if (window_width > 1920) {
@@ -153,12 +156,16 @@ window.onload = function () {
 		imgSpeed = -9;
 		imgPx = 373;
 		enemyShipSize = "large"
+		logoFile = "img/game_logo.png";
+		logoFile2 = "img/game_logo_2.png";
 	} else {
 		size = "s";
 		imgSize = "large";
-		imgSpeed = -7.5;
+		imgSpeed = -9;
 		imgPx = 210;
 		enemyShipSize = "medium";
+		logoFile = "img/game_logo_s.png";
+		logoFile2 = "img/game_logo_2_s.png";
 	}
 
 	try {
@@ -188,9 +195,6 @@ window.onload = function () {
 				//add buildings	
 				add_tiles("building", size);
 
-				//add logo
-				add_logo(imgSize, imgPx, imgSpeed);
-
 				//Activates parallax effect
 				if (rellaxFlag !== false) {
 					var rellax = new Rellax('.rellax');
@@ -218,6 +222,7 @@ window.onload = function () {
 		        secondSection.style.minHeight = "900px";
 		        secondSection.style.position = "absolute";
 		        secondSection.style.width = "100%";
+		        secondSection.style.zIndex = "-200";
 
 		        $('#intro').append(secondSection);
 
@@ -225,6 +230,7 @@ window.onload = function () {
 		        second_section_image.id = "second_section_image";
 		        second_section_image.src =  "img/second_section.png";
 		        second_section_image.style.height = "100%";
+		        second_section_image.style.zIndex = "-100";
 		        second_section_image.className += "rellaxLogo";
 		        second_section_image.setAttribute("data-rellax-speed", "-3");
 
@@ -233,13 +239,11 @@ window.onload = function () {
 		        var second_section_bar = document.createElement("div");
 		        second_section_bar.className += "second_section_bar";
 		        second_section_bar.style.position = "absolute";
-		        second_section_bar.style.top = "70px";
+		        second_section_bar.style.top = (blackDivOverlayHeight - 50).toString() + "px";
 		        second_section_bar.style.left = "0";
 
-		        $('#secondSection').append(second_section_bar); 
+		        $('#intro').append(second_section_bar); 
 
-				//TEMPORARY. REMOVE THIS
-				var rellax = new Rellax('.rellaxLogo');		        
 
 		        //offsets first panel
 		        document.getElementById("first-panel").style.marginTop = (blackDivOverlayHeight*2).toString() + "px";
@@ -259,6 +263,12 @@ window.onload = function () {
 
 		        document.getElementById("intro").appendChild(blackDiv);
 
+				//add logo
+				add_logo(imgSize, imgPx, imgSpeed, logoFile, "500", "logo1", 10, "intro");
+				add_logo(imgSize, imgPx, imgSpeed, logoFile2, "-50", "logo2", -10, "intro");
+				//TEMPORARY. REMOVE THIS
+				var rellax = new Rellax('.rellaxLogo');		        
+
 				function otherEvents() {
 					window.onscroll = function () {
 
@@ -269,12 +279,20 @@ window.onload = function () {
 				        	elementOffset = distanceTop.y,
 				        	distance = (elementOffset - scrollTop);
 
-				        var opacity_multiplier = 0.7;
+				        var opacity_multiplier = 1;
 				        var opacity_diff = distance / elementOffset;
 				        var output_opacity = opacity_multiplier - (opacity_diff * opacity_multiplier);
-				        var second_section_opacity = output_opacity - 0.1;
+				        //output_opacity = Math.pow(output_opacity, 5) + 0.7;
+				        console.log("x: " + opacity_diff + " y: " + output_opacity);
+
+				        //used to increase change of opacity near the end higher half so that the graident 
+				        //is not linear
+				        var multiplier_logo1 = (opacity_diff < 0.5) ? output_opacity * 1.5 : output_opacity;
+				        var logo1_opacity = 1 - multiplier_logo1;
 				        document.getElementById("blackDiv").style.opacity = output_opacity.toString();
-						document.getElementById("second_section_image").style.opacity = second_section_opacity.toString();
+						document.getElementById("logo1").style.opacity = logo1_opacity.toString();
+						document.getElementById("logo2").style.opacity = output_opacity.toString();
+						document.getElementById("second_section_image").style.opacity = (output_opacity - 0.2).toString();
 					}
 				}
 
