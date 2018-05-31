@@ -15,6 +15,30 @@ $(document).ready(function() {
   $('.ui.sidebar').sidebar('attach events', '.toc.item');
 });	
 
+var scrollEvents = function () {
+	//add animation for black fading background
+	var distanceTop = getPositionFromTop(document.getElementById("secondSection"));
+
+	var scrollTop = $(window).scrollTop(),
+    	elementOffset = distanceTop.y,
+    	distance = (elementOffset - scrollTop);
+
+    var opacity_multiplier = 1;
+    var opacity_diff = distance / elementOffset;
+    var output_opacity = opacity_multiplier - (opacity_diff * opacity_multiplier);
+    //output_opacity = Math.pow(output_opacity, 5) + 0.7;
+    console.log("x: " + opacity_diff + " y: " + output_opacity);
+
+    //used to increase change of opacity near the end higher half so that the graident 
+    //is not linear
+    var multiplier_logo1 = (opacity_diff < 0.5) ? output_opacity * 1.3: output_opacity;
+    var logo1_opacity = 1 - multiplier_logo1;
+    document.getElementById("blackDiv").style.opacity = (output_opacity+0.25).toString();
+	document.getElementById("logo1").style.opacity = logo1_opacity.toString();
+	document.getElementById("logo2").style.opacity = output_opacity.toString();
+	document.getElementById("second_section_image").style.opacity = (output_opacity - 0.2).toString();	
+}
+
 var animateEnemyShip = function (posX, posY, ship_dom) {
 
 	//posY should be fixed
@@ -153,7 +177,7 @@ window.onload = function () {
 	if (window_width > 1920) {
 		size = "m";
 		imgSize = "huge";
-		imgSpeed = -9;
+		imgSpeed = -10;
 		imgPx = 373;
 		enemyShipSize = "large"
 		logoFile = "img/game_logo.png";
@@ -270,29 +294,10 @@ window.onload = function () {
 				var rellax = new Rellax('.rellaxLogo');		        
 
 				function otherEvents() {
+					//trigger scroll event when page load
+					scrollEvents();
 					window.onscroll = function () {
-
-						//add animation for black fading background
-						var distanceTop = getPositionFromTop(document.getElementById("secondSection"));
-
-						var scrollTop = $(window).scrollTop(),
-				        	elementOffset = distanceTop.y,
-				        	distance = (elementOffset - scrollTop);
-
-				        var opacity_multiplier = 1;
-				        var opacity_diff = distance / elementOffset;
-				        var output_opacity = opacity_multiplier - (opacity_diff * opacity_multiplier);
-				        //output_opacity = Math.pow(output_opacity, 5) + 0.7;
-				        console.log("x: " + opacity_diff + " y: " + output_opacity);
-
-				        //used to increase change of opacity near the end higher half so that the graident 
-				        //is not linear
-				        var multiplier_logo1 = (opacity_diff < 0.5) ? output_opacity * 1.5 : output_opacity;
-				        var logo1_opacity = 1 - multiplier_logo1;
-				        document.getElementById("blackDiv").style.opacity = output_opacity.toString();
-						document.getElementById("logo1").style.opacity = logo1_opacity.toString();
-						document.getElementById("logo2").style.opacity = output_opacity.toString();
-						document.getElementById("second_section_image").style.opacity = (output_opacity - 0.2).toString();
+						scrollEvents();
 					}
 				}
 
