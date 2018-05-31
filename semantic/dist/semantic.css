@@ -805,8 +805,6 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 #first-panel {
   margin-top: 900px;
-  -webkit-box-shadow: 0px -5px 20px 0px #F70041;
-  box-shadow: 0px -5px 20px 0px #F70041;
 }
 
 #first-panel .button {
@@ -860,7 +858,7 @@ div #top-menu a:nth-child(4):active {
   -webkit-box-shadow: 0px 0px 100px #228DFF;
   box-shadow: 0px 0px 100px #228DFF;
   width: 100% !important;
-  min-height: 100px !important;
+  min-height: 60px !important;
 }
 
 div.ui.large.top.fixed.menu {
@@ -920,6 +918,15 @@ div.ui.large.top.fixed.menu {
 
 .ui.vertical.stripe .horizontal.divider {
   margin: 3em 0em;
+}
+
+#second_section_video {
+  max-width: 100%;
+  min-width: 100%;
+  height: auto;
+  min-height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 
 @media only screen and (max-width: 700px) {

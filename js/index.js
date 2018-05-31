@@ -36,7 +36,7 @@ var scrollEvents = function () {
     document.getElementById("blackDiv").style.opacity = (output_opacity+0.25).toString();
 	document.getElementById("logo1").style.opacity = logo1_opacity.toString();
 	document.getElementById("logo2").style.opacity = output_opacity.toString();
-	document.getElementById("second_section_image").style.opacity = (output_opacity - 0.2).toString();	
+	document.getElementById("second_section_video").style.opacity = (output_opacity - 0.2).toString();	
 }
 
 var animateEnemyShip = function (posX, posY, ship_dom) {
@@ -250,16 +250,24 @@ window.onload = function () {
 
 		        $('#intro').append(secondSection);
 
-		        var second_section_image = document.createElement('img');
-		        second_section_image.id = "second_section_image";
-		        second_section_image.src =  "img/second_section.png";
-		        second_section_image.style.height = "100%";
-		        second_section_image.style.zIndex = "-100";
-		        second_section_image.className += "rellaxLogo";
-		        second_section_image.setAttribute("data-rellax-speed", "-3");
+		        //add second section image
+		        // var second_section_image = document.createElement('img');
+		        // second_section_image.id = "second_section_image";
+		        // second_section_image.src =  "img/second_section.png";
+		        // second_section_image.style.height = "100%";
+		        // second_section_image.style.zIndex = "-100";
+		        // second_section_image.className += "rellaxLogo";
+		        // second_section_image.setAttribute("data-rellax-speed", "-3");
 
-		        $('#secondSection').append(second_section_image);
+		        var second_section_video = document.createElement('video');
+		        second_section_video.id = "second_section_video";
+		        second_section_video.src = "img/trailer.mp4";
+		        second_section_video.style.height = "100%";
+		        second_section_video.style.zIndex = "-100";
 
+		        $('#secondSection').append(second_section_video);
+
+		        //add second section divider
 		        var second_section_bar = document.createElement("div");
 		        second_section_bar.className += "second_section_bar";
 		        second_section_bar.style.position = "absolute";
@@ -268,10 +276,12 @@ window.onload = function () {
 
 		        $('#intro').append(second_section_bar); 
 
+		        //offset first panel
+	        	var videoHeight = $('#second_section_video')[0].offsetHeight;
+	        	var position = getPositionFromTop(document.getElementById("second_section_video"));
 
-		        //offsets first panel
-		        document.getElementById("first-panel").style.marginTop = (blackDivOverlayHeight*2).toString() + "px";
-		        
+	        	document.getElementById("first-panel").style.marginTop = (position.y + videoHeight -100).toString() + "px";	
+
 		        //Add black overlay behind logo
 		        var blackDiv = document.createElement("div");
 		        blackDiv.style.height = (blackDivOverlayHeight).toString() + "px";
