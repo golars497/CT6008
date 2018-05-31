@@ -6,6 +6,6 @@ function msg_log(input) {
 }
 
 //turn off enemyship animations on index.html
-var animateFlag = false;
+var animateFlag = true;
 //stops rellax parallax from activating
-var rellaxFlag = false;
+var rellaxFlag = true;

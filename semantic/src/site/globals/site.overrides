@@ -101,9 +101,10 @@ div #top-menu {
 #secondSection {
   .ui.grid {
     left: 60px;
-    top: 100px;
+    top: 0px;
     position: absolute;
   }
+  background-color: #000;
 }
 
 div.ui.large.top.fixed.menu {

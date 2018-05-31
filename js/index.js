@@ -3,7 +3,7 @@
  * 1. Team page
  * 2. rest rellax properties
  * 3. sort out rest of home page
- * 4. fix button
+ * 4. fix button and add functionality
  */
 
 
@@ -36,7 +36,7 @@ var scrollEvents = function () {
     var opacity_diff = distance / elementOffset;
     var output_opacity = opacity_multiplier - (opacity_diff * opacity_multiplier);
     //output_opacity = Math.pow(output_opacity, 5) + 0.7;
-    console.log("x: " + opacity_diff + " y: " + output_opacity);
+    msg_log("x: " + opacity_diff + " y: " + output_opacity);
 
     //used to increase change of opacity near the end higher half so that the graident 
     //is not linear
@@ -44,8 +44,27 @@ var scrollEvents = function () {
     var logo1_opacity = 1 - multiplier_logo1;
     document.getElementById("blackDiv").style.opacity = (output_opacity+0.25).toString();
 	document.getElementById("logo1").style.opacity = logo1_opacity.toString();
-	document.getElementById("logo2").style.opacity = output_opacity.toString();
+	//document.getElementById("logo2").style.opacity = output_opacity.toString();
 	document.getElementById("second_section_video").style.opacity = (output_opacity - 0.2).toString();	
+}
+
+var addPlayButton = function (top) {
+	//Add play button
+    var play_button_str = "<div class='ui grid' style='position:absolute; z-index:500; left:50px; top:" + (top).toString() + "px;'>" + 
+    					  "<h1 class = 'ui header' id='trailer_button'>" + 
+    					  "Play trailer <i class='play circle outline icon'></i></h1></div>";
+    document.getElementById("intro").insertAdjacentHTML( 'afterend', play_button_str );
+
+	var trailer=document.getElementById("second_section_video"); 
+
+	$('#trailer_button').click(function () {
+		console.log("clicked BROOOO");
+		if (trailer.paused) {
+		    trailer.play(); 
+		} else { 
+			trailer.pause();
+		}
+	}); 	
 }
 
 var animateEnemyShip = function (posX, posY, ship_dom) {
@@ -116,18 +135,23 @@ var getPositionFromTop = function(element) {
 }
 
 
-var add_logo = function(imgSize, imgPx, imgSpeed, imgFile, zIndex, id, rellaxZindex, parentNode){
+var add_logo = function(imgSize, imgPx, imgSpeed, imgFile, zIndex, id, rellaxZindex, parentNode, isVisibile){
 	//add logo
 	var g_logo = document.createElement("img");
 	g_logo.id = id;
 	g_logo.src = imgFile;
 	g_logo.style.zIndex = zIndex;
-	g_logo.className += "ui centered " + imgSize + "  image rellaxLogo parallax-layer";
+	g_logo.className += "ui centered " + imgSize + "  image rellax parallax-layer";
 
 	//to position logo dynamically
 	g_logo.style.top = ((window.innerHeight / 2) - imgPx).toString() +  "px";
 	g_logo.setAttribute("data-rellax-speed", imgSpeed);
-	g_logo.setAttribute("data-rellax-zindex", rellaxZindex);					
+	g_logo.setAttribute("data-rellax-zindex", rellaxZindex);	
+	if (isVisibile == false) {
+		g_logo.style.visibility = "hidden";
+	} else {
+		g_logo.style.visibility = "visible";
+	}		
 
 	document.getElementById(parentNode).appendChild(g_logo);	
 }
@@ -181,12 +205,14 @@ window.onload = function () {
 	var enemyShipSize;
 	var logoFile;
 	var logoFile2;
+	var logo2Speed;
 
 	//if the screen's resolution is above 1920px in width then switch to "medium mode"
 	if (window_width > 1920) {
 		size = "m";
 		imgSize = "huge";
 		imgSpeed = -10;
+		logo2Speed = -8;
 		imgPx = 373;
 		enemyShipSize = "large"
 		logoFile = "img/game_logo.png";
@@ -194,7 +220,8 @@ window.onload = function () {
 	} else {
 		size = "s";
 		imgSize = "large";
-		imgSpeed = -9;
+		imgSpeed = -8;
+		logo2Speed = -6;
 		imgPx = 210;
 		enemyShipSize = "medium";
 		logoFile = "img/game_logo_s.png";
@@ -227,11 +254,6 @@ window.onload = function () {
 			try {
 				//add buildings	
 				add_tiles("building", size);
-
-				//Activates parallax effect
-				if (rellaxFlag !== false) {
-					var rellax = new Rellax('.rellax');
-				} 
 		        //this adijust the maring top of the next div base on the height of the background tile image
 		    	var bckgnd_tiles_height = $('#intro img')[0].height;
 		    	var blackDivOverlayHeight = bckgnd_tiles_height;
@@ -245,12 +267,12 @@ window.onload = function () {
 
 		        var secondSection = document.createElement('div');
 		        secondSection.id += "secondSection";
-		        secondSection.style.top = (blackDivOverlayHeight-100).toString() + "px";
+		        secondSection.style.top = blackDivOverlayHeight + "px";
 		        secondSection.style.height = blackDivOverlayHeight.toString() + "px";
 		        secondSection.style.minHeight = "900px";
 		        secondSection.style.position = "absolute";
 		        secondSection.style.width = "100%";
-		        secondSection.style.zIndex = "-200";
+		        secondSection.style.zIndex = "300";
 
 		        $('#intro').append(secondSection);
 
@@ -263,10 +285,7 @@ window.onload = function () {
 
 		        $('#secondSection').append(second_section_video);
 
-		        //Add play button
-		        var play_button_str = "<div class='ui grid'><h1 class = 'ui header'>Play trailer <i class='play circle outline icon'></i></h1></div>";
-		        document.getElementById("secondSection").insertAdjacentHTML( 'beforeend', play_button_str );
-
+		        
 		        //add second section divider
 		        var second_section_bar = document.createElement("div");
 		        second_section_bar.className += "second_section_bar";
@@ -298,10 +317,24 @@ window.onload = function () {
 		        document.getElementById("intro").appendChild(blackDiv);
 
 				//add logo
-				add_logo(imgSize, imgPx, imgSpeed, logoFile, "500", "logo1", 10, "intro");
-				add_logo(imgSize, imgPx, imgSpeed, logoFile2, "-50", "logo2", -10, "intro");
-				//TEMPORARY. REMOVE THIS
-				var rellax = new Rellax('.rellaxLogo');		        
+				add_logo(imgSize, imgPx, imgSpeed, logoFile, "500", "logo1", 10, "intro", true);
+				add_logo(imgSize, imgPx, logo2Speed, logoFile2, "320", "logo2", 10, "intro", false);
+				
+				  $('.second_section_bar')
+				    .visibility({
+				      once: false,
+				      onTopPassed: function() {
+				        $('#logo2').transition('fade in');
+				      },
+				      onTopPassedReverse: function() {
+				        $('#logo2').transition('fade out');
+				      }
+				    });
+
+				//Activates parallax effect
+				if (rellaxFlag !== false) {
+					var rellax = new Rellax('.rellax');
+				}
 
 		        //adjust height of the parallax div
 		        //this doesnt really change anything visually, but is used by 
@@ -313,6 +346,7 @@ window.onload = function () {
 				function otherEvents() {
 					//trigger scroll event when page load
 					scrollEvents();
+					addPlayButton(blackDivOverlayHeight);
 					window.onscroll = function () {
 						scrollEvents();
 					}

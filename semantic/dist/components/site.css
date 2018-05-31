@@ -284,9 +284,12 @@ div #top-menu a:nth-child(4):active {
   width: 100% !important;
   min-height: 60px !important;
 }
+#secondSection {
+  background-color: #000;
+}
 #secondSection .ui.grid {
   left: 60px;
-  top: 100px;
+  top: 0px;
   position: absolute;
 }
 div.ui.large.top.fixed.menu {
