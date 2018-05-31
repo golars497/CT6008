@@ -45,8 +45,8 @@
 
 #first-panel {
   margin-top: 900px;
-  border-top: 3px solid @vw_pink;
-  .shadow(0px -5px 20px 0px @vw_pink2);  
+  // border-top: 3px solid @vw_pink;
+  // .shadow(0px -5px 20px 0px @vw_pink2);  
   .button {
     color: @vw_white !important;
   }
