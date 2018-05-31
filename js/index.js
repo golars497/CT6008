@@ -3,6 +3,7 @@
  * 1. Team page
  * 2. rest rellax properties
  * 3. sort out rest of home page
+ * 4. fix button
  */
 
 
@@ -263,8 +264,8 @@ window.onload = function () {
 		        $('#secondSection').append(second_section_video);
 
 		        //Add play button
-		        var play_button_str = "<h1 class = 'ui header'>Play trailer</h1>";
-		        document.getElementById("secondSection").insertAdjacentHTML( 'afterbegin', play_button_str );
+		        var play_button_str = "<div class='ui grid'><h1 class = 'ui header'>Play trailer <i class='play circle outline icon'></i></h1></div>";
+		        document.getElementById("secondSection").insertAdjacentHTML( 'beforeend', play_button_str );
 
 		        //add second section divider
 		        var second_section_bar = document.createElement("div");
