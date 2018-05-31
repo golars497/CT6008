@@ -1,3 +1,11 @@
+/*
+ * TODO
+ * 1. Team page
+ * 2. rest rellax properties
+ * 3. sort out rest of home page
+ */
+
+
 //CODE FOR second pop-up fixed menu when scorlling past first section
 $(document).ready(function() {
   // fix menu when passed
@@ -228,11 +236,6 @@ window.onload = function () {
 		    	var blackDivOverlayHeight = bckgnd_tiles_height;
 		        bckgnd_tiles_height = (bckgnd_tiles_height-100).toString();
 
-		        //adjust height of the parallax div
-		        //this doesnt really change anything visually, but is used by 
-		        //the second menu in hompage to determine when to appear
-		        $('#intro')[0].style.height = (blackDivOverlayHeight*2).toString() + "px";
-
 		        //Add enemy ship
 		        add_enemy_ships("e_ship", enemyShipSize ,"img/obj/e_ship.png");
 		        add_enemy_ships("e_ship2", enemyShipSize ,"img/obj/e_ship.png");
@@ -250,22 +253,18 @@ window.onload = function () {
 
 		        $('#intro').append(secondSection);
 
-		        //add second section image
-		        // var second_section_image = document.createElement('img');
-		        // second_section_image.id = "second_section_image";
-		        // second_section_image.src =  "img/second_section.png";
-		        // second_section_image.style.height = "100%";
-		        // second_section_image.style.zIndex = "-100";
-		        // second_section_image.className += "rellaxLogo";
-		        // second_section_image.setAttribute("data-rellax-speed", "-3");
-
 		        var second_section_video = document.createElement('video');
 		        second_section_video.id = "second_section_video";
 		        second_section_video.src = "img/trailer.mp4";
+		        second_section_video.poster = "img/second_section.png";
 		        second_section_video.style.height = "100%";
 		        second_section_video.style.zIndex = "-100";
 
 		        $('#secondSection').append(second_section_video);
+
+		        //Add play button
+		        var play_button_str = "<h1 class = 'ui header'>Play trailer</h1>";
+		        document.getElementById("secondSection").insertAdjacentHTML( 'afterbegin', play_button_str );
 
 		        //add second section divider
 		        var second_section_bar = document.createElement("div");
@@ -302,6 +301,13 @@ window.onload = function () {
 				add_logo(imgSize, imgPx, imgSpeed, logoFile2, "-50", "logo2", -10, "intro");
 				//TEMPORARY. REMOVE THIS
 				var rellax = new Rellax('.rellaxLogo');		        
+
+		        //adjust height of the parallax div
+		        //this doesnt really change anything visually, but is used by 
+		        //the second menu in hompage to determine when to appear
+		        //get the height of everything before first-panel
+		        var parallaxAreaHeight = getPositionFromTop(document.getElementById("first-panel"));
+		        $('#intro')[0].style.height = (parallaxAreaHeight.y).toString() + "px";
 
 				function otherEvents() {
 					//trigger scroll event when page load
