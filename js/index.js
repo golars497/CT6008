@@ -50,7 +50,7 @@ var scrollEvents = function () {
 
 var addPlayButton = function (top) {
 	//Add play button
-    var play_button_str = "<div class='ui grid' style='position:absolute; z-index:500; left:50px; top:" + (top).toString() + "px;'>" + 
+    var play_button_str = "<div id='trailer_button_grid' class='ui grid' style='position:absolute; z-index:500; left:50px; top:" + (top).toString() + "px;'>" + 
     					  "<h1 class = 'ui header' id='trailer_button'>" + 
     					  "Play trailer <i id='player_button_icon' class='play circle outline icon'></i></h1></div>";
     document.getElementById("intro").insertAdjacentHTML( 'afterend', play_button_str );
@@ -58,15 +58,17 @@ var addPlayButton = function (top) {
 	var trailer=document.getElementById("second_section_video"); 
 
 	$('#trailer_button').click(function () {
-		console.log("clicked BROOOO");
+		msg_log("trailer button was clicked");
 		if (trailer.paused) {
 		    trailer.play();
 		    document.getElementById('player_button_icon').className = "play circle outline icon"; 
 		    document.getElementById('logo2').style.visibility = "hidden";
+		    logo_two_once = true;
 		} else { 
 			trailer.pause();
-		    document.getElementById('player_button_icon').className = "pause circle outline";
+		    document.getElementById('player_button_icon').className = "pause circle outline icon";
 		    document.getElementById('logo2').style.visibility = "hidden";
+		    logo_two_once = true;
 		}
 	}); 	
 }
@@ -328,10 +330,15 @@ window.onload = function () {
 				    .visibility({
 				      once: false,
 				      onTopPassed: function() {
-				        $('#logo2').transition('fade in');
+				      	if (logo_two_once == false) {
+				        	$('#logo2').transition('fade in');
+				    	}
+				    	$('#trailer_button_grid').transition('fly right');
+;
 				      },
 				      onTopPassedReverse: function() {
 				        $('#logo2').transition('fade out');
+				    	$('#trailer_button_grid').transition('fly right');
 				      }
 				    });
 

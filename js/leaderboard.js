@@ -51,6 +51,18 @@ var tableProperties =  {
 			]
 }
 
+var obj_to_array = function (scores) {
+
+	var new_scores = [];	
+	for (var property in scores) {
+	    if (scores.hasOwnProperty(property)) {
+	    		new_scores.push(scores[property]);
+	    }
+	}	
+
+	return new_scores;
+}
+
 window.onload = function () {
 
 	$('.dimmer').dimmer('hide');
@@ -63,7 +75,7 @@ window.onload = function () {
 		//scores get stored and table gets created once data is retrieved
 		//TODO: Add Time-out
 		scores = scoreData.val();
-		
+
 		//because this function runs everytime there is a chnage in the database
 		//we need to delete old table everytime we create a new one 
 
@@ -239,16 +251,17 @@ var sortTable = function (scores) {
 }
 
 var addTableToDOM =  function (scores, columnKey, sortType) {
+	var new_scores = obj_to_array(scores);
 	$('.loading-overlay').dimmer('show');
 	if (document.getElementById("leaderboard_tbl") != null) {
 		document.getElementById("leaderboard_tbl").remove();
 	}
-	var table = createTable(scores, tableProperties, columnKey, sortType);
+	var table = createTable(new_scores, tableProperties, columnKey, sortType);
 	document.getElementById("leaderboardTable").appendChild(table);
 
 	document.getElementById(columnKey).className += " ui active-header";
 
 	$('.loading-overlay').dimmer('hide');
-	sortTable(scores);		
+	sortTable(new_scores);		
 
 }

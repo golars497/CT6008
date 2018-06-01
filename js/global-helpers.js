@@ -9,3 +9,5 @@ function msg_log(input) {
 var animateFlag = true;
 //stops rellax parallax from activating
 var rellaxFlag = true;
+//used to make sure that logo2 disappears once trailer played
+var logo_two_once = false;
