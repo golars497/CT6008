@@ -61,12 +61,12 @@ var addPlayButton = function (top) {
 		msg_log("trailer button was clicked");
 		if (trailer.paused) {
 		    trailer.play();
-		    document.getElementById('player_button_icon').className = "play circle outline icon"; 
+		    document.getElementById('player_button_icon').className = "pause circle outline icon"; 
 		    document.getElementById('logo2').style.visibility = "hidden";
 		    logo_two_once = true;
 		} else { 
 			trailer.pause();
-		    document.getElementById('player_button_icon').className = "pause circle outline icon";
+		    document.getElementById('player_button_icon').className = "play circle outline icon";
 		    document.getElementById('logo2').style.visibility = "hidden";
 		    logo_two_once = true;
 		}
@@ -296,7 +296,7 @@ window.onload = function () {
 		        var second_section_bar = document.createElement("div");
 		        second_section_bar.className += "second_section_bar";
 		        second_section_bar.style.position = "absolute";
-		        second_section_bar.style.top = (blackDivOverlayHeight - 50).toString() + "px";
+		        second_section_bar.style.top = (blackDivOverlayHeight + 0).toString() + "px";
 		        second_section_bar.style.left = "0";
 
 		        $('#intro').append(second_section_bar); 
@@ -332,6 +332,8 @@ window.onload = function () {
 				      onTopPassed: function() {
 				      	if (logo_two_once == false) {
 				        	$('#logo2').transition('fade in');
+				    	} else {
+				    		$('#logo2').transition('fade out');
 				    	}
 				    	$('#trailer_button_grid').transition('fade in');
 				      },
