@@ -50,7 +50,7 @@ var scrollEvents = function () {
 
 var addPlayButton = function (top) {
 	//Add play button
-    var play_button_str = "<div id='trailer_button_grid' class='ui grid' style='position:absolute; z-index:500; left:50px; top:" + (top).toString() + "px;'>" + 
+    var play_button_str = "<div id='trailer_button_grid' class='ui grid' style='visibility:hidden; position:absolute; z-index:500; left:50px; top:" + (top).toString() + "px;'>" + 
     					  "<h1 class = 'ui header' id='trailer_button'>" + 
     					  "Play trailer <i id='player_button_icon' class='play circle outline icon'></i></h1></div>";
     document.getElementById("intro").insertAdjacentHTML( 'afterend', play_button_str );
@@ -325,7 +325,7 @@ window.onload = function () {
 				//add logo
 				add_logo(imgSize, imgPx, imgSpeed, logoFile, "500", "logo1", 10, "intro", true);
 				add_logo(imgSize, imgPx, logo2Speed, logoFile2, "320", "logo2", 10, "intro", false);
-				
+				  
 				  $('.second_section_bar')
 				    .visibility({
 				      once: false,
@@ -333,12 +333,11 @@ window.onload = function () {
 				      	if (logo_two_once == false) {
 				        	$('#logo2').transition('fade in');
 				    	}
-				    	$('#trailer_button_grid').transition('fly right');
-;
+				    	$('#trailer_button_grid').transition('fade in');
 				      },
 				      onTopPassedReverse: function() {
 				        $('#logo2').transition('fade out');
-				    	$('#trailer_button_grid').transition('fly right');
+				    	// $('#trailer_button_grid').transition('fade out');
 				      }
 				    });
 
