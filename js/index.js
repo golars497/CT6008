@@ -273,7 +273,7 @@ window.onload = function () {
 
 		        var secondSection = document.createElement('div');
 		        secondSection.id += "secondSection";
-		        secondSection.style.top = blackDivOverlayHeight + "px";
+		        secondSection.style.top = (blackDivOverlayHeight-220) + "px"; //this is only to suit 1280px projector in COMX
 		        secondSection.style.height = blackDivOverlayHeight.toString() + "px";
 		        secondSection.style.minHeight = "900px";
 		        secondSection.style.position = "absolute";

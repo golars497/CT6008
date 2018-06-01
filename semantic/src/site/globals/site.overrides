@@ -164,6 +164,7 @@ div.ui.large.top.fixed.menu {
   min-width: 100%;
   height: auto;
   min-height: 100%;
+  object-position: center bottom;
 }
 
 @media only screen and (max-width: 700px) {
