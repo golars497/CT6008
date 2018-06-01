@@ -162,9 +162,10 @@ div.ui.large.top.fixed.menu {
 #second_section_video {
   max-width: 100%;
   min-width: 100%;
-  height: auto;
-  min-height: 100%;
+  height: auto  !important;
+  min-height: auto;
   object-position: center bottom;
+  object-fit: inherit;
 }
 
 @media only screen and (max-width: 700px) {

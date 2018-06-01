@@ -62,12 +62,16 @@ var addPlayButton = function (top) {
 		if (trailer.paused) {
 		    trailer.play();
 		    document.getElementById('player_button_icon').className = "pause circle outline icon"; 
-		    document.getElementById('logo2').style.visibility = "hidden";
+            if (logo_two_once != true) {  
+		      $('#logo2').transition('fade out');
+            } else {
+                document.getElementById('logo2').style.opacity = "0"; 
+            }
 		    logo_two_once = true;
 		} else { 
 			trailer.pause();
 		    document.getElementById('player_button_icon').className = "play circle outline icon";
-		    document.getElementById('logo2').style.visibility = "hidden";
+		    document.getElementById('logo2').style.opacity = "0";
 		    logo_two_once = true;
 		}
 	}); 	
@@ -273,7 +277,7 @@ window.onload = function () {
 
 		        var secondSection = document.createElement('div');
 		        secondSection.id += "secondSection";
-		        secondSection.style.top = (blackDivOverlayHeight-220) + "px"; //this is only to suit 1280px projector in COMX
+		        secondSection.style.top = (blackDivOverlayHeight) + "px"; //this is only to suit 1280px projector in COMX
 		        secondSection.style.height = blackDivOverlayHeight.toString() + "px";
 		        secondSection.style.minHeight = "900px";
 		        secondSection.style.position = "absolute";
@@ -296,7 +300,7 @@ window.onload = function () {
 		        var second_section_bar = document.createElement("div");
 		        second_section_bar.className += "second_section_bar";
 		        second_section_bar.style.position = "absolute";
-		        second_section_bar.style.top = (blackDivOverlayHeight + 0).toString() + "px";
+		        second_section_bar.style.top = (blackDivOverlayHeight - 50).toString() + "px";
 		        second_section_bar.style.left = "0";
 
 		        $('#intro').append(second_section_bar); 
@@ -305,7 +309,7 @@ window.onload = function () {
 	        	var videoHeight = $('#second_section_video')[0].offsetHeight;
 	        	var position = getPositionFromTop(document.getElementById("second_section_video"));
 
-	        	document.getElementById("first-panel").style.marginTop = (position.y + videoHeight -100).toString() + "px";	
+	        	document.getElementById("first-panel").style.marginTop = (position.y + videoHeight).toString() + "px";	
 
 		        //Add black overlay behind logo
 		        var blackDiv = document.createElement("div");
@@ -333,12 +337,16 @@ window.onload = function () {
 				      	if (logo_two_once == false) {
 				        	$('#logo2').transition('fade in');
 				    	} else {
-				    		$('#logo2').transition('fade out');
+				    		document.getElementById('logo2').style.opacity = "0";
 				    	}
 				    	$('#trailer_button_grid').transition('fade in');
 				      },
 				      onTopPassedReverse: function() {
-				        $('#logo2').transition('fade out');
+                          if (logo_two_once == false) {
+				            $('#logo2').transition('fade out');
+                          } else {
+				    		document.getElementById('logo2').style.opacity = "0";
+				    	}
 				    	// $('#trailer_button_grid').transition('fade out');
 				      }
 				    });
