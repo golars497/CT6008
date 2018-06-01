@@ -316,7 +316,7 @@ div.ui.large.top.fixed.menu {
   font-weight: normal;
 }
 .ui.vertical.stripe {
-  padding: 8em 0em;
+  padding: 5em 0em;
   background-color: #09041A !important;
   color: #FFF !important;
 }
@@ -1014,48 +1014,14 @@ body {
   }
 }
 .special-button {
+  min-height: 50px !important;
   border: 5px solid transparent !important;
   background: #F70068 !important;
   color: #FFF !important;
   border-radius: 3px !important;
-  padding: 5px 10px !important;
-  overflow: hidden !important;
-  width: 200px !important;
-  -webkit-transition: all 0.3s, border 0.1s 0.3s, -webkit-box-shadow 0.1s 0.3s !important;
-  transition: all 0.3s, border 0.1s 0.3s, -webkit-box-shadow 0.1s 0.3s !important;
-  transition: all 0.3s, border 0.1s 0.3s, box-shadow 0.1s 0.3s !important;
-  transition: all 0.3s, border 0.1s 0.3s, box-shadow 0.1s 0.3s, -webkit-box-shadow 0.1s 0.3s !important;
-  white-space: nowrap !important;
-  text-indent: 23px !important;
-  font-weight: bold !important;
-}
-.special-button span {
-  display: inline-block;
-  -webkit-transform: translateX(300px) !important;
-          transform: translateX(300px) !important;
-  font-weight: normal !important;
-  opacity: 0 !important;
-  -webkit-transition: opacity 0.1s 0.2s,
-      -webkit-transform 0.1s 0.3s !important;
-  transition: opacity 0.1s 0.2s,
-      -webkit-transform 0.1s 0.3s !important;
-  transition: opacity 0.1s 0.2s,
-      transform 0.1s 0.3s !important;
-  transition: opacity 0.1s 0.2s,
-      transform 0.1s 0.3s,
-      -webkit-transform 0.1s 0.3s !important;
+  min-width: 200px !important;
 }
 .special-button:hover {
-  text-indent: 0 !important;
-  background: #FFF !important;
-  color: #F70068 !important;
-  width: 250px !important;
-  border: 10px solid #F70041 !important;
-  -webkit-box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.15) !important;
-          box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.15) !important;
-}
-.special-button:hover span {
-  -webkit-transform: translateX(0) !important;
-          transform: translateX(0) !important;
-  opacity: 1 !important;
+  filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068) drop-shadow(0 0 38px #F70068);
+  -webkit-filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 20px #F70068) drop-shadow(0 0 38px #F70068);
 }
